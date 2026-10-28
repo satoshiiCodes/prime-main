@@ -1,0 +1,1168 @@
+/* ==========================================================================
+   Prime City - Expenses styles
+   Page-level styles for add_expenses.php. Global SB Admin styles stay in
+   css/styles.css; layout chrome lives in includes/.
+   ========================================================================== */
+
+.expense-card {
+                margin: 0 auto;
+            }
+            .form-section {
+                margin-bottom: 1.5rem;
+            }
+            .section-title {
+                border-bottom: 1px solid #dee2e6;
+                padding-bottom: 0.5rem;
+                margin-bottom: 1rem;
+                color: #0d6efd;
+            }
+            .amount-input {
+                text-align: right;
+            }
+            .total-expenses {
+                background-color: #f8f9fa;
+                padding: 1rem;
+                border-radius: 0.25rem;
+                margin-top: 1rem;
+                font-weight: bold;
+            }
+            .total-amount {
+                font-size: 1.25rem;
+                color: #dc3545;
+            }
+            .table-responsive {
+                margin-top: 2rem;
+            }
+            .table th {
+                background-color: #f8f9fa;
+                white-space: nowrap;
+            }
+            .table td {
+                vertical-align: middle;
+            }
+            .badge {
+                font-size: 0.85em;
+            }
+            .dataTables_wrapper .row {
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .dataTables_length,
+            .dataTables_filter {
+                display: flex;
+                align-items: center;
+                margin-bottom: 1rem;
+            }
+            .dataTables_length select {
+                width: 70px;
+                margin: 0 0.5rem;
+            }
+            .dataTables_filter input {
+                margin-left: 0.5rem;
+            }
+            .action-buttons {
+                display: flex;
+                gap: 5px;
+            }
+            .btn-sm {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.75rem;
+            }
+            .table th.total-column {
+                font-weight: bold;
+            }
+            .modal-lg {
+                max-width: 800px;
+            }
+            .filter-buttons {
+                margin-bottom: 5px;
+            }
+            .filter-buttons .btn-group .btn {
+                margin-right: 5px;
+            }
+            .summary-row {
+                background-color: #f8f9fa;
+                font-weight: bold;
+            }
+            .summary-row td {
+                border-top: 2px solid #dee2e6 !important;
+            }
+            .form-floating .form-control {
+                padding: 1rem 0.75rem;
+            }
+            .form-floating > label {
+                padding: 1rem 0.75rem;
+            }
+            .form-floating > .form-control:focus ~ label,
+            .form-floating > .form-control:not(:placeholder-shown) ~ label,
+            .form-floating > .form-select ~ label {
+                opacity: 0.65;
+                transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+            }
+            .filter-section {
+                background-color: #f8f9fa;
+                padding: 15px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            .filter-row {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+            .filter-label {
+                font-weight: bold;
+                margin-bottom: 0;
+            }
+            .branch-filter-dropdown {
+                min-width: 200px;
+            }
+            .restricted-branch {
+                background-color: #e9ecef;
+                pointer-events: none;
+                opacity: 0.7;
+            }
+            .hidden-filter {
+                display: none;
+            }
+            /* Red asterisk style */
+            .required-star {
+                color: red;
+                margin-left: 2px;
+            }
+            .form-label-required .form-label-text {
+                position: relative;
+            }
+            /* Override for floating labels - add red asterisk to the label text */
+            .form-floating > label::after {
+                content: " *";
+                color: red;
+                font-weight: bold;
+            }
+            /* Special handling for selects with floating labels */
+            .form-floating > label:has(+ select)::after {
+                content: " *";
+                color: red;
+                font-weight: bold;
+            }
+            /* For static labels in modal that aren't floating */
+            .required-label::after {
+                content: " *";
+                color: red;
+                font-weight: bold;
+            }
+            /* Ensure remarks label also gets asterisk */
+            .form-floating > label[for="remarks"]::after,
+            .form-floating > label[for="edit_remarks"]::after {
+                content: " *";
+                color: red;
+                font-weight: bold;
+            }
+
+/* ==========================================================================
+   Expense Record - dash form skin
+   ========================================================================== */
+
+#expenseForm .form-section {
+    margin: 0;
+    padding: 1.35rem 0 0;
+    border-top: 1px solid #eef4fc;
+    background: transparent;
+    border-radius: 0;
+}
+
+#expenseForm .form-section:first-of-type {
+    padding-top: 0;
+    border-top: 0;
+}
+
+#expenseForm .section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0 0 1.1rem;
+    padding: 0;
+    border: 0;
+    color: #0d3b7a;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+#expenseForm .section-title::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #3ba602;
+    flex: 0 0 auto;
+}
+
+#expenseForm .row {
+    --bs-gutter-x: 1.1rem;
+    --bs-gutter-y: 0.9rem;
+    margin-bottom: 0 !important;
+}
+
+/* controls */
+#expenseForm .form-floating > .form-control,
+#expenseForm .form-floating > .form-select,
+#expenseForm .form-control,
+#expenseForm .form-select {
+    min-height: 3.1rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 12px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+#expenseForm .form-control:hover,
+#expenseForm .form-select:hover {
+    border-color: #b9d6f6;
+}
+
+#expenseForm .form-control:focus,
+#expenseForm .form-select:focus {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+#expenseForm .form-floating > label {
+    padding: 0.8rem 0.95rem;
+    color: #6d86a6;
+    font-size: 0.9rem;
+}
+
+#expenseForm .form-floating > .form-control:focus ~ label,
+#expenseForm .form-floating > .form-control:not(:placeholder-shown) ~ label,
+#expenseForm .form-floating > .form-select ~ label {
+    color: #8aa8c8;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 1;
+    transform: scale(1) translateY(-0.55rem) translateX(0.15rem);
+}
+
+#expenseForm .restricted-branch,
+#expenseForm .form-select:disabled {
+    background-color: #eef4fc;
+    border-color: #e0ecfa;
+    color: #43678f;
+    cursor: not-allowed;
+}
+
+#expenseForm textarea.form-control {
+    min-height: 6rem;
+    padding: 2.15rem 0.95rem 0.85rem;
+    line-height: 1.5;
+}
+
+#expenseForm .form-floating > textarea.form-control {
+    height: 6rem !important;
+}
+
+/* the amount fields read as money */
+#expenseForm .amount-input {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+}
+
+/* total strip */
+#expenseForm .total-expenses {
+    margin: 1.1rem 0 0;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid #eaf2fd;
+    border-radius: 14px;
+    background: #f7fbff;
+    font-weight: 600;
+}
+
+#expenseForm .total-expenses .row {
+    align-items: center;
+}
+
+#expenseForm .total-expenses label {
+    margin: 0;
+    color: #8aa8c8;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+#expenseForm .total-amount {
+    color: #0d3b7a;
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+/* floating labels get a required marker - soften the colour */
+#expenseForm .form-floating > label::after {
+    color: #d92d20;
+}
+
+/* submit row */
+#expenseForm .dash-form__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1.35rem 0 0;
+    padding-top: 1.35rem;
+    border-top: 1px solid #eef4fc;
+}
+
+#expenseForm .dash-form__actions .btn {
+    border: 0;
+    border-radius: 12px;
+    padding: 0.72rem 1.6rem;
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 10px 22px rgba(10, 95, 230, 0.24);
+    transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease;
+}
+
+#expenseForm .dash-form__actions .btn:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 12px 26px rgba(10, 95, 230, 0.30);
+    transform: translateY(-1px);
+}
+
+#expenseForm .dash-form__actions .btn:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 14px rgba(10, 95, 230, 0.24);
+}
+
+/* ==========================================================================
+   Edit Expense Record modal
+   ========================================================================== */
+
+#editExpenseModal .modal-content {
+    border: 0;
+    border-radius: 18px;
+    box-shadow: 0 24px 60px rgba(4, 16, 32, 0.22);
+    overflow: hidden;
+}
+
+#editExpenseModal .modal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.05rem 1.3rem;
+    border: 0;
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    color: #ffffff;
+}
+
+#editExpenseModal .exp-modal__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    font-size: 0.95rem;
+    flex: 0 0 auto;
+}
+
+#editExpenseModal .exp-modal__heading {
+    min-width: 0;
+}
+
+#editExpenseModal .modal-title {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+#editExpenseModal .exp-modal__hint {
+    margin: 0.1rem 0 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.76rem;
+    font-weight: 500;
+}
+
+#editExpenseModal .btn-close {
+    margin-left: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+}
+
+#editExpenseModal .btn-close:hover {
+    opacity: 1;
+}
+
+#editExpenseModal .modal-body {
+    padding: 1.3rem;
+    background: #ffffff;
+}
+
+#editExpenseModal .form-section {
+    margin: 0;
+    padding: 1.35rem 0 0;
+    border-top: 1px solid #eef4fc;
+    background: transparent;
+    border-radius: 0;
+}
+
+#editExpenseModal .form-section:nth-of-type(1) {
+    padding-top: 0;
+    border-top: 0;
+}
+
+#editExpenseModal .section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0 0 1.1rem;
+    padding: 0;
+    border: 0;
+    color: #0d3b7a;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+#editExpenseModal .section-title::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #3ba602;
+    flex: 0 0 auto;
+}
+
+#editExpenseModal .row {
+    --bs-gutter-x: 1.1rem;
+    --bs-gutter-y: 0.9rem;
+    margin-bottom: 0 !important;
+}
+
+#editExpenseModal .form-floating > .form-control,
+#editExpenseModal .form-floating > .form-select,
+#editExpenseModal .form-control,
+#editExpenseModal .form-select {
+    min-height: 3.1rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 12px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+#editExpenseModal .form-control:focus,
+#editExpenseModal .form-select:focus {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+#editExpenseModal .form-floating > label {
+    padding: 0.8rem 0.95rem;
+    color: #6d86a6;
+    font-size: 0.9rem;
+}
+
+#editExpenseModal .form-floating > .form-control:focus ~ label,
+#editExpenseModal .form-floating > .form-control:not(:placeholder-shown) ~ label,
+#editExpenseModal .form-floating > .form-select ~ label {
+    color: #8aa8c8;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 1;
+    transform: scale(1) translateY(-0.55rem) translateX(0.15rem);
+}
+
+#editExpenseModal .form-floating > label::after {
+    color: #d92d20;
+}
+
+#editExpenseModal .amount-input {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+}
+
+#editExpenseModal .total-expenses {
+    margin: 1.1rem 0 0;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid #eaf2fd;
+    border-radius: 14px;
+    background: #f7fbff;
+    font-weight: 600;
+}
+
+#editExpenseModal .total-expenses .row {
+    align-items: center;
+}
+
+#editExpenseModal .total-expenses label {
+    margin: 0;
+    color: #8aa8c8;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+#editExpenseModal .total-amount {
+    color: #0d3b7a;
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+#editExpenseModal textarea.form-control {
+    min-height: 6rem;
+    padding: 2.15rem 0.95rem 0.85rem;
+    line-height: 1.5;
+}
+
+#editExpenseModal .form-floating > textarea.form-control {
+    height: 6rem !important;
+}
+
+#editExpenseModal .modal-footer {
+    padding: 0.9rem 1.3rem;
+    border-top: 1px solid #eef4fc;
+    background: #fbfdff;
+}
+
+#editExpenseModal .modal-footer .btn {
+    border-radius: 11px;
+    padding: 0.58rem 1.15rem;
+    font-size: 0.86rem;
+    font-weight: 600;
+}
+
+#editExpenseModal .modal-footer .btn-secondary {
+    border: 1px solid #d6e6f8;
+    background: #ffffff;
+    color: #33578a;
+}
+
+#editExpenseModal .modal-footer .btn-primary {
+    border: 0;
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    box-shadow: 0 10px 22px rgba(10, 95, 230, 0.24);
+}
+
+/* ==========================================================================
+   Expense Records - header filter, branch filter, table chrome
+   ========================================================================== */
+
+/* ---- All / Daily / Weekly / Monthly segmented control ---------------- */
+
+.dash-card .filter-buttons {
+    margin: 0 0 0 auto;
+}
+
+.dash-card .filter-buttons .btn-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.22rem;
+    border: 1px solid #eaf2fd;
+    border-radius: 12px;
+    background: #f7fbff;
+    box-shadow: none;
+}
+
+.dash-card .filter-buttons .btn-group .btn {
+    margin: 0;
+    padding: 0.42rem 0.95rem;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    color: #33578a;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    box-shadow: none;
+    transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dash-card .filter-buttons .btn-group .btn:hover {
+    background: #e6f0ff;
+    color: #0a5fe6;
+}
+
+.dash-card .filter-buttons .btn-group .btn-outline-primary {
+    border: 0;
+    background: transparent;
+    color: #33578a;
+}
+
+.dash-card .filter-buttons .btn-group .btn-primary {
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    color: #ffffff;
+    box-shadow: 0 6px 14px rgba(10, 95, 230, 0.28);
+}
+
+.dash-card .filter-buttons .btn-group .btn-primary:hover {
+    background: linear-gradient(135deg, #0a5fe6 0%, #2b86f8 100%);
+    color: #ffffff;
+}
+
+/* ---- branch filter row ----------------------------------------------- */
+
+.dash-card .filter-section {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.dash-card .filter-section .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.dash-card .filter-section .filter-label {
+    margin: 0;
+    color: #8aa8c8;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.dash-card .filter-section .branch-filter-dropdown {
+    min-width: 250px;
+}
+
+.dash-card .filter-section .form-select {
+    min-height: 2.7rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 11px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.dash-card .filter-section .form-select:focus {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.13);
+}
+
+/* ---- DataTables chrome (Show / Search / pager) ------------------------ */
+
+.dash-card .dataTables_wrapper .top {
+    margin: 0 0 0.9rem;
+    padding: 0;
+}
+
+.dash-card .dataTables_filter label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    color: #8aa8c8;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.dash-card .dataTables_filter input {
+    min-width: 240px;
+    min-height: 2.5rem;
+    margin: 0;
+    padding: 0.4rem 0.85rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 10px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.86rem;
+    font-weight: 500;
+}
+
+.dash-card .dataTables_filter input::placeholder {
+    color: #8aa8c8;
+    text-transform: none;
+}
+
+.dash-card .dataTables_filter input:focus {
+    outline: 0;
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.13);
+}
+
+.dash-card .dataTables_wrapper .bottom,
+.dash-card .card-body > .bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid #f1f6fd;
+}
+
+.dash-card .dataTables_info {
+    padding: 0;
+    color: #7b93b3;
+    font-size: 0.78rem;
+}
+
+.dash-card .dataTables_paginate {
+    margin: 0 0 0 auto;
+    padding: 0;
+}
+
+/* Pager: same look as dash-ui .datatable-pagination-list-item-link.
+   DataTables + Bootstrap 5 emits <li class="paginate_button page-item">
+   wrapping <a class="page-link">, so the anchor is the visible pill. */
+.dash-card .dataTables_paginate {
+    display: flex;
+    margin: 0 0 0 auto;
+}
+
+.dash-card .dataTables_paginate .pagination {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* the <li> is only a wrapper - no box of its own */
+.dash-card .dataTables_paginate .paginate_button,
+.dash-card .dataTables_paginate .page-item {
+    display: block;
+    min-width: 0;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+}
+
+.dash-card .dataTables_paginate .paginate_button .page-link,
+.dash-card .dataTables_paginate .page-item .page-link {
+    display: grid;
+    place-items: center;
+    min-width: 2rem;
+    height: 2rem;
+    margin: 0;
+    padding: 0 0.5rem;
+    border: 1px solid #e6f0fb;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #33578a !important;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.dash-card .dataTables_paginate .paginate_button .page-link:hover,
+.dash-card .dataTables_paginate .page-item .page-link:hover {
+    border-color: #c2daf5;
+    background: #f4f9ff;
+    color: #0a5fe6 !important;
+}
+
+.dash-card .dataTables_paginate .paginate_button .page-link:focus,
+.dash-card .dataTables_paginate .page-item .page-link:focus {
+    outline: 0;
+    box-shadow: 0 0 0 3px rgba(10, 95, 230, 0.16);
+}
+
+/* current page */
+.dash-card .dataTables_paginate .paginate_button.active .page-link,
+.dash-card .dataTables_paginate .page-item.active .page-link,
+.dash-card .dataTables_paginate .paginate_button.current .page-link {
+    border-color: transparent;
+    background: linear-gradient(135deg, #0a5fe6, #1b7bf2);
+    color: #ffffff !important;
+    box-shadow: none;
+}
+
+/* unavailable prev/next */
+.dash-card .dataTables_paginate .paginate_button.disabled .page-link,
+.dash-card .dataTables_paginate .page-item.disabled .page-link {
+    border-color: #e6f0fb;
+    background: #ffffff;
+    color: #c6d6e8 !important;
+    cursor: default;
+}
+
+.dash-card .dataTables_paginate .paginate_button.disabled .page-link:hover,
+.dash-card .dataTables_paginate .page-item.disabled .page-link:hover {
+    border-color: #e6f0fb;
+    background: #ffffff;
+    color: #c6d6e8 !important;
+}
+
+
+/* ---- the table itself ------------------------------------------------ */
+
+.dash-card #expensesTable {
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.78rem;
+}
+
+.dash-card #expensesTable thead th {
+    padding: 0.7rem 0.75rem;
+    border: 0;
+    border-bottom: 1px solid #eaf2fd;
+    background: #f7fbff;
+    color: #8aa8c8;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.dash-card #expensesTable tbody td,
+.dash-card #expensesTable tfoot td {
+    padding: 0.6rem 0.75rem;
+    border: 0;
+    border-bottom: 1px solid #f1f6fd;
+    color: #33578a;
+    vertical-align: middle;
+    font-variant-numeric: tabular-nums;
+}
+
+.dash-card #expensesTable tbody tr:hover td {
+    background: #f9fcff;
+}
+
+.dash-card #expensesTable tbody tr:nth-child(even) td {
+    background: #fcfdff;
+}
+
+.dash-card #expensesTable tbody tr:nth-child(even):hover td {
+    background: #f4f9ff;
+}
+
+.dash-card #expensesTable .badge {
+    padding: 0.3em 0.7em;
+    border-radius: 999px;
+    background: #eef6ff !important;
+    border: 1px solid #cfe4ff;
+    color: #0a5fe6;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.dash-card #expensesTable tfoot .summary-row td {
+    border-top: 1px solid #eaf2fd;
+    border-bottom: 0;
+    background: #f2f8ff;
+    color: #0d3b7a;
+    font-weight: 700;
+}
+
+/* action buttons as soft icon buttons */
+.dash-card #expensesTable .action-buttons {
+    display: flex;
+    gap: 0.35rem;
+}
+
+.dash-card #expensesTable .action-buttons .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 9px;
+    font-size: 0.72rem;
+    box-shadow: none;
+}
+
+.dash-card #expensesTable .action-buttons .btn-warning {
+    border: 1px solid #ffe1a8;
+    background: #fff8e6;
+    color: #8a5b00;
+}
+
+.dash-card #expensesTable .action-buttons .btn-warning:hover {
+    border-color: #ffd382;
+    background: #fff3d6;
+    color: #6f4900;
+}
+
+.dash-card #expensesTable .action-buttons .btn-danger {
+    border: 1px solid #f7c9c4;
+    background: #fdeceb;
+    color: #c0392b;
+}
+
+.dash-card #expensesTable .action-buttons .btn-danger:hover {
+    border-color: #efb3ac;
+    background: #fbdedb;
+    color: #a4231a;
+}
+
+@media (max-width: 767.98px) {
+    .dash-card .dataTables_filter input {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .dash-card .dataTables_filter label {
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   Expense Records - summary band (same as the GCash Cashbook card)
+   ========================================================================== */
+
+.dash .dash-stats.dash-stats--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 1.1rem;
+}
+
+@media (max-width: 1199.98px) {
+    .dash .dash-stats.dash-stats--three {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767.98px) {
+    .dash .dash-stats.dash-stats--three {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* ==========================================================================
+   Expense Records - toolbar row (search left, branch filter right)
+   ========================================================================== */
+
+.dash-card .expense-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1rem;
+    margin: 0 0 1rem;
+}
+
+.dash-card .expense-toolbar__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1 1 280px;
+    min-width: 0;
+}
+
+.dash-card .expense-toolbar__icon {
+    position: absolute;
+    left: 0.95rem;
+    color: #8aa8c8;
+    font-size: 0.78rem;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.dash-card .expense-toolbar__input {
+    width: 100%;
+    min-height: 2.7rem;
+    padding: 0.5rem 0.9rem 0.5rem 2.4rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 11px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+.dash-card .expense-toolbar__input::placeholder {
+    color: #8aa8c8;
+}
+
+.dash-card .expense-toolbar__input:hover {
+    border-color: #b9d6f6;
+}
+
+.dash-card .expense-toolbar__input:focus {
+    outline: 0;
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.13);
+}
+
+/* the branch filter rides on the same row, on the right */
+.dash-card .expense-toolbar .filter-section {
+    order: 2;
+    flex: 0 0 auto;
+    margin: 0 0 0 auto;
+}
+
+.dash-card .expense-toolbar .filter-row {
+    gap: 0.6rem;
+}
+
+.dash-card .expense-toolbar .filter-label {
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+   Expense Records - narrow screens
+   ========================================================================== */
+
+@media (max-width: 991.98px) {
+    /* the period filter drops below the title instead of squeezing it */
+    .dash-card .dash-card__head {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        row-gap: 0.75rem;
+    }
+
+    .dash-card .dash-card__head > div:not(.filter-buttons) {
+        flex: 1 1 0%;
+        min-width: 0;
+    }
+
+    .dash-card .dash-card__title {
+        overflow-wrap: anywhere;
+    }
+
+    .dash-card .dash-card__head .filter-buttons {
+        flex: 1 1 100%;
+        width: 100%;
+        margin: 0;
+    }
+
+    .dash-card .filter-buttons .btn-group {
+        display: flex;
+        width: 100%;
+    }
+
+    .dash-card .filter-buttons .btn-group .btn {
+        flex: 1 1 auto;
+        text-align: center;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* search + branch filter stack, each full width, nothing overflows */
+    .dash-card .expense-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .dash-card .expense-toolbar__search {
+        flex: 0 0 auto;
+        width: 100%;
+        min-width: 0;
+        height: auto;
+    }
+
+    .dash-card .expense-toolbar__input {
+        min-height: 2.6rem;
+    }
+
+    .dash-card .expense-toolbar .filter-section {
+        flex: 0 0 auto;
+        width: 100%;
+        min-width: 0;
+        margin: 0;
+    }
+
+    .dash-card .expense-toolbar .filter-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.4rem;
+        width: 100%;
+    }
+
+    .dash-card .expense-toolbar .filter-label {
+        white-space: normal;
+    }
+
+    .dash-card .expense-toolbar .branch-filter-dropdown {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .dash-card .expense-toolbar .branch-filter-dropdown .form-select {
+        width: 100%;
+    }
+
+    /* keep the wide table scrolling inside its own box */
+    .dash-card .table-responsive {
+        max-width: 100%;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* footer stacks and centres: info first, pager underneath */
+    .dash-card .dataTables_wrapper .bottom,
+    .dash-card .card-body > .bottom {
+        justify-content: center;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .dash-card .dataTables_info {
+        width: 100%;
+        text-align: center;
+    }
+
+    .dash-card .dataTables_paginate {
+        width: 100%;
+        margin: 0.35rem 0 0;
+    }
+
+    .dash-card .dataTables_paginate .pagination {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 420px) {
+    .dash-card .dash-card__head {
+        padding: 0.9rem 1rem;
+    }
+
+    .dash-card .expense-toolbar__input {
+        font-size: 0.85rem;
+    }
+}

@@ -1,0 +1,923 @@
+/* ==========================================================================
+   Prime City - logo theme for the application chrome
+
+   Colours sampled from assets/images/prime-logo-row.png:
+
+     blues   #005dfa · #0099fa   (wordmark / ring)
+     greens  #3ba602 · #8fea08   (emblem)
+
+   This file restyles the shared SB Admin chrome (top bar, sidebar, cards,
+   buttons, breadcrumb) so every page carries the same identity as the sign-in
+   screen. Black is kept out: the darkest surface is a deep brand blue.
+
+   Loaded from includes/topbar.php, so it applies to every page that uses the
+   shared chrome. Page-level stylesheets still load after this one and win.
+   ========================================================================== */
+
+:root {
+    /* Height of the fixed top bar. The logo is centred in it (see the inline
+       style in includes/topbar.php) and everything below is offset by it. */
+    --pc-nav-h: 80px;
+
+    --pc-blue-900: #072a5e;
+    --pc-blue-800: #0a2f6b;
+    --pc-blue-700: #0c3f8f;
+    --pc-blue-600: #0a5fe6;
+    --pc-blue-500: #1b7bf2;
+    --pc-cyan-400: #0099fa;
+    --pc-green-600: #2f8f0a;
+    --pc-green-500: #3ba602;
+    --pc-green-300: #8fea08;
+    --pc-ink: #0d3b7a;
+    --pc-ink-soft: #33578a;
+    --pc-ink-muted: #5b7699;
+    --pc-surface: #ffffff;
+    --pc-canvas: #eef6fe;
+    --pc-line: #d6e6f8;
+    --pc-radius: 14px;
+    --pc-shadow: 0 1px 2px rgba(10, 61, 156, 0.06), 0 10px 28px rgba(10, 61, 156, 0.10);
+}
+
+/* --------------------------------------------------------------------------
+   Top bar
+   -------------------------------------------------------------------------- */
+
+.sb-topnav.navbar-dark,
+.sb-topnav {
+    background: linear-gradient(100deg, var(--pc-blue-900) 0%, var(--pc-blue-700) 58%, var(--pc-blue-600) 100%) !important;
+    box-shadow: 0 2px 12px rgba(7, 42, 94, 0.28);
+    height: var(--pc-nav-h);
+    min-height: var(--pc-nav-h);
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* Keep the page clear of the taller bar (SB Admin hard-codes 56px). */
+.sb-nav-fixed #layoutSidenav #layoutSidenav_content {
+    top: var(--pc-nav-h);
+}
+
+.sb-nav-fixed #layoutSidenav #layoutSidenav_nav .sb-sidenav {
+    padding-top: var(--pc-nav-h);
+}
+
+#layoutSidenav #layoutSidenav_content {
+    min-height: calc(100vh - var(--pc-nav-h));
+}
+
+.sb-topnav .navbar-brand {
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+/* Keep the bar a sensible height on phones and tablets even though the desktop
+   bar is tall enough for the large mark. */
+@media (max-width: 991.98px) {
+    :root {
+        --pc-nav-h: 64px;
+    }
+}
+
+@media (max-width: 576px) {
+    :root {
+        --pc-nav-h: 60px;
+    }
+}
+
+.sb-topnav.navbar-dark #sidebarToggle,
+.sb-topnav .nav-link,
+.sb-topnav .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.sb-topnav.navbar-dark #sidebarToggle:hover,
+.sb-topnav .nav-link:hover,
+.sb-topnav .navbar-nav .nav-link:hover {
+    color: #ffffff;
+}
+
+.sb-topnav .dropdown-menu {
+    border: 1px solid var(--pc-line);
+    border-radius: 12px;
+    box-shadow: var(--pc-shadow);
+    padding: 0.4rem;
+}
+
+.sb-topnav .dropdown-item {
+    border-radius: 8px;
+    color: var(--pc-ink-soft);
+    font-size: 0.9rem;
+}
+
+.sb-topnav .dropdown-item:hover,
+.sb-topnav .dropdown-item:focus {
+    background: var(--pc-canvas);
+    color: var(--pc-blue-600);
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar
+   -------------------------------------------------------------------------- */
+
+.sb-sidenav-dark {
+    background: linear-gradient(185deg, var(--pc-blue-900) 0%, var(--pc-blue-800) 55%, var(--pc-blue-700) 100%) !important;
+    color: rgba(226, 241, 255, 0.82);
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
+    color: rgba(183, 226, 255, 0.55);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1rem 1rem 0.5rem;
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link {
+    color: rgba(226, 241, 255, 0.86);
+    border-radius: 10px;
+    margin: 0.1rem 0.6rem;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.92rem;
+    transition: background 0.16s ease, color 0.16s ease;
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-nav-link-icon {
+    color: rgba(147, 197, 253, 0.75);
+    transition: color 0.16s ease;
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link:hover .sb-nav-link-icon {
+    color: var(--pc-green-300);
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link.active {
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: inset 3px 0 0 var(--pc-green-500);
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link.active .sb-nav-link-icon {
+    color: var(--pc-green-300);
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-sidenav-collapse-arrow {
+    color: rgba(183, 226, 255, 0.5);
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link:hover .sb-sidenav-collapse-arrow {
+    color: #ffffff;
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link.active .sb-sidenav-collapse-arrow {
+    color: var(--pc-green-300);
+}
+
+.sb-sidenav-dark .sb-sidenav-footer {
+    background: rgba(7, 42, 94, 0.55);
+    border-top: 1px solid rgba(148, 197, 255, 0.16);
+    color: rgba(226, 241, 255, 0.75);
+}
+
+.sb-sidenav-dark .sb-sidenav-footer .user-name,
+.sb-sidenav-dark .sb-sidenav-footer .text-white {
+    color: #ffffff !important;
+}
+
+.sb-sidenav-dark .sidenav-user-account-type,
+.sb-sidenav-dark .sb-sidenav-footer .user-account-type {
+    color: var(--pc-green-300) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Content surfaces
+   -------------------------------------------------------------------------- */
+
+body.sb-nav-fixed,
+#layoutSidenav_content,
+main {
+    background: var(--pc-canvas);
+}
+
+#layoutSidenav_content main > .container-fluid {
+    padding-top: 0.5rem;
+}
+
+.card {
+    border: 1px solid var(--pc-line);
+    border-radius: var(--pc-radius);
+    box-shadow: var(--pc-shadow);
+}
+
+.card-header {
+    background: #ffffff;
+    border-bottom: 1px solid var(--pc-line);
+    color: var(--pc-ink);
+    font-weight: 600;
+    border-radius: var(--pc-radius) var(--pc-radius) 0 0 !important;
+}
+
+.card-body {
+    color: var(--pc-ink-soft);
+}
+
+.breadcrumb {
+    margin-bottom: 0;
+}
+
+.breadcrumb-item,
+.breadcrumb-item a {
+    color: var(--pc-ink-muted);
+    font-size: 0.875rem;
+}
+
+.breadcrumb-item.active {
+    color: var(--pc-ink-soft);
+}
+
+/* --------------------------------------------------------------------------
+   Buttons, form controls, links
+   -------------------------------------------------------------------------- */
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--pc-blue-600) 0%, var(--pc-cyan-400) 100%);
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(10, 95, 230, 0.24);
+    font-weight: 600;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background: linear-gradient(135deg, var(--pc-blue-500) 0%, var(--pc-cyan-400) 100%) !important;
+    border-color: transparent !important;
+}
+
+.btn-outline-primary {
+    color: var(--pc-blue-600);
+    border-color: var(--pc-blue-600);
+}
+
+.btn-outline-primary:hover {
+    background: var(--pc-blue-600);
+    border-color: var(--pc-blue-600);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--pc-blue-600);
+    box-shadow: 0 0 0 3px rgba(10, 95, 230, 0.14);
+}
+
+a {
+    color: var(--pc-blue-600);
+}
+
+a:hover {
+    color: var(--pc-blue-700);
+}
+
+/* --------------------------------------------------------------------------
+   Feedback
+   -------------------------------------------------------------------------- */
+
+.alert-info {
+    background: #eaf4ff;
+    border-color: #cfe4fb;
+    color: #17458a;
+}
+
+.alert-warning {
+    background: #fff8e8;
+    border-color: #f8e3b0;
+    color: #7a5a10;
+}
+
+/* --------------------------------------------------------------------------
+   Account menu (top bar)
+   A single chip: avatar initial, name, role, caret. The menu repeats the
+   identity in a header row and keeps the actions as icon rows.
+   -------------------------------------------------------------------------- */
+
+.sb-topnav .nav-item.dropdown {
+    position: relative;
+}
+
+.sb-topnav .pc-user-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.3rem 0.65rem 0.3rem 0.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    text-decoration: none;
+    transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.sb-topnav .pc-user-toggle:hover,
+.sb-topnav .pc-user-toggle:focus-visible,
+.sb-topnav .pc-user-toggle.show {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.32);
+    color: #ffffff;
+    outline: none;
+}
+
+/* Bootstrap rotates its own caret; we use our own icon. */
+.sb-topnav .pc-user-toggle.dropdown-toggle::after {
+    display: none;
+}
+
+.pc-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0a5fe6, #0099fa);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.pc-avatar--lg {
+    width: 2.6rem;
+    height: 2.6rem;
+    font-size: 1rem;
+}
+
+.pc-user {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+    max-width: 12rem;
+}
+
+.pc-user__name {
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pc-user__role {
+    color: rgba(214, 232, 252, 0.75);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.pc-caret {
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.7);
+    transition: transform 0.18s ease;
+}
+
+.sb-topnav .pc-user-toggle.show .pc-caret {
+    transform: rotate(180deg);
+}
+
+/* The menu itself */
+.sb-topnav .pc-menu {
+    min-width: 16rem;
+    margin-top: 0.6rem;
+    padding: 0.5rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 18px 44px rgba(10, 61, 156, 0.16);
+}
+
+.pc-menu__head {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.55rem 0.6rem 0.7rem;
+}
+
+.pc-menu__identity {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    line-height: 1.25;
+}
+
+.pc-menu__identity strong {
+    color: #0d3b7a;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pc-menu__identity small {
+    color: #7b93b3;
+    font-size: 0.75rem;
+}
+
+.sb-topnav .pc-menu .dropdown-divider {
+    margin: 0.35rem 0.25rem;
+    border-color: #eaf2fd;
+    opacity: 1;
+}
+
+.sb-topnav .pc-menu .dropdown-item,
+.pc-menu__item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 0.65rem;
+    border-radius: 10px;
+    color: #33578a;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.pc-menu__item i {
+    width: 1.05rem;
+    text-align: center;
+    color: #8aa8c8;
+    transition: color 0.16s ease;
+}
+
+.sb-topnav .pc-menu .dropdown-item:hover,
+.sb-topnav .pc-menu .dropdown-item:focus,
+.pc-menu__item:hover,
+.pc-menu__item:focus {
+    background: #f2f8ff;
+    color: #0a5fe6;
+}
+
+.pc-menu__item:hover i,
+.pc-menu__item:focus i {
+    color: #0a5fe6;
+}
+
+.pc-menu__logout,
+.sb-topnav .pc-menu .dropdown-item.pc-menu__logout {
+    color: #b5342c;
+}
+
+.pc-menu__logout i {
+    color: #d88078;
+}
+
+.sb-topnav .pc-menu .dropdown-item.pc-menu__logout:hover,
+.sb-topnav .pc-menu .dropdown-item.pc-menu__logout:focus {
+    background: #fdf1f0;
+    color: #b5342c;
+}
+
+.pc-menu__logout:hover i {
+    color: #b5342c;
+}
+
+/* Phones: keep the chip, drop the name/role text so the bar stays tidy. */
+@media (max-width: 575.98px) {
+    .sb-topnav .pc-user {
+        display: none;
+    }
+
+    .sb-topnav .nav-item.dropdown {
+    position: relative;
+}
+
+.sb-topnav .pc-user-toggle {
+        padding: 0.28rem;
+        gap: 0.4rem;
+    }
+
+    .sb-topnav .pc-caret {
+        display: none;
+    }
+
+    .sb-topnav .pc-menu {
+        min-width: 15rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   SweetAlert2 - toasts and modals
+   Brand card instead of a solid colour block: white surface, accent bar, soft
+   shadow. Scoped to .pc-toast so other dialogs are untouched, and specific
+   enough (.swal2-container .swal2-popup) to beat the library defaults.
+   -------------------------------------------------------------------------- */
+
+.swal2-container.pc-toast-container {
+    top: calc(var(--pc-nav-h) + 0.9rem) !important;
+    right: 1rem;
+    padding: 0;
+}
+
+.swal2-container .swal2-popup.pc-toast {
+    position: relative;
+    width: 23.5rem;
+    max-width: calc(100vw - 2rem);
+    margin: 0;
+    padding: 0;
+    border: 1px solid #eaf2fd;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 18px 46px rgba(10, 61, 156, 0.18), 0 2px 8px rgba(10, 61, 156, 0.08);
+    overflow: hidden;
+    font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+}
+
+/* Accent bar: blue by default, swapped per state. */
+.swal2-container .swal2-popup.pc-toast::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--pc-blue-600), var(--pc-cyan-400));
+}
+
+.swal2-container .swal2-popup.pc-toast--success::before {
+    background: linear-gradient(180deg, var(--pc-green-500), var(--pc-green-300));
+}
+
+.swal2-container .swal2-popup.pc-toast--error::before {
+    background: linear-gradient(180deg, #b5342c, #e8695f);
+}
+
+.swal2-container .swal2-popup.pc-toast--warning::before {
+    background: linear-gradient(180deg, #d98324, #f0b429);
+}
+
+.pc-toast__row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 0.95rem 1.9rem 1rem 1rem;
+    text-align: left;
+}
+
+.pc-toast__badge {
+    flex: 0 0 auto;
+    display: inline-grid;
+    place-items: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 50%;
+    background: #e8f2ff;
+    color: var(--pc-blue-600);
+    font-size: 0.85rem;
+}
+
+.pc-toast--success .pc-toast__badge {
+    background: #eef9e4;
+    color: var(--pc-green-600);
+}
+
+.pc-toast--error .pc-toast__badge {
+    background: #fdeceb;
+    color: #b5342c;
+}
+
+.pc-toast--warning .pc-toast__badge {
+    background: #fdf4e6;
+    color: #a9661a;
+}
+
+.pc-toast__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.12rem;
+    min-width: 0;
+    padding-top: 0.12rem;
+}
+
+.pc-toast__title {
+    color: var(--pc-ink);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1.3;
+}
+
+.pc-toast__text {
+    color: var(--pc-ink-muted);
+    font-size: 0.82rem;
+    line-height: 1.45;
+    word-break: break-word;
+}
+
+/* Close button */
+.swal2-container .swal2-popup.pc-toast .swal2-close {
+    position: absolute;
+    top: 0.35rem;
+    right: 0.35rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: #a9bdd6;
+    font-size: 1.1rem;
+    line-height: 1;
+    transition: color 0.15s ease, background 0.15s ease;
+}
+
+.swal2-container .swal2-popup.pc-toast .swal2-close:hover,
+.swal2-container .swal2-popup.pc-toast .swal2-close:focus {
+    background: #f2f8ff;
+    color: var(--pc-blue-600);
+    box-shadow: none;
+}
+
+/* Countdown bar */
+.swal2-container .swal2-popup.pc-toast .swal2-timer-progress-bar-container {
+    border-radius: 0 0 15px 15px;
+}
+
+.swal2-container .swal2-popup.pc-toast .swal2-timer-progress-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--pc-blue-600), var(--pc-cyan-400));
+}
+
+.swal2-container .swal2-popup.pc-toast--success .swal2-timer-progress-bar {
+    background: linear-gradient(90deg, var(--pc-green-500), var(--pc-green-300));
+}
+
+.swal2-container .swal2-popup.pc-toast--error .swal2-timer-progress-bar {
+    background: linear-gradient(90deg, #b5342c, #e8695f);
+}
+
+.pc-toast__container {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Motion */
+.pc-toast-in {
+    animation: pcToastIn 320ms cubic-bezier(0.21, 1.02, 0.73, 1) both;
+}
+
+.pc-toast-out {
+    animation: pcToastOut 220ms ease-in both;
+}
+
+@keyframes pcToastIn {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -12px, 0) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes pcToastOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(0, -8px, 0);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   SweetAlert2 - confirm dialogs (not toasts)
+   -------------------------------------------------------------------------- */
+
+.swal2-popup.swal2-modal:not(.pc-toast) {
+    padding: 1.7rem 1.6rem 1.4rem;
+    border: 1px solid #eaf2fd;
+    border-radius: 18px;
+    box-shadow: 0 22px 54px rgba(10, 61, 156, 0.2);
+}
+
+.swal2-popup.swal2-modal:not(.pc-toast) .swal2-title {
+    color: var(--pc-ink);
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.swal2-popup.swal2-modal:not(.pc-toast) .swal2-html-container {
+    margin-top: 0.4rem;
+    color: var(--pc-ink-muted);
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+
+.swal2-popup.swal2-modal:not(.pc-toast) .swal2-actions {
+    margin-top: 1.35rem;
+    gap: 0.6rem;
+}
+
+.swal2-popup.swal2-modal:not(.pc-toast) .swal2-confirm,
+.swal2-popup.swal2-modal:not(.pc-toast) .swal2-cancel {
+    padding: 0.6rem 1.25rem;
+    border: 0;
+    border-radius: 12px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    box-shadow: none;
+}
+
+.swal2-popup.swal2-modal:not(.pc-toast) .swal2-confirm {
+    background: linear-gradient(135deg, var(--pc-blue-600) 0%, var(--pc-cyan-400) 100%);
+    box-shadow: 0 4px 12px rgba(10, 95, 230, 0.24);
+}
+
+.swal2-popup.swal2-modal:not(.pc-toast) .swal2-cancel {
+    background: #eef4fc;
+    color: var(--pc-ink-soft);
+}
+
+.swal2-popup.swal2-modal:not(.pc-toast) .swal2-cancel:hover {
+    background: #e2edfa;
+}
+
+/* Mobile */
+@media (max-width: 575.98px) {
+    .swal2-container.pc-toast-container {
+        right: 0.75rem;
+        left: 0.75rem;
+    }
+
+    .swal2-container .swal2-popup.pc-toast {
+        width: 100%;
+        max-width: none;
+    }
+
+    .pc-toast__row {
+        padding: 0.85rem 1.75rem 0.9rem 0.85rem;
+    }
+}
+
+/* ==========================================================================
+   Sidebar scrollbar - slim rounded thumb on the dark rail
+   ========================================================================== */
+
+.sb-sidenav-menu {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
+    scrollbar-gutter: stable;
+    overscroll-behavior: contain;
+}
+
+.sb-sidenav-menu::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.sb-sidenav-menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sb-sidenav-menu::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.18);
+    background-clip: content-box;
+    transition: background-color 0.15s ease;
+}
+
+.sb-sidenav-menu::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.34);
+}
+
+.sb-sidenav-menu::-webkit-scrollbar-thumb:active {
+    background-color: rgba(255, 255, 255, 0.45);
+}
+
+.sb-sidenav-menu::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Light variant of the same rail (sb-sidenav-light) */
+.sb-sidenav-light .sb-sidenav-menu {
+    scrollbar-color: rgba(13, 59, 122, 0.22) transparent;
+}
+
+.sb-sidenav-light .sb-sidenav-menu::-webkit-scrollbar-thumb {
+    background-color: rgba(13, 59, 122, 0.2);
+}
+
+.sb-sidenav-light .sb-sidenav-menu::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(13, 59, 122, 0.36);
+}
+
+/* ==========================================================================
+   Sidebar theme - blue / green / black gradient with soft brand glows
+   ========================================================================== */
+
+.sb-sidenav-dark {
+    background-color: #06131f !important;
+    background-image:
+        radial-gradient(1200px 520px at 10% -10%, rgba(27, 123, 242, 0.30), transparent 60%),
+        radial-gradient(820px 460px at 110% 114%, rgba(59, 166, 2, 0.14), transparent 60%),
+        linear-gradient(178deg, #072a5e 0%, #0a3572 30%, #0b3f70 50%, #0d3348 66%, #11301d 84%, #06131f 100%) !important;
+    background-repeat: no-repeat;
+    box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+.sb-sidenav-dark .sb-sidenav-menu {
+    padding-bottom: 0.5rem;
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link {
+    color: rgba(226, 241, 255, 0.88);
+    transition: background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: #ffffff;
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link.active {
+    background: linear-gradient(90deg, rgba(59, 166, 2, 0.26) 0%, rgba(27, 123, 242, 0.20) 100%);
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: inset 3px 0 0 var(--pc-green-500), 0 6px 18px rgba(3, 14, 28, 0.28);
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link.active .sb-nav-link-icon {
+    color: var(--pc-green-300);
+}
+
+.sb-sidenav-dark .sb-sidenav-menu-heading {
+    color: rgba(183, 226, 255, 0.55);
+}
+
+.sb-sidenav-dark .sb-sidenav-footer {
+    background: rgba(3, 12, 24, 0.55) !important;
+    border-top: 1px solid rgba(148, 197, 255, 0.14);
+    backdrop-filter: blur(2px);
+    color: rgba(226, 241, 255, 0.72);
+}
+
+.sb-sidenav-dark .sb-sidenav-footer .user-name {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.sb-sidenav-dark .sb-sidenav-footer .user-account-type {
+    color: var(--pc-green-300);
+}
+
+/* ==========================================================================
+   Sidebar row metrics - pinned so every page renders the same rail
+   (a page that loads Bootstrap 5.3 last inherits line-height 1.5, one that
+   loads 5.2 first inherits 1.2, which used to change the row heights)
+   ========================================================================== */
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link,
+.sb-sidenav-dark .sb-sidenav-menu-nested .nav-link {
+    line-height: 1.5;
+}
+
+.sb-sidenav-dark .sb-sidenav-menu-heading {
+    line-height: 1.5;
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav .sb-sidenav-menu-heading {
+    /* SB Admin ships 1.75rem / 0.75rem - too much air under Dashboard */
+    padding-top: 0.7rem;
+    padding-bottom: 0.4rem;
+}
+
+.sb-sidenav-dark .sb-sidenav-footer,
+.sb-sidenav-dark .sb-sidenav-footer .small,
+.sb-sidenav-dark .sb-sidenav-footer .user-name,
+.sb-sidenav-dark .sb-sidenav-footer .user-account-type {
+    line-height: 1.5;
+}
+
+/* One typeface for the chrome on every page (icons keep their own families). */
+.sb-topnav,
+.sb-topnav .navbar-brand,
+.sb-topnav .nav-link,
+.sb-topnav .dropdown-menu,
+.sb-sidenav-dark,
+.sb-sidenav-dark .sb-sidenav-menu,
+.sb-sidenav-dark .sb-sidenav-menu .nav-link,
+.sb-sidenav-dark .sb-sidenav-menu-heading,
+.sb-sidenav-dark .sb-sidenav-footer {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}

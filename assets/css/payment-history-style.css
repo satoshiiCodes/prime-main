@@ -1,0 +1,879 @@
+/* ==========================================================================
+   Prime City - Payment history report styles
+   Page-level styles for payment_history.php. Global SB Admin styles stay in
+   css/styles.css; layout chrome lives in includes/.
+   ========================================================================== */
+
+@page {
+            size: legal landscape;
+            margin: 0.2in;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 11px;
+            line-height: 1.2;
+        }
+        
+        .container-fluid{
+            margin-top: 30px;
+            padding: 0;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+            padding: 0;
+        }
+        
+        .header h2 {
+            margin-bottom: 3px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .header p {
+            margin-bottom: 3px;
+            font-size: 12px;
+        }
+        
+        .payment-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 8px;
+            font-size: 10px;
+            table-layout: fixed;
+        }
+        
+        .payment-table th, .payment-table td {
+            border: 1px solid #000;
+            padding: 3px;
+            text-align: center;
+            word-wrap: break-word;
+            overflow: hidden;
+        }
+        
+        .payment-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            font-size: 9px;
+        }
+        
+        .payment-table td {
+            font-size: 9px;
+        }
+        
+        /* Payment method TEXT COLOR classes */
+        .text-cash {
+            color: #000000 !important;
+            font-weight: bold;
+        }
+        
+        .text-gcash {
+            color: #17a2b8 !important;
+            font-weight: bold;
+        }
+        
+        .text-bank {
+            color: #28a745 !important;
+            font-weight: bold;
+        }
+        
+        .text-check {
+            color: #8b0000 !important;
+            font-weight: bold;
+        }
+        
+        .text-other {
+            color: #6c757d !important;
+            font-weight: bold;
+        }
+        
+        .multiple-payment {
+            font-size: 8px;
+            line-height: 1.1;
+        }
+        
+        .plus-sign {
+            color: #000 !important;
+            font-weight: normal;
+            margin: 0 2px;
+        }
+        
+        .payment-breakdown {
+            display: none;
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 5px;
+            z-index: 1000;
+            font-size: 9px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .has-breakdown:hover .payment-breakdown {
+            display: block;
+        }
+        
+        .totals-row {
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding: 4px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            text-align: center;
+            font-size: 11px;
+        }
+        
+        .no-border {
+            border: none !important;
+        }
+        
+        .text-left {
+            text-align: left !important;
+        }
+        
+        .text-right {
+            text-align: right !important;
+        }
+        
+        .signature-line {
+            border-top: 1px solid #000;
+            width: 150px;
+            display: inline-block;
+            margin-top: 30px;
+        }
+        
+        .signature-container {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 11px;
+        }
+        
+        .customer-row {
+            page-break-inside: avoid;
+        }
+        
+        .filter-container {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        
+        .filter-form .row {
+            align-items: flex-end;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .status-header {
+            background-color: #e9ecef;
+            padding: 7px;
+            margin: 15px 0 8px 0;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .active-header {
+            background-color: #d4edda;
+        }
+        
+        .past-due-header {
+            background-color: #f8d7da;
+        }
+        
+        .completed-header {
+            background-color: #cce7ff;
+        }
+        
+        .area-section {
+            margin-bottom: 30px;
+            page-break-after: always;
+        }
+        
+        .logo {
+            max-width: 250px;
+            margin-bottom: 5px;
+        }
+        
+        .print-title {
+            display: none;
+        }
+        
+        .filter-section {
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-label {
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+        
+        .branch-filter-dropdown {
+            min-width: 200px;
+        }
+        
+        .hidden-filter {
+            display: none !important;
+        }
+        
+        .disabled-filter {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        .user-branch-info {
+            background-color: #e7f3ff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border-left: 4px solid #0d6efd;
+        }
+        
+        .completed-payment-info {
+            background-color: #f0f8ff;
+            padding: 4px 6px;
+            border-radius: 3px;
+            font-size: 9px;
+            margin-top: 3px;
+        }
+        
+        .blank-rows {
+            height: 25px;
+        }
+        
+        .total-row {
+            font-weight: bold;
+            background-color: #f0f0f0;
+        }
+        
+        .column-total {
+            font-weight: bold;
+            background-color: #e8f4f8;
+        }
+        
+        .custom-due-date-container {
+            display: none;
+            margin-top: 5px;
+        }
+        
+        .custom-due-date-container.show {
+            display: block;
+        }
+        
+        .missed-payment-info {
+            font-size: 9px !important;
+            font-style: italic;
+            margin-top: 2px;
+        }
+        
+        @media print {
+            @page {
+                size: legal landscape;
+                margin: 0.2in;
+            }
+            
+            body {
+                font-size: 10px;
+                line-height: 1.2;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            }
+            
+            .no-print {
+                display: none !important;
+            }
+            
+            .header, .payment-table {
+                margin-top: 0;
+                padding: 0;
+            }
+            
+            .container-fluid {
+                padding: 0;
+                margin: 0;
+                width: 100%;
+            }
+            
+            .filter-container {
+                display: none;
+            }
+            
+            .filter-section {
+                display: none;
+            }
+            
+            .page-title {
+                display: none;
+            }
+            
+            .breadcrumb {
+                display: none;
+            }
+            
+            .area-section {
+                page-break-after: always;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .logo {
+                max-width: 250px;
+            }
+            
+            .print-title {
+                display: block;
+                text-align: center;
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 15px;
+            }
+            
+            .payment-table {
+                font-size: 9px;
+                margin-bottom: 5px;
+            }
+            
+            .payment-table th,
+            .payment-table td {
+                padding: 2px;
+                font-size: 9px;
+            }
+            
+            .text-cash {
+                color: #000000 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .text-gcash {
+                color: #17a2b8 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .text-bank {
+                color: #28a745 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .text-check {
+                color: #8b0000 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .text-other {
+                color: #6c757d !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .plus-sign {
+                color: #000 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .header h2 {
+                font-size: 14px;
+                margin-bottom: 3px;
+            }
+            
+            .header p {
+                font-size: 11px;
+                margin-bottom: 3px;
+            }
+            
+            .status-header {
+                font-size: 11px;
+                padding: 5px;
+                margin: 10px 0 5px 0;
+            }
+            
+            .totals-row {
+                font-size: 10px;
+                padding: 3px;
+                margin-bottom: 10px;
+            }
+            
+            .signature-container {
+                margin-top: 20px;
+            }
+            
+            .signature-line {
+                width: 120px;
+                margin-top: 20px;
+            }
+            
+            table {
+                page-break-inside: auto;
+            }
+            
+            tr {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+            
+            thead {
+                display: table-header-group;
+            }
+            
+            tfoot {
+                display: table-footer-group;
+            }
+            
+            .card-body {
+                padding: 0;
+            }
+            
+            .card {
+                border: none;
+                margin: 0;
+                padding: 0;
+            }
+            
+            main {
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            
+            .payment-table th,
+            .payment-table td {
+                padding: 2px 3px;
+            }
+            
+            .multiple-payment {
+                font-size: 7px;
+            }
+        }
+        
+        @media screen {
+            body {
+                font-size: 14px;
+            }
+            
+            .payment-table {
+                font-size: 11px;
+            }
+            
+            .payment-table th,
+            .payment-table td {
+                font-size: 9px;
+            }
+        }
+        
+        .col-no { width: 2%; }
+        .col-name { width: 10%; }
+        .col-due-date { width: 5%; }
+        .col-balance { width: 5%; }
+        .col-daily { width: 4%; }
+        .col-date-group { width: 8%; }
+        .col-payment { width: 2.5%; }
+        .col-last-payment { width: 8%; }
+        .col-total { width: 8%; }
+        
+        .payment-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            font-size: 11px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .payment-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .payment-legend-color {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        
+        .legend-cash {
+            background-color: #000000;
+        }
+        
+        .legend-gcash {
+            background-color: #17a2b8;
+        }
+        
+        .legend-bank {
+            background-color: #28a745;
+        }
+        
+        .legend-check {
+            background-color: #8b0000;
+        }
+        
+        .legend-other {
+            background-color: #6c757d;
+        }
+        
+        .missed-filter-info {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        
+        /* Collector specific styles */
+        .collector-restricted {
+            background-color: #fff8e1;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+        }
+
+/* --------------------------------------------------------------------------
+   Dash shell (assets/css/dash.css + dash-ui.css)
+   The page now sits inside .dash, which is a centred, padded column. The
+   printable sheet wants the full page width, so drop the shell chrome there.
+   -------------------------------------------------------------------------- */
+
+@media print {
+    .dash {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .dash .card {
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
+
+/* ==========================================================================
+   Screen polish - branch filter row and payment legend
+   Print is unaffected: both blocks carry .no-print.
+   ========================================================================== */
+
+@media screen {
+
+    /* ---- branch filter row -------------------------------------------- */
+
+    .dash .filter-section {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem 1rem;
+        margin: 0 0 1.1rem;
+        padding: 0.85rem 1.1rem;
+        border: 1px solid #eaf2fd;
+        border-radius: 14px;
+        background: linear-gradient(180deg, #fbfdff 0%, #ffffff 70%);
+    }
+
+    .dash .filter-section .filter-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .dash .filter-label {
+        margin: 0;
+        color: #8aa8c8;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .dash .branch-filter-dropdown {
+        min-width: 250px;
+    }
+
+    .dash .branch-filter-dropdown .form-select,
+    .dash .filter-section .form-select {
+        min-height: 2.7rem;
+        border: 1px solid #d6e6f8;
+        border-radius: 11px;
+        background-color: #fbfdff;
+        color: #0d3b7a;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+    }
+
+    .dash .branch-filter-dropdown .form-select:hover,
+    .dash .filter-section .form-select:hover {
+        border-color: #b9d6f6;
+    }
+
+    .dash .branch-filter-dropdown .form-select:focus,
+    .dash .filter-section .form-select:focus {
+        border-color: #0a5fe6;
+        background-color: #ffffff;
+        box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.13);
+    }
+
+    /* the read-only notice shown instead of the dropdown for locked accounts */
+    .dash .filter-section .collector-restricted,
+    .dash .filter-section .user-branch-info {
+        width: 100%;
+        margin: 0;
+        padding: 0.75rem 0.95rem;
+        border: 1px solid;
+        border-left-width: 3px;
+        border-radius: 12px;
+        color: #33578a;
+        font-size: 0.82rem;
+    }
+
+    .dash .filter-section .collector-restricted {
+        border-color: #ffe7b3;
+        border-left-color: #d99a00;
+        background: #fffaf0;
+    }
+
+    .dash .filter-section .user-branch-info {
+        border-color: #d6e6f8;
+        border-left-color: #0a5fe6;
+        background: #f4f9ff;
+    }
+
+    .dash .filter-section .collector-restricted p,
+    .dash .filter-section .user-branch-info p {
+        margin: 0.25rem 0 0;
+        color: #6d86a6;
+    }
+
+    /* ---- payment method legend ----------------------------------------- */
+
+    .dash .payment-legend {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.5rem;
+        margin: 0 0 1.25rem;
+        padding: 0.65rem 0.8rem;
+        border: 1px solid #eaf2fd;
+        border-radius: 14px;
+        background: #f9fcff;
+    }
+
+    .dash .payment-legend-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.3rem 0.75rem 0.3rem 0.55rem;
+        border: 1px solid #eaf2fd;
+        border-radius: 999px;
+        background: #ffffff;
+        font-size: 0.76rem;
+        font-weight: 600;
+    }
+
+    .dash .payment-legend-item span {
+        font-weight: 600;
+    }
+
+    .dash .payment-legend-color {
+        width: 10px;
+        height: 10px;
+        border: 0;
+        border-radius: 50%;
+    }
+}
+
+/* ==========================================================================
+   Screen polish - filter form (area / due date / range / options)
+   ========================================================================== */
+
+@media screen {
+
+    .dash .filter-container {
+        margin: 0 0 1.1rem;
+        padding: 1.15rem 1.2rem 1.25rem;
+        border: 1px solid #eaf2fd;
+        border-radius: 16px;
+        background: linear-gradient(180deg, #fbfdff 0%, #ffffff 60%);
+    }
+
+    .dash .filter-form .row {
+        --bs-gutter-x: 1rem;
+        --bs-gutter-y: 1rem;
+        align-items: flex-start;
+    }
+
+    /* the legacy sheet bottom-aligned the row, which moved every column
+       whenever the inline "custom date" panel opened */
+    .dash .filter-form .form-check {
+        margin-top: 1.55rem;
+    }
+
+    .dash .filter-form .form-label {
+        margin-bottom: 0.35rem;
+        color: #8aa8c8;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .dash .filter-form .form-select,
+    .dash .filter-form .form-control {
+        min-height: 2.9rem;
+        border: 1px solid #d6e6f8;
+        border-radius: 11px;
+        background-color: #fbfdff;
+        color: #0d3b7a;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+    }
+
+    .dash .filter-form .form-select:hover,
+    .dash .filter-form .form-control:hover {
+        border-color: #b9d6f6;
+    }
+
+    .dash .filter-form .form-select:focus,
+    .dash .filter-form .form-control:focus {
+        border-color: #0a5fe6;
+        background-color: #ffffff;
+        box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.13);
+    }
+
+    .dash .filter-form .form-select:disabled {
+        background-color: #eef4fc;
+        border-color: #e0ecfa;
+        color: #43678f;
+    }
+
+    .dash .filter-form .form-text,
+    .dash .filter-form small {
+        color: #8aa8c8;
+        font-size: 0.72rem;
+    }
+
+    .dash .filter-form .form-check {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        min-height: 2.9rem;
+        margin: 0;
+        padding-left: 0;
+    }
+
+    .dash .filter-form .form-check .form-check-input {
+        flex: 0 0 auto;
+        width: 1.05rem;
+        height: 1.05rem;
+        margin: 0;
+        border: 1px solid #cfe0f5;
+        border-radius: 5px;
+        background-color: #fbfdff;
+    }
+
+    .dash .filter-form .form-check .form-check-input:checked {
+        background-color: #0a5fe6;
+        border-color: #0a5fe6;
+    }
+
+    .dash .filter-form .form-check .form-check-input:focus {
+        border-color: #0a5fe6;
+        box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.13);
+    }
+
+    .dash .filter-form .form-check-label {
+        color: #33578a;
+        font-size: 0.82rem;
+        font-weight: 600;
+    }
+
+    .dash .filter-form .form-check-label[for="show_missed_payments"] {
+        color: #b42318 !important;
+        font-weight: 600 !important;
+    }
+
+    /* inline "custom date" sub-field */
+    .dash .filter-form .custom-due-date-container {
+        margin-top: 0.5rem;
+        padding: 0.6rem 0.7rem;
+        border: 1px solid #eaf2fd;
+        border-radius: 12px;
+        background: #f9fcff;
+    }
+
+    .dash .filter-form .custom-due-date-container .form-label {
+        margin-bottom: 0.3rem;
+        font-size: 0.62rem;
+    }
+
+    .dash .filter-buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.6rem;
+        margin: 0;
+        padding-top: 1rem;
+        border-top: 1px solid #eef4fc;
+    }
+
+    .dash .filter-buttons .btn {
+        border-radius: 11px;
+        padding: 0.6rem 1.25rem;
+        font-size: 0.84rem;
+        font-weight: 600;
+    }
+
+    .dash .filter-buttons .btn-primary {
+        border: 0;
+        background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+        box-shadow: 0 10px 22px rgba(10, 95, 230, 0.22);
+    }
+
+    .dash .filter-buttons .btn-secondary {
+        border: 1px solid #d6e6f8;
+        background: #ffffff;
+        color: #33578a;
+        box-shadow: none;
+    }
+
+    .dash .filter-buttons .btn-secondary:hover {
+        border-color: #b9d6f6;
+        background: #f7fbff;
+        color: #0d3b7a;
+    }
+
+    /* ---- centred legend ------------------------------------------------- */
+
+    .dash .payment-legend {
+        justify-content: center;
+        gap: 0.5rem;
+    }
+}

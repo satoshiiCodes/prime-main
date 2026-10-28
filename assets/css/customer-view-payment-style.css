@@ -1,0 +1,1941 @@
+/* ==========================================================================
+   Prime City - Customer loan history styles
+   Page-level styles for customer_view_payment.php. Global SB Admin styles
+   stay in css/styles.css; layout chrome lives in includes/topbar.php and
+   includes/sidebar.php.
+   ========================================================================== */
+
+/* Dash layout spacing for this page. The KPI tiles follow the profile card,
+   so they need a gap above them; the dash-cards replace Bootstrap's mb-4. */
+.dash .dash-stats {
+    margin-top: 1.25rem;
+}
+
+.dash .dash-card {
+    margin-bottom: 1.25rem;
+}
+
+.dash .dash-card:last-child {
+    margin-bottom: 0;
+}
+
+/* Seven tiles: 4 across the first row, the last three stretched across the
+   second row so the grid never leaves an empty slot. */
+@media (min-width: 1200px) {
+    .dash .dash-stats {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+
+    .dash .dash-stats .stat {
+        grid-column: span 3;
+    }
+
+    .dash .dash-stats .stat:nth-child(n + 5) {
+        grid-column: span 4;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .dash .dash-stats .stat {
+        grid-column: auto;
+    }
+}
+
+/* Customer portal layout (body.customer-portal) - replaces the original
+   conditional body rule. */
+body.customer-portal {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+    min-height: 100vh;
+    padding-top: 80px !important;
+}
+
+.loan-card {
+                border-left: 4px solid #0d6efd;
+                margin-bottom: 15px;
+                transition: all 0.3s ease;
+            }
+            .loan-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            .loan-card.active {
+                border-left-color: #198754;
+            }
+            .loan-card.completed {
+                border-left-color: #6c757d;
+            }
+            .loan-card.defaulted {
+                border-left-color: #dc3545;
+            }
+            .loan-amount {
+                font-weight: bold;
+                font-size: 1.1rem;
+            }
+            .loan-status {
+                font-weight: 500;
+            }
+            .summary-card {
+                border-radius: 10px;
+                overflow: hidden;
+                margin-bottom: 0;
+                height: 100%;
+                border: none;
+                background: #ffffff;
+                transition: all 0.2s ease;
+                position: relative;
+                border-left: 5px solid;
+            }
+            .summary-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08) !important;
+            }
+            .back-btn {
+                margin-right: 10px;
+                width: 177px;
+            }
+            .page-title {
+                margin-bottom: 0;
+            }
+            .loan-details-table th {
+                width: 30%;
+            }
+            .no-loans {
+                min-height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .status-active {
+                color: #198754;
+                font-weight: bold;
+            }
+            .status-completed {
+                color: #6c757d;
+                font-weight: bold;
+            }
+            .status-defaulted {
+                color: #dc3545;
+                font-weight: bold;
+            }
+            .notes-column {
+                max-width: 200px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .inactive-loans-section {
+                border-top: 1px solid #eee;
+            }
+            .progress {
+                height: 10px;
+            }
+            .progress-bar {
+                transition: width 0.6s ease;
+            }
+            
+/* --------------------------------------------------------------------------
+   Loan tables (Active Loans, Completed Loans)
+   -------------------------------------------------------------------------- */
+
+.dash-card__body .table-responsive {
+    margin: 0 -0.35rem;
+    padding: 0 0.35rem 0.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #c2daf5 #eef4fc;
+}
+
+/* Clearly visible horizontal scrollbar under the table. */
+.dash-card__body .table-responsive::-webkit-scrollbar {
+    height: 10px;
+}
+
+.dash-card__body .table-responsive::-webkit-scrollbar-track {
+    border-radius: 999px;
+    background: #eef4fc;
+}
+
+.dash-card__body .table-responsive::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: #c2daf5;
+}
+
+.dash-card__body .table-responsive::-webkit-scrollbar-thumb:hover {
+    background: #a9c8ea;
+}
+
+.dash-card__body .table {
+    margin-bottom: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: #33578a;
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.dash-card__body .table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 0.55rem 0.55rem;
+    border: 0;
+    border-bottom: 1px solid #e6f0fb;
+    background: #f4f9ff;
+    color: #6d86a6;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.dash-card__body .table thead th:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.dash-card__body .table thead th:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.dash-card__body .table tbody td {
+    padding: 0.6rem 0.55rem;
+    border: 0;
+    border-bottom: 1px solid #eff5fd;
+    background: #ffffff;
+    vertical-align: middle;
+}
+
+.dash-card__body .table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.dash-card__body .table tbody tr {
+    transition: background 0.14s ease;
+}
+
+.dash-card__body .table tbody tr:hover td {
+    background: #f8fbff;
+}
+
+/* Loan id reads as a chip */
+.dash-card__body .table tbody td:first-child {
+    color: #0d3b7a;
+    font-weight: 700;
+}
+
+/* Amount column: value over a quiet sub-line */
+.pc-table__amount {
+    white-space: nowrap;
+}
+
+.pc-table__value {
+    display: block;
+    color: #0d3b7a;
+    font-weight: 700;
+}
+
+.pc-table__sub {
+    display: block;
+    margin-top: 0.1rem;
+    color: #8aa8c8;
+    font-size: 0.72rem;
+}
+
+/* Progress meter */
+.pc-progress {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    min-width: 4.2rem;
+}
+
+.pc-progress__track {
+    position: relative;
+    flex: 1 1 auto;
+    height: 6px;
+    border-radius: 999px;
+    background: #e8f2fd;
+    overflow: hidden;
+}
+
+.pc-progress__bar {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #0a5fe6, #8fea08);
+}
+
+.pc-progress__label {
+    flex: 0 0 auto;
+    color: #33578a;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+/* Status pills */
+.pc-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.22rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.pc-pill--success {
+    background: #eef9e4;
+    color: #2f8a06;
+}
+
+.pc-pill--danger {
+    background: #fdeceb;
+    color: #b5342c;
+}
+
+.pc-pill i {
+    font-size: 0.62rem;
+}
+
+/* Badges inside the table */
+.dash-card__body .table .badge {
+    padding: 0.28rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+.automatic-penalty-status {
+    margin-top: 0.25rem;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.58rem;
+}
+
+/* Icon action buttons */
+.action-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.22rem;
+}
+
+/* One row of icon buttons; the collector column gives up room for it. */
+.dash-card__body .table tbody td:last-child,
+.dash-card__body .table thead th:last-child {
+    min-width: 13.8rem;
+    white-space: nowrap;
+}
+
+.action-buttons .btn {
+    display: inline-grid;
+    place-items: center;
+    width: 1.8rem;
+    height: 1.8rem;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 0.78rem;
+    box-shadow: none;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+
+.action-buttons .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(10, 61, 156, 0.16);
+    filter: saturate(1.1);
+}
+
+.action-buttons .btn-info {
+    background: #0099fa;
+    color: #ffffff;
+}
+
+.action-buttons .btn-primary {
+    background: linear-gradient(135deg, #0a5fe6, #1b7bf2);
+    color: #ffffff;
+}
+
+.action-buttons .btn-secondary {
+    background: #eef4fc;
+    color: #33578a;
+}
+
+.action-buttons .btn-warning {
+    background: #fdf4e6;
+    color: #a9661a;
+}
+
+.action-buttons .btn-success {
+    background: #eef9e4;
+    color: #2f8a06;
+}
+
+.action-buttons .btn-danger {
+    background: #fdeceb;
+    color: #b5342c;
+}
+
+/* Status text cells keep their colour coding */
+.status-defaulted {
+    color: #b5342c;
+    font-weight: 600;
+}
+
+.status-active {
+    color: #2f8a06;
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Modal headers
+   The shared .pc-modal__head gradient lives in customer-list-style.css, which
+   this page does not load - here Bootstrap's flat bg-primary was showing.
+   Primary (blue) headers now carry the brand gradient; the semantic headers
+   (danger / warning / success / secondary) keep their own colour.
+   -------------------------------------------------------------------------- */
+
+.pc-modal .pc-modal__head.bg-primary {
+    background: linear-gradient(135deg, #072a5e 0%, #0a5fe6 55%, #1b7bf2 100%) !important;
+    border-bottom: 0;
+    color: #ffffff;
+}
+
+.pc-modal .pc-modal__head.bg-primary .modal-title {
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+.pc-modal .pc-modal__head {
+    border-bottom: 0;
+}
+
+/* Dim layer between a stacked modal pair (Payment Details over Loan Details).
+   Sits above the loan modal (1055) and below the payment modal (1057). */
+.pc-stack-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1056;
+    background: rgba(7, 26, 55, 0.38);
+    animation: pcStackFade 0.18s ease-out;
+}
+
+@keyframes pcStackFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Payment Details modal (#viewPaymentModal)
+   -------------------------------------------------------------------------- */
+
+.pc-modal #paymentDetailsContent {
+    padding: 1.1rem 1.35rem 1.35rem;
+    background: #fbfdff;
+}
+
+.pc-pay {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+/* ---- receipt header ----------------------------------------------------- */
+
+.pc-pay__head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.pc-pay__icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 13px;
+    background: #e8f2ff;
+    color: #0a5fe6;
+    font-size: 0.95rem;
+}
+
+.pc-pay__ident {
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.pc-pay__id {
+    margin: 0;
+    color: #0d3b7a;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.pc-pay__date {
+    margin: 0.1rem 0 0;
+    color: #8aa8c8;
+    font-size: 0.78rem;
+}
+
+/* ---- amount block ------------------------------------------------------- */
+
+.pc-pay__amount {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid #d5f3bd;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #f5fcef, #ffffff);
+}
+
+.pc-pay__amount-label {
+    color: #5f8a43;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.pc-pay__amount-value {
+    color: #2f8a06;
+    font-size: 1.7rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---- detail grid -------------------------------------------------------- */
+
+.pc-pay__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.35rem 1.25rem;
+    margin: 0;
+    padding: 0.35rem 0 0;
+    border-top: 1px solid #eff5fd;
+}
+
+.pc-pay__row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f2f7fd;
+}
+
+.pc-pay__row--wide {
+    grid-column: 1 / -1;
+}
+
+.pc-pay__row dt {
+    margin: 0;
+    color: #7b93b3;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.pc-pay__row dd {
+    margin: 0;
+    color: #0d3b7a;
+    font-size: 0.84rem;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 575.98px) {
+    .pc-pay__grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .pc-pay__amount-value {
+        font-size: 1.4rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Waive Penalty modal (#waivePenaltyModal)
+   -------------------------------------------------------------------------- */
+
+.pc-modal .pc-pay__icon--success {
+    background: #eef9e4;
+    color: #2f8a06;
+}
+
+.pc-pay .pc-pay__figure--success {
+    border-color: #d5f3bd;
+    background: linear-gradient(135deg, #f5fcef, #ffffff);
+}
+
+.pc-pay .pc-pay__figure--success .pc-pay__figure-label {
+    color: #5f8a43;
+}
+
+.pc-pay .pc-pay__figure--success .pc-pay__figure-value {
+    color: #2f8a06;
+}
+
+.pc-pay__hint {
+    margin: 0;
+    color: #8aa8c8;
+    font-size: 0.74rem;
+}
+
+.pc-pay__required {
+    color: #b5342c;
+}
+
+.pc-pay__optional {
+    color: #9db3cc;
+    font-weight: 500;
+}
+
+/* Text areas inside the card */
+.pc-modal .pc-pay textarea.form-control {
+    height: auto;
+    min-height: 4.6rem;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 12px;
+    background: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.86rem;
+    font-weight: 500;
+    resize: vertical;
+}
+
+.pc-modal .pc-pay textarea.form-control:focus {
+    border-color: #0a5fe6;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+/* Penalties table */
+.pc-modal .waive-penalty-table {
+    margin-bottom: 0;
+    color: #33578a;
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.pc-modal .waive-penalty-table thead th {
+    padding: 0.5rem 0.55rem;
+    border: 0;
+    border-bottom: 1px solid #e6f0fb;
+    background: #f4f9ff;
+    color: #6d86a6;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.pc-modal .waive-penalty-table tbody td {
+    padding: 0.5rem 0.55rem;
+    border: 0;
+    border-bottom: 1px solid #eff5fd;
+    vertical-align: middle;
+}
+
+.pc-modal .waive-penalty-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.pc-modal .waive-penalty-table tbody tr:hover td {
+    background: #f8fbff;
+}
+
+/* "All" checkbox + label: one aligned row (Bootstrap's float layout puts
+   the label above an uppercase, small-caps header checkbox). */
+.pc-modal .waive-penalty-table th .form-check {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 1.1rem;
+    margin: 0;
+    padding-left: 0;
+}
+
+.pc-modal .waive-penalty-table th .form-check-input {
+    float: none;
+    margin: 0;
+    position: static;
+}
+
+.pc-modal .waive-penalty-table th .form-check-label {
+    color: #6d86a6;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+/* Checkboxes and the per-row waive input */
+.pc-modal .waive-penalty-table .form-check-input,
+.pc-modal #waivePenaltyForm .form-check-input {
+    width: 1.05rem;
+    height: 1.05rem;
+    margin-top: 0.1rem;
+    border-color: #c2daf5;
+    cursor: pointer;
+}
+
+.pc-modal .waive-penalty-table .form-check-input:checked,
+.pc-modal #waivePenaltyForm .form-check-input:checked {
+    border-color: #0a5fe6;
+    background-color: #0a5fe6;
+}
+
+.pc-modal .waive-amount-input {
+    width: 6.5rem !important;
+    min-width: 0 !important;
+    height: 2.1rem;
+    padding: 0 0.55rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 9px;
+    background: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.pc-modal .waive-amount-input:disabled {
+    background: #f1f6fd;
+    color: #9db3cc;
+}
+
+.pc-modal .waive-amount-input:enabled:focus {
+    border-color: #0a5fe6;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(10, 95, 230, 0.14);
+}
+
+/* --------------------------------------------------------------------------
+   Savings Withdrawal Voucher History (#savingsWithdrawVoucherModal)
+   -------------------------------------------------------------------------- */
+
+.pc-modal #savingsWithdrawVoucherContent {
+    padding: 1.1rem 1.35rem 1.35rem;
+    background: #fbfdff;
+}
+
+.pc-modal #savingsWithdrawVoucherContent .pc-pay {
+    gap: 0.85rem;
+}
+
+/* Count figure reads neutral; the money figure keeps the rose "out" tint. */
+.pc-pay .pc-pay__figure--neutral {
+    border-color: #e6f0fb;
+    background: linear-gradient(135deg, #f4f9ff, #ffffff);
+}
+
+.pc-pay .pc-pay__figure--neutral .pc-pay__figure-label {
+    color: #7b93b3;
+}
+
+.pc-pay .pc-pay__figure--neutral .pc-pay__figure-value {
+    color: #0d3b7a;
+}
+
+/* Info pill */
+.pc-pill--info {
+    background: #e8f2ff;
+    color: #0a5fe6;
+}
+
+.pc-pill--warning {
+    background: #fdf4e6;
+    color: #a9661a;
+}
+
+/* Transactions table */
+/* No inner scrolling: the wrapper grows with the table and the modal body
+   scrolls instead. */
+.pc-pay__table-wrap {
+    border: 1px solid #eaf2fd;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.pc-modal .swv-transactions-table {
+    margin-bottom: 0;
+    color: #33578a;
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.pc-modal .swv-transactions-table thead th {
+    padding: 0.55rem 0.6rem;
+    border: 0;
+    border-bottom: 1px solid #e6f0fb;
+    background: #f4f9ff;
+    color: #6d86a6;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.pc-modal .swv-transactions-table tbody td {
+    padding: 0.55rem 0.6rem;
+    border: 0;
+    border-bottom: 1px solid #eff5fd;
+    vertical-align: middle;
+}
+
+.pc-modal .swv-transactions-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.pc-modal .swv-transactions-table tbody tr:hover td {
+    background: #f8fbff;
+}
+
+.pc-modal .swv-transactions-table .notes-column {
+    max-width: 14rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Row print button */
+.pc-modal .swv-transactions-table .btn-sm {
+    display: inline-grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 0.3rem;
+    height: 1.7rem;
+    padding: 0 0.55rem;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #0a5fe6, #1b7bf2);
+    color: #ffffff;
+    font-size: 0.68rem;
+    font-weight: 600;
+    box-shadow: none;
+}
+
+.pc-modal .swv-transactions-table .btn-sm:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(10, 61, 156, 0.16);
+}
+
+/* --------------------------------------------------------------------------
+   Savings Transaction Details + the two edit modals
+   Reuse the Payment Details receipt card.
+   -------------------------------------------------------------------------- */
+
+.pc-modal #savingsDepositDetailsContent {
+    padding: 1.1rem 1.35rem 1.35rem;
+    background: #fbfdff;
+}
+
+/* Withdrawal amounts read as debit (rose) instead of credit (green). */
+.pc-pay__amount--debit {
+    border-color: #f7d9d6;
+    background: linear-gradient(135deg, #fff7f6, #ffffff);
+}
+
+.pc-pay__amount--debit .pc-pay__amount-label {
+    color: #b07a75;
+}
+
+.pc-pay__amount--debit .pc-pay__amount-value {
+    color: #b5342c;
+}
+
+/* ---- edit forms --------------------------------------------------------- */
+
+.pc-modal .pc-modal__body .pc-pay {
+    padding: 0;
+    background: transparent;
+}
+
+.pc-pay__field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.pc-pay__field-label {
+    margin: 0;
+    color: #7b93b3;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.pc-pay__field {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.pc-pay__currency {
+    position: absolute;
+    left: 0.95rem;
+    color: #8aa8c8;
+    font-size: 1.05rem;
+    font-weight: 700;
+    pointer-events: none;
+}
+
+.pc-modal .pc-pay__field .form-control {
+    height: 3.1rem;
+    padding: 0 1rem 0 2.2rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 12px;
+    background: #fbfdff;
+    color: #0d3b7a;
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.pc-modal .pc-pay__field .form-control:focus {
+    border-color: #0a5fe6;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+/* Centred row (e.g. Remaining balance under the two figures) */
+.pc-pay__row--center {
+    align-items: center;
+    text-align: center;
+}
+
+/* Two-column figures: labels on top, amounts beneath */
+.pc-pay__figures {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+}
+
+.pc-pay__figure {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid #f7d9d6;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #fff7f6, #ffffff);
+}
+
+.pc-pay__figure-label {
+    color: #b07a75;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.pc-pay__figure-value {
+    color: #b5342c;
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 479.98px) {
+    .pc-pay__figures {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* Figures inside the delete grids */
+.pc-pay__debit {
+    color: #b5342c;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Danger icon chip for the delete confirmations */
+.pc-pay__icon--danger {
+    background: #fdeceb;
+    color: #b5342c;
+}
+
+/* Destructive footer button */
+.pc-modal .pc-modal__foot .btn-danger {
+    background: linear-gradient(135deg, #b5342c, #d1463b);
+    border-color: transparent;
+    color: #ffffff;
+}
+
+.pc-modal .pc-modal__foot .btn-danger:hover {
+    background: linear-gradient(135deg, #a02d26, #c13b31);
+    border-color: transparent;
+    color: #ffffff;
+}
+
+/* Compact list inside a detail row */
+.pc-pay__list {
+    margin: 0.1rem 0 0;
+    padding-left: 1.1rem;
+    color: #33578a;
+}
+
+.pc-pay__list li {
+    margin: 0.1rem 0;
+    font-weight: 500;
+}
+
+/* Amber "Save changes" footer button, modernised like the rest */
+.pc-modal .pc-modal__foot .btn-warning {
+    background: #fdf1e1;
+    border-color: #f6dfc0;
+    color: #a9661a;
+}
+
+.pc-modal .pc-modal__foot .btn-warning:hover {
+    background: #fbe7cf;
+    border-color: #f0d3ab;
+    color: #8d5413;
+}
+
+/* --------------------------------------------------------------------------
+   Loan Details modal (#viewLoanModal)
+   Styles the markup rendered by the view-loan handler.
+   -------------------------------------------------------------------------- */
+
+.pc-modal #loanDetailsContent {
+    padding: 1.1rem 1.35rem 1.35rem;
+    background: #fbfdff;
+}
+
+/* ---- header: loan number + date ---------------------------------------- */
+
+.pc-modal #loanDetailsContent > .loan-details > .mb-3:first-child {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-bottom: 1rem !important;
+}
+
+.pc-modal #loanDetailsContent h5.fw-bold {
+    margin: 0;
+    color: #0d3b7a;
+    font-size: 1.02rem;
+    font-weight: 700;
+}
+
+.pc-modal #loanDetailsContent > .loan-details > .mb-3 p.text-muted {
+    margin: 0;
+    color: #8aa8c8 !important;
+    font-size: 0.8rem;
+}
+
+/* ---- money tiles -------------------------------------------------------- */
+
+.pc-modal #loanDetailsContent .card {
+    height: 100%;
+    border: 1px solid #e6f0fb;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: none;
+}
+
+.pc-modal #loanDetailsContent .card-body {
+    padding: 0.8rem 0.9rem;
+}
+
+.pc-modal #loanDetailsContent .card-body.text-center h6 {
+    margin: 0 0 0.25rem;
+    color: #7b93b3;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.pc-modal #loanDetailsContent .card-body .fs-4 {
+    margin: 0;
+    color: #0d3b7a;
+    font-size: 1.15rem !important;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+/* Loan amount tile reads as the headline figure */
+.pc-modal #loanDetailsContent .col-md-12 .card {
+    border-color: #d6e6f8;
+    background: linear-gradient(135deg, #f4f9ff, #ffffff);
+}
+
+.pc-modal #loanDetailsContent .col-md-12 .fs-4 {
+    font-size: 1.6rem !important;
+}
+
+/* ---- repayment progress ------------------------------------------------- */
+
+/* Solid green meter with the percentage centred inside the track. */
+.pc-modal #loanDetailsContent .progress.pc-progress-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 22px !important;
+    margin-top: 0.15rem;
+    border-radius: 999px;
+    background: #eef4fc !important;
+    box-shadow: inset 0 1px 2px rgba(10, 61, 156, 0.1), inset 0 0 0 1px #d8e8f8;
+    overflow: hidden;
+}
+
+.pc-modal #loanDetailsContent .progress.pc-progress-bar .progress-bar {
+    display: block;
+    min-width: 0;
+    height: 100%;
+    border-radius: 999px;
+    background: #3ba602 !important;
+    background-image: none !important;
+    box-shadow: none;
+}
+
+.pc-modal #loanDetailsContent .pc-progress-bar__label {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 0 0.5rem;
+    color: #0d3b7a;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+}
+
+/* ---- detail definition tables ------------------------------------------- */
+
+.pc-modal #loanDetailsContent .loan-details-table {
+    margin-bottom: 0;
+    font-size: 0.84rem;
+}
+
+.pc-modal #loanDetailsContent .loan-details-table tr {
+    border-bottom: 1px solid #eff5fd;
+}
+
+.pc-modal #loanDetailsContent .loan-details-table tr:last-child {
+    border-bottom: 0;
+}
+
+.pc-modal #loanDetailsContent .loan-details-table th,
+.pc-modal #loanDetailsContent .loan-details-table td {
+    padding: 0.45rem 0.3rem;
+    border: 0;
+    vertical-align: middle;
+}
+
+.pc-modal #loanDetailsContent .loan-details-table th {
+    width: 45%;
+    color: #7b93b3;
+    font-size: 0.76rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.pc-modal #loanDetailsContent .loan-details-table td {
+    color: #0d3b7a;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Section sub-headings inside the details body */
+.pc-modal #loanDetailsContent h6.fw-bold {
+    margin: 1.1rem 0 0.55rem;
+    color: #33578a;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+/* Status labels become pills */
+.pc-modal #loanDetailsContent .status-active,
+.pc-modal #loanDetailsContent .status-completed,
+.pc-modal #loanDetailsContent .status-defaulted {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.pc-modal #loanDetailsContent .status-active {
+    background: #eef9e4;
+    color: #2f8a06;
+}
+
+.pc-modal #loanDetailsContent .status-completed {
+    background: #e8f2ff;
+    color: #0a5fe6;
+}
+
+.pc-modal #loanDetailsContent .status-defaulted {
+    background: #fdeceb;
+    color: #b5342c;
+}
+
+/* ---- method legend ------------------------------------------------------ */
+
+.pc-modal #loanDetailsContent .alert-light {
+    margin-bottom: 0.75rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid #eaf2fd;
+    border-radius: 11px;
+    background: #ffffff;
+    color: #5b7699;
+    font-size: 0.76rem;
+}
+
+/* ---- payment history table --------------------------------------------- */
+
+.pc-modal #loanDetailsContent .table-responsive {
+    border: 1px solid #eaf2fd;
+    border-radius: 12px;
+    overflow: auto;
+}
+
+.pc-modal #loanDetailsContent .table {
+    margin-bottom: 0;
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.pc-modal #loanDetailsContent .table thead.table-light th,
+.pc-modal #loanDetailsContent .table thead th {
+    padding: 0.5rem 0.55rem;
+    border: 0;
+    border-bottom: 1px solid #e6f0fb;
+    background: #f4f9ff;
+    color: #6d86a6;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.pc-modal #loanDetailsContent .table tbody td {
+    padding: 0.5rem 0.55rem;
+    border: 0;
+    border-bottom: 1px solid #eff5fd;
+    vertical-align: middle;
+}
+
+.pc-modal #loanDetailsContent .table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.pc-modal #loanDetailsContent .table tbody tr:hover td {
+    background: #f8fbff;
+}
+
+/* Row action buttons - identical in Payment History and Savings History */
+.pc-modal #loanDetailsContent .table td .btn-sm {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.7rem;
+    height: 1.7rem;
+    padding: 0 0.4rem;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 0.68rem;
+    box-shadow: none;
+    vertical-align: middle;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.pc-modal #loanDetailsContent .table td .btn-sm + .btn-sm {
+    margin-left: 0.25rem;
+}
+
+.pc-modal #loanDetailsContent .table td .btn-sm:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(10, 61, 156, 0.16);
+}
+
+.pc-modal #loanDetailsContent .table td .btn-sm.btn-primary {
+    background: linear-gradient(135deg, #0a5fe6, #1b7bf2);
+    color: #ffffff;
+}
+
+.pc-modal #loanDetailsContent .table td .btn-sm.btn-warning {
+    background: #fdf4e6;
+    color: #a9661a;
+}
+
+.pc-modal #loanDetailsContent .table td .btn-sm.btn-danger {
+    background: #fdeceb;
+    color: #b5342c;
+}
+
+/* ---- footer buttons ----------------------------------------------------- */
+
+.pc-modal .pc-modal__foot .btn {
+    border-radius: 12px;
+    padding: 0.55rem 1.05rem;
+    font-size: 0.84rem;
+    font-weight: 600;
+}
+
+.pc-modal .pc-modal__foot .btn-secondary {
+    background: #eef4fc;
+    border-color: #eef4fc;
+    color: #33578a;
+}
+
+.pc-modal .pc-modal__foot .btn-secondary:hover {
+    background: #e2edfa;
+    border-color: #d6e6f8;
+}
+
+.pc-modal .pc-modal__foot .btn-primary {
+    background: linear-gradient(135deg, #0a5fe6, #1b7bf2);
+    border-color: transparent;
+}
+
+.pc-modal .pc-modal__foot .btn-info {
+    background: #e8f2ff;
+    border-color: #d6e6f8;
+    color: #0a5fe6;
+}
+
+.pc-modal .pc-modal__foot .btn-success {
+    background: #eef9e4;
+    border-color: #d5f3bd;
+    color: #2f8a06;
+}
+
+/* Scroll behaviour inside the dialog */
+#viewLoanModal .modal-body {
+    scrollbar-width: thin;
+    scrollbar-color: #c2daf5 transparent;
+}
+
+#viewLoanModal .modal-body::-webkit-scrollbar {
+    width: 10px;
+}
+
+#viewLoanModal .modal-body::-webkit-scrollbar-thumb {
+    border: 3px solid transparent;
+    border-radius: 10px;
+    background-clip: content-box;
+    background-color: #c2daf5;
+}
+
+/* --------------------------------------------------------------------------
+   Payment calendar
+   -------------------------------------------------------------------------- */
+
+.payment-calendar {
+    margin-top: 1.1rem;
+}
+
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.9rem;
+}
+
+.calendar-title {
+    margin: 0;
+    color: #0d3b7a;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+/* Segmented month control */
+.calendar-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.25rem;
+    border: 1px solid #e6f0fb;
+    border-radius: 12px;
+    background: #f4f9ff;
+}
+
+.calendar-nav .btn {
+    border-radius: 9px;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: none;
+}
+
+.calendar-nav .btn-outline-secondary {
+    border-color: transparent;
+    background: transparent;
+    color: #33578a;
+}
+
+.calendar-nav .btn-outline-secondary:hover {
+    background: #e6f1ff;
+    border-color: transparent;
+    color: #0a5fe6;
+}
+
+/* Weekday labels */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 6px;
+}
+
+.calendar-day-header {
+    padding: 0.35rem 0;
+    background: transparent;
+    color: #8aa8c8;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.calendar-day-header.calendar-day-sunday {
+    color: #d08a84;
+}
+
+/* Day cells */
+.calendar-day {
+    position: relative;
+    min-height: 76px;
+    padding: 0.45rem 0.5rem 1.7rem;
+    border: 1px solid #eaf2fd;
+    border-radius: 12px;
+    background: #ffffff;
+    font-size: 0.78rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.calendar-day:hover {
+    border-color: #c2daf5;
+    box-shadow: 0 6px 16px rgba(10, 61, 156, 0.07);
+}
+
+.calendar-day-number {
+    color: #0d3b7a;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+}
+
+.calendar-day-sunday {
+    background: #fbfdff;
+    color: #a9bdd6;
+}
+
+.calendar-day-today {
+    border-color: #0a5fe6;
+    background: #f4f9ff;
+    box-shadow: inset 0 0 0 1px #0a5fe6;
+}
+
+/* Status pill inside a cell */
+.calendar-day-status {
+    position: absolute;
+    left: 0.4rem;
+    right: 0.4rem;
+    bottom: 0.4rem;
+    padding: 0.15rem 0.3rem;
+    border-radius: 7px;
+    font-size: 0.62rem;
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
+}
+
+.calendar-day-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.2rem;
+    height: 100%;
+    cursor: pointer;
+}
+
+.status-paid {
+    background: #eef9e4;
+    color: #2f8a06;
+}
+
+.status-pending {
+    background: #fdf4e6;
+    color: #a9661a;
+}
+
+.status-missed {
+    background: #fdeceb;
+    color: #b5342c;
+}
+
+.status-overdue {
+    background: #b5342c;
+    color: #ffffff;
+}
+
+.status-released {
+    background: #e8f2ff;
+    color: #0a5fe6;
+}
+
+.payment-details-popover {
+    max-width: 300px;
+}
+
+.calendar-loan-selector {
+    margin-bottom: 1.1rem;
+}
+
+.calendar-loan-selector .form-label {
+    color: #33578a;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.calendar-loan-selector .form-select {
+    border: 1px solid #d6e6f8;
+    border-radius: 11px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+}
+
+.calendar-loan-selector .form-select:focus {
+    border-color: #0a5fe6;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+/* Underpayment / advance summary chips */
+.pc-cal-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 0 0 1rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+.pc-cal-chip {
+    display: flex;
+    flex: 1 1 13rem;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.6rem 0.85rem;
+    border: 1px solid transparent;
+    border-radius: 12px;
+}
+
+.pc-cal-chip__label {
+    color: #7b93b3;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.pc-cal-chip--under {
+    border-color: #f7d9d6;
+    background: #fff7f6;
+}
+
+.pc-cal-chip--advance {
+    border-color: #d5f3bd;
+    background: #f5fcef;
+}
+
+.underpayment-amount,
+.advance-payment-amount {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.underpayment-amount {
+    color: #b5342c;
+}
+
+.advance-payment-amount {
+    color: #2f8a06;
+}
+
+@media (max-width: 767.98px) {
+    .calendar-day {
+        min-height: 58px;
+        padding: 0.35rem 0.35rem 1.6rem;
+    }
+
+    .calendar-day-number {
+        font-size: 0.74rem;
+    }
+
+    .calendar-day-status {
+        font-size: 0.55rem;
+    }
+
+    .calendar-grid {
+        gap: 4px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .calendar-day {
+        display: flex;
+        min-height: 44px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0.3rem 0.2rem 1.5rem;
+    }
+
+    .calendar-day-status {
+        left: 0.15rem;
+        right: 0.15rem;
+        bottom: 0.2rem;
+        padding: 0.1rem 0.15rem;
+    }
+}
+            /* Waive Penalty Modal Styles */
+            .waive-penalty-table th {
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
+            .waive-penalty-table td {
+                font-size: 0.8rem;
+                vertical-align: middle;
+            }
+            .waive-amount-input {
+                width: 100px !important;
+                min-width: 80px;
+            }
+            
+            /* Automatic Penalty Status Badge */
+            .automatic-penalty-status {
+                font-size: 0.75rem;
+                padding: 0.25rem 0.5rem;
+            }
+            
+            /* Penalty Type Badges */
+            .penalty-type-added {
+                background-color: #198754;
+                color: white;
+            }
+            .penalty-type-waived {
+                background-color: #dc3545;
+                color: white;
+            }
+            .penalty-type-partial-waiver {
+                background-color: #fd7e14;
+                color: white;
+            }
+            .action-buttons {
+                display: flex;
+                gap: 5px;
+            }
+            
+            /* Modern Summary Cards Styles */
+            .border-start-primary {
+                border-left-color: #4e73df !important;
+            }
+            .border-start-warning {
+                border-left-color: #f6c23e !important;
+            }
+            .border-start-success {
+                border-left-color: #1cc88a !important;
+            }
+            .border-start-danger {
+                border-left-color: #e74a3b !important;
+            }
+            .border-start-info {
+                border-left-color: #36b9cc !important;
+            }
+            .summary-icon-wrapper {
+                width: 48px;
+                height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 10px;
+                flex-shrink: 0;
+                margin-right: 0;
+            }
+            .summary-label {
+                font-size: 0.7rem;
+                color: #6c757d;
+                font-weight: 600;
+                letter-spacing: 0.3px;
+                margin-bottom: 2px;
+                display: block;
+            }
+            .summary-value {
+                font-size: 1.3rem;
+                font-weight: 700;
+                margin: 0;
+                line-height: 1.2;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            .summary-card-body {
+                padding: 1rem;
+                display: flex;
+                align-items: center;
+            }
+            .row.g-3 {
+                --bs-gutter-y: 0.75rem;
+            }
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            .summary-card {
+                animation: fadeInUp 0.3s ease forwards;
+            }
+            
+            /* Mobile-specific styles */
+            @media (max-width: 768px) {
+                .waive-penalty-table {
+                    font-size: 0.7rem;
+                }
+                .waive-amount-input {
+                    width: 70px !important;
+                    min-width: 60px;
+                    font-size: 0.7rem;
+                }
+                .summary-card-body {
+                    padding: 0.75rem;
+                }
+                .summary-icon-wrapper {
+                    width: 40px;
+                    height: 40px;
+                }
+                .summary-value {
+                    font-size: 1.1rem;
+                }
+                .summary-label {
+                    font-size: 0.65rem;
+                }
+            }
+            
+            @media (max-width: 576px) {
+                .summary-card-body {
+                    padding: 0.5rem;
+                }
+                .summary-icon-wrapper {
+                    width: 36px;
+                    height: 36px;
+                }
+                .summary-icon {
+                    font-size: 1.2rem;
+                }
+                .summary-value {
+                    font-size: 1rem;
+                }
+                .summary-label {
+                    font-size: 0.6rem;
+                }
+            }
+            
+            @media (max-width: 1199.98px) {
+                .summary-value {
+                    font-size: 1.2rem;
+                }
+                .summary-icon-wrapper {
+                    width: 44px;
+                    height: 44px;
+                }
+            }
+            @media (max-width: 991.98px) {
+                .summary-value {
+                    font-size: 1.15rem;
+                }
+                .summary-icon-wrapper {
+                    width: 42px;
+                    height: 42px;
+                }
+                .summary-card-body {
+                    padding: 0.75rem !important;
+                }
+            }
+            @media (max-width: 767.98px) {
+                .summary-value {
+                    font-size: 1.1rem;
+                }
+                .summary-icon-wrapper {
+                    width: 40px;
+                    height: 40px;
+                }
+                .summary-icon {
+                    font-size: 1.2rem !important;
+                }
+                .summary-card-body {
+                    padding: 0.5rem !important;
+                }
+            }
+            @media (max-width: 575.98px) {
+                .summary-value {
+                    font-size: 1rem;
+                }
+                .summary-icon-wrapper {
+                    width: 36px;
+                    height: 36px;
+                }
+                .summary-icon {
+                    font-size: 1rem !important;
+                }
+                .summary-label {
+                    font-size: 0.6rem;
+                }
+                .summary-card-body {
+                    padding: 0.5rem !important;
+                }
+            }
+            
+            /* Compact Modern Profile Styles */
+            .modern-profile-card {
+                border-radius: 12px;
+                overflow: hidden;
+                background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            }
+            .compact-profile-img {
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+            }
+            @media (min-width: 768px) {
+                .compact-profile-img {
+                    width: 90px;
+                    height: 90px;
+                }
+            }
+            .status-badge-sm {
+                position: absolute;
+                bottom: 5px;
+                right: 5px;
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                border: 2px solid white;
+            }
+            .info-row {
+                display: flex;
+                align-items: flex-start;
+                margin-bottom: 0.75rem;
+            }
+            .info-label {
+                min-width: 90px;
+                color: #6c757d;
+                font-size: 0.9rem;
+                display: flex;
+                align-items: center;
+            }
+            .info-value {
+                flex: 1;
+                font-size: 0.95rem;
+                word-break: break-word;
+            }
+            @media (max-width: 768px) {
+                .info-row {
+                    flex-direction: column;
+                    margin-bottom: 0.5rem;
+                }
+                .info-label {
+                    min-width: auto;
+                    margin-bottom: 0.25rem;
+                }
+                .compact-profile-img {
+                    width: 70px;
+                    height: 70px;
+                }
+            }
+            @media (max-width: 576px) {
+                .modern-profile-card .card-body {
+                    padding: 1rem;
+                }
+                .info-label, .info-value {
+                    font-size: 0.85rem;
+                }
+                h4 {
+                    font-size: 1.25rem;
+                }
+                .compact-profile-img {
+                    width: 60px;
+                    height: 60px;
+                }
+            }
+
+            /* Responsive table enhancements */
+            .table-responsive {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .table-responsive .table td,
+            .table-responsive .table th {
+                white-space: nowrap;
+            }
+            .table-responsive::-webkit-scrollbar {
+                height: 10px;
+            }
+            .table-responsive::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 5px;
+            }
+            .table-responsive::-webkit-scrollbar-thumb {
+                background: #888;
+                border-radius: 5px;
+            }
+            .table-responsive::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+            
+            /* Savings Withdraw Voucher Modal */
+            .swv-summary-card {
+                border-left: 4px solid #0d6efd;
+                background-color: #f8f9fa;
+                padding: 15px;
+                border-radius: 6px;
+            }
+            .swv-transactions-table th {
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
+            .swv-transactions-table td {
+                font-size: 0.85rem;
+                vertical-align: middle;
+            }
+            .swv-type-badge {
+                font-size: 0.7rem;
+                padding: 0.25rem 0.5rem;
+            }

@@ -1,0 +1,418 @@
+/* ==========================================================================
+   Prime City - New employee loan
+   Page-level styles for add_collector_loan.php. The dash shell and card come
+   from dash.css / dash-ui.css; this file styles the form itself.
+   ========================================================================== */
+
+/* The card spans the dash content width. */
+.registration-card {
+    max-width: none;
+    margin: 0;
+}
+
+/* ---- sections ------------------------------------------------------- */
+
+#collectorLoanForm .form-section {
+    margin: 0;
+    padding: 1.35rem 0 0;
+    border-top: 1px solid #eef4fc;
+}
+
+#collectorLoanForm .form-section:first-of-type {
+    padding-top: 0;
+    border-top: 0;
+}
+
+#collectorLoanForm .section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0 0 1.1rem;
+    padding: 0;
+    border: 0;
+    color: #0d3b7a;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+#collectorLoanForm .section-title::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #3ba602;
+    flex: 0 0 auto;
+}
+
+/* ---- rows ----------------------------------------------------------- */
+
+#collectorLoanForm .form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 1.25rem;
+    margin: 0 0 1rem;
+}
+
+#collectorLoanForm .form-row:last-of-type {
+    margin-bottom: 0;
+}
+
+@media (max-width: 767.98px) {
+    #collectorLoanForm .form-row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+#collectorLoanForm .form-group {
+    min-width: 0;
+    margin: 0;
+}
+
+#collectorLoanForm .form-group label {
+    display: block;
+    margin: 0 0 0.35rem;
+    color: #8aa8c8;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* ---- controls ------------------------------------------------------- */
+
+#collectorLoanForm input[type="text"],
+#collectorLoanForm input[type="number"],
+#collectorLoanForm input[type="date"],
+#collectorLoanForm select {
+    width: 100%;
+    min-height: 3.1rem;
+    padding: 0.6rem 0.95rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 12px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+#collectorLoanForm select {
+    appearance: none;
+    padding-right: 2.4rem;
+    background-image: linear-gradient(45deg, transparent 50%, #7c9cc4 50%), linear-gradient(135deg, #7c9cc4 50%, transparent 50%);
+    background-position: calc(100% - 1.15rem) 1.35rem, calc(100% - 0.8rem) 1.35rem;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+}
+
+#collectorLoanForm input:hover,
+#collectorLoanForm select:hover {
+    border-color: #b9d6f6;
+}
+
+#collectorLoanForm input:focus,
+#collectorLoanForm select:focus {
+    outline: 0;
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+#collectorLoanForm input[readonly],
+#collectorLoanForm select:disabled {
+    background-color: #eef4fc;
+    border-color: #e0ecfa;
+    color: #43678f;
+}
+
+#collectorLoanForm select:disabled {
+    cursor: not-allowed;
+}
+
+/* read-only date chips */
+#collectorLoanForm .read-only-field {
+    display: flex;
+    align-items: center;
+    min-height: 3.1rem;
+    padding: 0.6rem 0.95rem;
+    border: 1px dashed #cfe0f5;
+    border-radius: 12px;
+    background: #f4f9ff;
+    color: #33578a;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* helper text + errors */
+#collectorLoanForm .calculation-note {
+    margin-top: 0.3rem;
+    color: #8aa8c8;
+    font-size: 0.74rem;
+    line-height: 1.35;
+    font-style: normal;
+}
+
+#collectorLoanForm .error-message {
+    margin-top: 0.35rem;
+    color: #c0392b;
+    font-size: 0.76rem;
+    font-weight: 600;
+}
+
+/* select2 loading hint */
+#collectorLoanForm .loading-spinner {
+    display: none;
+    margin-top: 0.35rem;
+    padding: 0;
+    color: #8aa8c8;
+    font-size: 0.76rem;
+    text-align: left;
+}
+
+/* ---- submit --------------------------------------------------------- */
+
+#collectorLoanForm > .form-group:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin: 1.35rem 0 0;
+    padding-top: 1.35rem;
+    border-top: 1px solid #eef4fc;
+}
+
+#collectorLoanForm > .form-group:last-child .error-message {
+    margin: 0 auto 0 0;
+}
+
+/* while empty it must not absorb the row's free space */
+#collectorLoanForm > .form-group:last-child .error-message:empty {
+    margin: 0;
+}
+
+#collectorLoanForm .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: auto;
+    padding: 0.72rem 1.6rem;
+    border: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 10px 22px rgba(10, 95, 230, 0.24);
+    transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease;
+    cursor: pointer;
+}
+
+#collectorLoanForm .btn-submit:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 12px 26px rgba(10, 95, 230, 0.30);
+    transform: translateY(-1px);
+}
+
+#collectorLoanForm .btn-submit:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 14px rgba(10, 95, 230, 0.24);
+}
+
+#collectorLoanForm .btn-submit:disabled {
+    background: #e8eef7;
+    color: #9db3cc;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+/* ---- alerts + toasts ------------------------------------------------ */
+
+.dash .alert {
+    border: 1px solid;
+    border-radius: 13px;
+    font-size: 0.86rem;
+}
+
+.dash .alert-success {
+    border-color: #cdeeb2;
+    background: #f1fbe9;
+    color: #177407;
+}
+
+.dash .alert-danger {
+    border-color: #f7c9c4;
+    background: #fdeceb;
+    color: #a4231a;
+}
+
+.toast {
+    border: 0;
+    border-radius: 14px;
+    box-shadow: 0 18px 40px rgba(4, 16, 32, 0.18);
+    overflow: hidden;
+}
+
+.toast-header {
+    padding: 0.7rem 1rem;
+    border-bottom: 0;
+    font-weight: 600;
+}
+
+.toast-body {
+    padding: 0.9rem 1rem;
+    font-size: 0.88rem;
+}
+
+.toast-body i {
+    font-size: 1.1rem;
+}
+
+.success-toast .toast-header {
+    background-color: #177407;
+    color: #ffffff;
+}
+
+.success-toast .toast-body {
+    background-color: #f7fbff;
+}
+
+/* ---- select2 (employee lookup) -------------------------------------- */
+
+#collectorLoanForm .select2-container {
+    width: 100% !important;
+}
+
+#collectorLoanForm .select2-container--default .select2-selection--single {
+    height: 3.1rem;
+    padding: 0;
+    border: 1px solid #d6e6f8;
+    border-radius: 12px;
+    background-color: #fbfdff;
+}
+
+#collectorLoanForm .select2-container--default .select2-selection--single .select2-selection__rendered {
+    padding-left: 0.95rem;
+    padding-right: 2.6rem;
+    line-height: 3rem;
+    color: #0d3b7a;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+#collectorLoanForm .select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: #6d86a6;
+}
+
+#collectorLoanForm .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 3rem;
+    right: 0.55rem;
+}
+
+#collectorLoanForm .select2-container--default.select2-container--focus .select2-selection--single,
+#collectorLoanForm .select2-container--default.select2-container--open .select2-selection--single {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+.select2-container--default .select2-dropdown {
+    border: 1px solid #d6e6f8;
+    border-radius: 12px;
+    box-shadow: 0 18px 40px rgba(4, 16, 32, 0.16);
+    overflow: hidden;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    min-height: 2.6rem;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 10px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.88rem;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field:focus {
+    outline: 0;
+    border-color: #0a5fe6;
+    box-shadow: 0 0 0 3px rgba(10, 95, 230, 0.14);
+}
+
+.select2-container--default .select2-results__option {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid #f1f6fd;
+    color: #0d3b7a;
+    font-size: 0.88rem;
+    font-weight: 500;
+}
+
+.select2-container--default .select2-results__option:last-child {
+    border-bottom: 0;
+}
+
+.select2-container--default .select2-results__option--highlighted,
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #0a5fe6 !important;
+    color: #ffffff;
+}
+
+.select2-container--default .select2-results > .select2-results__options {
+    max-height: 264px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #c9ddf4 transparent;
+    padding: 0.15rem 0;
+}
+
+.select2-container--default .select2-results > .select2-results__options::-webkit-scrollbar {
+    width: 8px;
+}
+
+.select2-container--default .select2-results > .select2-results__options::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background-color: #c9ddf4;
+    background-clip: content-box;
+}
+
+/* ---- misc ------------------------------------------------------------ */
+
+.disabled-field {
+    background-color: #eef4fc;
+    opacity: 1;
+}
+
+/* employee dropdown rows: name + muted account type */
+.select2-container--default .select2-results__option .pc-opt {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    min-width: 0;
+}
+
+.select2-container--default .select2-results__option .pc-opt__name {
+    color: #0d3b7a;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.select2-container--default .select2-results__option .pc-opt__meta {
+    color: #8aa8c8;
+    font-size: 0.76rem;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.select2-container--default .select2-results__option--highlighted .pc-opt__name,
+.select2-container--default .select2-results__option--highlighted[aria-selected] .pc-opt__name {
+    color: #ffffff;
+}
+
+.select2-container--default .select2-results__option--highlighted .pc-opt__meta,
+.select2-container--default .select2-results__option--highlighted[aria-selected] .pc-opt__meta {
+    color: rgba(255, 255, 255, 0.80);
+}

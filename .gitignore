@@ -1,0 +1,36 @@
+# ---------------------------------------------------------------------------
+# Prime City - files that must never be committed
+# ---------------------------------------------------------------------------
+
+# Local configuration (real DB credentials live here; .env.example is the template)
+.env
+.env.local
+.env.*.local
+
+# Runtime / user data - customer documents and profile photos (PII)
+/uploads/*
+!/uploads/.gitkeep
+
+# Logs
+logs/*
+!logs/.gitkeep
+*.log
+
+# Composer dependencies (restore with: composer install)
+/vendor/
+
+# Database dumps must never sit in the webroot
+*.sql
+
+# Editor / OS noise
+Thumbs.db
+desktop.ini
+.DS_Store
+.idea/
+.vscode/
+
+# Temporary artefacts from the UI/QA workflow
+_*
+*.bak
+*.orig
+*.rej

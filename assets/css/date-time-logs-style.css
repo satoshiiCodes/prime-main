@@ -1,0 +1,545 @@
+/* ==========================================================================
+   Prime City - Date/time change log styles
+   Page-level styles for dateTime_logs.php. Global SB Admin styles stay in
+   css/styles.css; layout chrome lives in includes/.
+   Follows docs/ui-conventions.md.
+   ========================================================================== */
+
+/* ==========================================================================
+   Page head action
+   ========================================================================== */
+
+.dash .dash-head__actions .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    border: 0;
+    border-radius: 11px;
+    padding: 0.62rem 1.2rem;
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 600;
+    box-shadow: 0 10px 22px rgba(10, 95, 230, 0.24);
+    transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease;
+}
+
+.dash .dash-head__actions .btn-primary:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 12px 26px rgba(10, 95, 230, 0.3);
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Filter panel
+   ========================================================================== */
+
+.dash-card .log-filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.85rem 1rem;
+    margin: 0;
+}
+
+.dash-card .log-filter .filter-field {
+    flex: 1 1 200px;
+    min-width: 0;
+}
+
+.dash-card .log-filter .filter-label {
+    display: block;
+    margin: 0 0 0.35rem;
+    color: #7b93b3;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.dash-card .log-filter .form-control,
+.dash-card .log-filter .form-select {
+    min-height: 2.9rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 11px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+.dash-card .log-filter .form-control::placeholder {
+    color: #a9c1dc;
+}
+
+.dash-card .log-filter .form-control:hover,
+.dash-card .log-filter .form-select:hover {
+    border-color: #b9d6f6;
+}
+
+.dash-card .log-filter .form-control:focus,
+.dash-card .log-filter .form-select:focus {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+.dash-card .log-filter .filter-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+.dash-card .log-filter .filter-actions .btn {
+    border-radius: 11px;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.86rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: none;
+    transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease, background-color 0.14s ease;
+}
+
+.dash-card .log-filter .filter-actions .btn-primary {
+    border: 0;
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    color: #ffffff;
+    box-shadow: 0 10px 22px rgba(10, 95, 230, 0.24);
+}
+
+.dash-card .log-filter .filter-actions .btn-primary:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 12px 26px rgba(10, 95, 230, 0.3);
+    transform: translateY(-1px);
+}
+
+.dash-card .log-filter .filter-actions .btn-secondary {
+    border: 1px solid #d6e6f8;
+    background: #ffffff;
+    color: #33578a;
+}
+
+.dash-card .log-filter .filter-actions .btn-secondary:hover {
+    border-color: #b9d6f6;
+    background: #f4f9ff;
+    color: #0a5fe6;
+}
+
+/* record counter in the card head */
+.dash .dash-card__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-left: auto;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid #e6f0fb;
+    border-radius: 999px;
+    background: #f7fbff;
+    color: #33578a;
+    font-size: 0.74rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.dash .dash-card__badge i {
+    color: #0a5fe6;
+    font-size: 0.68rem;
+}
+
+/* ==========================================================================
+   Logs table
+   ========================================================================== */
+
+.dash-card .table-responsive {
+    min-height: 0;
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+}
+
+.dash-card .log-table {
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.78rem;
+}
+
+.dash-card .log-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 0.7rem 0.75rem;
+    border: 0;
+    border-bottom: 1px solid #eaf2fd;
+    background: #f7fbff;
+    color: #8aa8c8;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.dash-card .log-table tbody td {
+    padding: 0.6rem 0.75rem;
+    border: 0;
+    border-bottom: 1px solid #f1f6fd;
+    color: #33578a;
+    vertical-align: middle;
+}
+
+.dash-card .log-table tbody tr:nth-child(even) td {
+    background: #fcfdff;
+}
+
+.dash-card .log-table tbody tr:hover td {
+    background: #f9fcff;
+}
+
+.dash-card .log-table tbody tr:nth-child(even):hover td {
+    background: #f4f9ff;
+}
+
+/* the row tint moves to the action pill - keep the row itself neutral */
+.dash-card .log-table tbody tr[class^="action-"] td,
+.dash-card .log-table tbody tr[class*=" action-"] td {
+    background-color: inherit;
+}
+
+.dash-card .log-table .cell-id {
+    color: #a9c1dc;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.dash-card .log-table .cell-strong {
+    color: #0d3b7a;
+    font-weight: 600;
+}
+
+.dash-card .log-table .cell-meta {
+    color: #8aa8c8;
+    font-size: 0.72rem;
+    white-space: nowrap;
+}
+
+.dash-card .log-table .cell-mono {
+    color: #43678f;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.74rem;
+    white-space: nowrap;
+}
+
+.dash-card .log-table .cell-old {
+    color: #8a5b00;
+    text-decoration: line-through;
+    text-decoration-color: #e2c98a;
+}
+
+.dash-card .log-table .cell-new {
+    color: #0d3b7a;
+    font-weight: 600;
+}
+
+.dash-card .log-table .notes-column {
+    max-width: 260px;
+    color: #8aa8c8;
+    font-size: 0.72rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* action type pill */
+.dash-card .action-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.32em 0.7em;
+    border: 1px solid #e6f0fb;
+    border-radius: 999px;
+    background: #f7fbff;
+    color: #33578a;
+    font-size: 0.73rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.dash-card .action-pill i {
+    font-size: 0.4rem;
+    color: #a9c1dc;
+}
+
+.dash-card .action-pill.action-login {
+    border-color: #c4e9b4;
+    background: #e8f7e1;
+    color: #177407;
+}
+.dash-card .action-pill.action-login i { color: #3ba602; }
+
+.dash-card .action-pill.action-logout {
+    border-color: #f7c9c4;
+    background: #fdeceb;
+    color: #c0392b;
+}
+.dash-card .action-pill.action-logout i { color: #e05252; }
+
+.dash-card .action-pill.action-created {
+    border-color: #bfe9f2;
+    background: #e6f9fd;
+    color: #0b6b80;
+}
+.dash-card .action-pill.action-created i { color: #0891a8; }
+
+.dash-card .action-pill.action-updated {
+    border-color: #ffe1a8;
+    background: #fff8e6;
+    color: #8a5b00;
+}
+.dash-card .action-pill.action-updated i { color: #f0b429; }
+
+.dash-card .action-pill.action-deleted {
+    border-color: #f7c9c4;
+    background: #fdeceb;
+    color: #c0392b;
+}
+.dash-card .action-pill.action-deleted i { color: #e05252; }
+
+.dash-card .action-pill.action-adjust {
+    border-color: #cfe4ff;
+    background: #eef6ff;
+    color: #0a5fe6;
+}
+.dash-card .action-pill.action-adjust i { color: #0a5fe6; }
+
+/* ==========================================================================
+   Footer: info left, pager right
+   ========================================================================== */
+
+.dash-card .table-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid #f1f6fd;
+}
+
+.dash-card .table-footer__info {
+    margin-right: auto;
+    color: #7b93b3;
+    font-size: 0.78rem;
+}
+
+.dash-card .log-pager {
+    flex: 0 0 auto;
+    margin: 0 0 0 auto;
+    width: auto;
+}
+
+.dash-card .log-pager .pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.dash-card .log-pager .page-item {
+    margin: 0;
+}
+
+.dash-card .log-pager .page-link {
+    display: grid;
+    place-items: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    border: 1px solid #e6f0fb;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #33578a !important;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    box-shadow: none;
+}
+
+.dash-card .log-pager .page-link:hover {
+    border-color: #c2daf5;
+    background: #f4f9ff;
+    color: #0a5fe6 !important;
+}
+
+.dash-card .log-pager .page-item.active .page-link {
+    border-color: transparent;
+    background: linear-gradient(135deg, #0a5fe6, #1b7bf2);
+    color: #ffffff !important;
+}
+
+.dash-card .log-pager .page-item.disabled .page-link {
+    border-color: #e6f0fb;
+    background: #ffffff;
+    color: #c6d6e8 !important;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   Empty state
+   ========================================================================== */
+
+.dash-card .log-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.dash-card .log-empty__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 0.35rem;
+    border-radius: 16px;
+    background: #f2f7fe;
+    color: #a9c1dc;
+    font-size: 1.4rem;
+}
+
+.dash-card .log-empty h4 {
+    margin: 0;
+    color: #0d3b7a;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.dash-card .log-empty p {
+    margin: 0;
+    color: #8aa8c8;
+    font-size: 0.84rem;
+}
+
+.dash-card .btn-details {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #cfe4ff;
+    border-radius: 9px;
+    background: #eef6ff;
+    color: #0a5fe6;
+    font-size: 0.76rem;
+    font-weight: 600;
+}
+
+.dash-card .btn-details:hover {
+    border-color: #b9d6f6;
+    background: #e2efff;
+    color: #0848b5;
+}
+
+/* ==========================================================================
+   Mobile
+   ========================================================================== */
+
+@media (max-width: 991.98px) {
+    .dash .dash-card__head {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        row-gap: 0.75rem;
+    }
+
+    .dash .dash-card__head > div:not(.dash-head__actions):not(.filter-buttons) {
+        flex: 1 1 0%;
+        min-width: 0;
+    }
+
+    .dash .dash-card__title {
+        overflow-wrap: anywhere;
+    }
+
+    .dash .dash-card__badge {
+        flex: 0 0 auto;
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* card bodies must not scroll internally */
+    .dash .card-body {
+        overflow: visible;
+        max-height: none;
+    }
+
+    .dash-card .log-filter {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .dash-card .log-filter .filter-field {
+        flex: 1 1 100%;
+    }
+
+    .dash-card .log-filter .filter-actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .dash-card .log-filter .filter-actions .btn {
+        width: 100%;
+    }
+
+    /* footer centred */
+    .dash-card .table-footer {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .dash-card .table-footer__info {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+
+    .dash-card .log-pager {
+        width: 100%;
+        margin: 0.35rem 0 0;
+    }
+
+    .dash-card .log-pager .pagination {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .dash .dash-card__badge {
+        flex: 1 1 100%;
+        margin: 0;
+        justify-content: center;
+    }
+
+    .dash .dash-head__actions {
+        width: 100%;
+    }
+
+    .dash .dash-head__actions .btn-primary {
+        width: 100%;
+        justify-content: center;
+    }
+}

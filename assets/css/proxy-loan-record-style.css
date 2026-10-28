@@ -1,0 +1,153 @@
+/* ==========================================================================
+   Prime City - Proxy loan record styles
+   Page-level styles for proxy_loan_record.php. Global SB Admin styles stay
+   in css/styles.css; layout chrome lives in includes/.
+   ========================================================================== */
+
+.proxy-profile-img {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+                border-radius: 50%;
+                border: 3px solid #fff;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+            .back-btn {
+                margin-right: 10px;
+            }
+            .page-title {
+                margin-bottom: 0;
+                margin-top: 30px;
+            }
+            .proxy-header {
+                background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+                padding: 2rem;
+                border-radius: 0.35rem;
+                margin-bottom: 2rem;
+                color: white;
+                box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+            }
+            .proxy-loans-section {
+                margin-top: 40px;
+                border-top: 1px solid #eee;
+                padding-top: 20px;
+            }
+            .status-active {
+                color: #198754;
+                font-weight: bold;
+            }
+            .status-completed {
+                color: #0d6efd;
+                font-weight: bold;
+            }
+            .status-defaulted {
+                color: #dc3545;
+                font-weight: bold;
+            }
+            .no-payments {
+                min-height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .dataTables_length select {
+                width: auto;
+                display: inline-block;
+            }
+            .dataTables_filter input {
+                display: inline-block;
+                width: auto;
+            }
+            .dataTables_wrapper .row {
+                margin-bottom: 1rem;
+            }
+            .action-buttons .btn {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.875rem;
+                margin-right: 5px;
+            }
+            .progress {
+                height: 10px;
+                margin-top: 5px;
+            }
+            .loan-details-row {
+                background-color: #f8f9fa;
+                border-left: 4px solid #4e73df;
+            }
+            .loan-details {
+                padding: 15px;
+            }
+            .loan-info {
+                font-size: 0.9rem;
+                margin-bottom: 5px;
+            }
+            .loan-info strong {
+                width: 120px;
+                display: inline-block;
+            }
+            .table-hover tr:hover {
+                background-color: rgba(78, 115, 223, 0.05);
+            }
+            .modal-lg {
+                max-width: 900px;
+            }
+            .payment-history {
+                max-height: 400px;
+                overflow-y: auto;
+            }
+            .repayment-progress-card {
+                margin-bottom: 20px;
+                border-left: 4px solid #4e73df;
+            }
+            .progress-bar-container {
+                margin-top: 10px;
+            }
+            .loan-details-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                margin-bottom: 20px;
+                padding: 15px;
+                background-color: #f8f9fa;
+                border-radius: 5px;
+                border-left: 4px solid #4e73df;
+            }
+            .loan-detail-item {
+                display: flex;
+                justify-content: space-between;
+                padding: 8px 0;
+                border-bottom: 1px solid #e9ecef;
+            }
+            .loan-detail-label {
+                font-weight: bold;
+                color: #495057;
+            }
+            .loan-detail-value {
+                color: #212529;
+            }
+            .payment-actions .btn {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.75rem;
+                margin-right: 3px;
+            }
+            .summary-card {
+                border-radius: 0.35rem;
+                box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+                margin-bottom: 1.5rem;
+            }
+            .summary-card .card-body {
+                padding: 1.25rem;
+            }
+            .summary-icon {
+                font-size: 2rem;
+                opacity: 0.3;
+            }
+            .summary-value {
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+            .summary-label {
+                font-size: 0.9rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }

@@ -1,0 +1,447 @@
+/* ==========================================================================
+   Prime City - New loan form styles
+   Page-level styles for add_financing.php. Global SB Admin styles stay in
+   css/styles.css; dash shell + form design come from dash.css / dash-ui.css.
+   ========================================================================== */
+
+/* The card spans the dash content width, like every other dash page. */
+.registration-card {
+    max-width: none;
+    margin: 0;
+}
+
+/* Classes the page JS toggles - layout only, the dash block below styles them. */
+.branch-filter-hidden {
+    display: none !important;
+}
+
+.branch-filter-disabled select {
+    background-color: #e9ecef;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.debug-info {
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ffe1a8;
+    border-radius: 12px;
+    background: #fff8e6;
+    color: #8a5b00;
+    font-size: 0.82rem;
+}
+
+.error-message:empty {
+    display: none;
+}
+
+/* ==========================================================================
+   Add New Loan - dash form
+   ========================================================================== */
+
+.dash #financingForm {
+    display: block;
+}
+
+.dash .form-section {
+    margin: 0;
+    padding: 1.35rem 0 0;
+    border-top: 1px solid #eef4fc;
+}
+
+.dash .form-section:first-of-type {
+    padding-top: 0;
+    border-top: 0;
+}
+
+.dash .section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0 0 1.1rem;
+    padding: 0;
+    border: 0;
+    color: #0d3b7a;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.dash .section-title::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #3ba602;
+    flex: 0 0 auto;
+}
+
+/* two-up rows that collapse on phones */
+.dash #financingForm .form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 1.25rem;
+    margin: 0 0 1rem;
+}
+
+.dash #financingForm .form-row:last-of-type {
+    margin-bottom: 0;
+}
+
+@media (max-width: 767.98px) {
+    .dash #financingForm .form-row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.dash #financingForm .form-group {
+    min-width: 0;
+    margin: 0;
+}
+
+.dash #financingForm .form-group label,
+.dash #financingForm .branch-filter label {
+    display: block;
+    margin: 0 0 0.35rem;
+    color: #8aa8c8;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* controls */
+.dash #financingForm input[type="text"],
+.dash #financingForm input[type="number"],
+.dash #financingForm select,
+.dash .branch-filter select {
+    width: 100%;
+    min-height: 3.1rem;
+    padding: 0.6rem 0.95rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 12px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+.dash #financingForm select {
+    appearance: none;
+    padding-right: 2.4rem;
+    background-image: linear-gradient(45deg, transparent 50%, #7c9cc4 50%), linear-gradient(135deg, #7c9cc4 50%, transparent 50%);
+    background-position: calc(100% - 1.15rem) 1.35rem, calc(100% - 0.8rem) 1.35rem;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+}
+
+.dash #financingForm input[type="text"]:hover,
+.dash #financingForm select:hover,
+.dash .branch-filter select:hover {
+    border-color: #b9d6f6;
+}
+
+.dash #financingForm input[type="text"]:focus,
+.dash #financingForm input[type="number"]:focus,
+.dash #financingForm select:focus,
+.dash .branch-filter select:focus {
+    outline: 0;
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+.dash #financingForm input[readonly] {
+    background-color: #eef4fc;
+    color: #43678f;
+    border-color: #e0ecfa;
+}
+
+.dash #financingForm input[readonly]:focus {
+    background-color: #eef4fc;
+    border-color: #c2daf5;
+    box-shadow: none;
+}
+
+/* Select2 widgets wear the same field design */
+.dash #financingForm .select2-container {
+    width: 100% !important;
+}
+
+.dash #financingForm .select2-container--default .select2-selection--single {
+    height: 3.1rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 12px;
+    background-color: #fbfdff;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.dash #financingForm .select2-container--default .select2-selection--single .select2-selection__rendered {
+    padding-left: 0.95rem;
+    padding-right: 2.4rem;
+    line-height: 3rem;
+    color: #0d3b7a;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.dash #financingForm .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 3rem;
+    right: 0.5rem;
+}
+
+.dash #financingForm .select2-container--default.select2-container--focus .select2-selection--single,
+.dash #financingForm .select2-container--default.select2-container--open .select2-selection--single {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+.select2-container--default .select2-dropdown {
+    border: 1px solid #d6e6f8;
+    border-radius: 12px;
+    box-shadow: 0 18px 40px rgba(4, 16, 32, 0.16);
+    overflow: hidden;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #0a5fe6;
+}
+
+/* read-only date chips */
+.dash #financingForm .read-only-field {
+    display: flex;
+    align-items: center;
+    min-height: 3.1rem;
+    padding: 0.6rem 0.95rem;
+    border: 1px dashed #cfe0f5;
+    border-radius: 12px;
+    background: #f4f9ff;
+    color: #33578a;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* helper text */
+.dash #financingForm .calculation-note {
+    margin-top: 0.3rem;
+    color: #8aa8c8;
+    font-size: 0.74rem;
+    line-height: 1.35;
+}
+
+.dash #financingForm .error-message {
+    margin-top: 0.35rem;
+    color: #c0392b;
+    font-size: 0.76rem;
+    font-weight: 600;
+}
+
+/* auto-selection notice */
+.dash #financingForm .auto-selected-info {
+    margin: 0 0 1.1rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid #cfe4ff;
+    border-left: 3px solid #0a5fe6;
+    border-radius: 12px;
+    background: #f2f8ff;
+    color: #33578a;
+    font-size: 0.86rem;
+    line-height: 1.6;
+}
+
+/* branch picker */
+.dash #financingForm .branch-filter,
+.dash #financingForm .branch-info {
+    margin: 0 0 1.1rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid #e6f0fb;
+    border-radius: 14px;
+    background: #f7fbff;
+}
+
+.dash #financingForm .branch-info {
+    color: #33578a;
+    font-size: 0.88rem;
+}
+
+/* submit */
+.dash #financingForm .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.72rem 1.5rem;
+    border: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 10px 22px rgba(10, 95, 230, 0.24);
+    transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease;
+    cursor: pointer;
+}
+
+.dash #financingForm .btn-submit:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 12px 26px rgba(10, 95, 230, 0.30);
+    transform: translateY(-1px);
+}
+
+.dash #financingForm .btn-submit:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 14px rgba(10, 95, 230, 0.24);
+}
+
+/* Submit row */
+.dash #financingForm > .form-group:last-of-type {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin: 1.35rem 0 0;
+    padding-top: 1.35rem;
+    border-top: 1px solid #eef4fc;
+}
+
+.dash #financingForm > .form-group:last-of-type .error-message {
+    margin: 0 auto 0 0;
+}
+
+/* ==========================================================================
+   Select2 option rows - name on line 1, area muted on line 2
+   ========================================================================== */
+
+.select2-container--default .select2-results__option {
+    padding: 0.55rem 0.85rem;
+    line-height: 1.35;
+    border-bottom: 1px solid #f1f6fd;
+}
+
+.select2-container--default .select2-results__option:last-child {
+    border-bottom: 0;
+}
+
+.select2-container--default .select2-results__option[aria-selected="true"] {
+    background-color: #f2f8ff;
+}
+
+.pc-opt {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    min-width: 0;
+}
+
+.pc-opt__name {
+    color: #0d3b7a;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pc-opt__meta {
+    color: #8aa8c8;
+    font-size: 0.76rem;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+/* the hovered row is brand blue, whatever its aria-selected state */
+.select2-container--default .select2-results__option--highlighted,
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #0a5fe6 !important;
+    color: #ffffff;
+}
+
+.select2-container--default .select2-results__option--highlighted .pc-opt__name,
+.select2-container--default .select2-results__option--highlighted[aria-selected] .pc-opt__name {
+    color: #ffffff;
+}
+
+.select2-container--default .select2-results__option--highlighted .pc-opt__meta,
+.select2-container--default .select2-results__option--highlighted[aria-selected] .pc-opt__meta {
+    color: rgba(255, 255, 255, 0.80);
+}
+
+/* dropdown search field matches the form controls */
+.select2-container--default .select2-search--dropdown {
+    padding: 0.5rem 0.6rem;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    min-height: 2.6rem;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 10px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.88rem;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field:focus {
+    outline: 0;
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(10, 95, 230, 0.14);
+}
+
+/* the closed control shows the name only */
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 3rem;
+}
+
+/* ==========================================================================
+   Dropdown list - hairline separators and a slim scrollbar
+   ========================================================================== */
+
+.select2-container--default .select2-results > .select2-results__options {
+    max-height: 264px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #c9ddf4 transparent;
+    scrollbar-gutter: stable;
+    padding: 0.15rem 0;
+}
+
+.select2-container--default .select2-results > .select2-results__options::-webkit-scrollbar {
+    width: 8px;
+}
+
+.select2-container--default .select2-results > .select2-results__options::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.select2-container--default .select2-results > .select2-results__options::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background-color: #c9ddf4;
+    background-clip: content-box;
+    transition: background-color 0.15s ease;
+}
+
+.select2-container--default .select2-results > .select2-results__options::-webkit-scrollbar-thumb:hover {
+    background-color: #9dc2ea;
+}
+
+.select2-container--default .select2-results > .select2-results__options::-webkit-scrollbar-thumb:active {
+    background-color: #0a5fe6;
+}
+
+/* the rounded dropdown should not clip the first/last row separators */
+.select2-container--default .select2-results__options .select2-results__option:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.select2-container--default .select2-results__options .select2-results__option:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}

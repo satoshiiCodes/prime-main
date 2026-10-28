@@ -1,0 +1,34 @@
+# ---------------------------------------------------------------------------
+# Prime City - Apache rules
+#
+# Note: this file only takes effect when the vhost allows overrides
+# (`AllowOverride All`). Laragon's default `AllowOverride None` ignores it,
+# so on a production host either enable overrides or keep .env outside the
+# document root.
+# ---------------------------------------------------------------------------
+
+# Never serve environment files over HTTP.
+<IfModule mod_authz_core.c>
+    <FilesMatch "^\.env">
+        Require all denied
+    </FilesMatch>
+</IfModule>
+
+<IfModule !mod_authz_core.c>
+    <FilesMatch "^\.env">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+</IfModule>
+
+# Never serve the composer manifests or the SQL dump from the web root.
+<FilesMatch "\.(sql|lock)$">
+    Require all denied
+</FilesMatch>
+
+# Backend folders hold include-only code: block direct HTTP access.
+# (api/ is intentionally reachable - it is the dashboard JSON endpoint.)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(config|actions|includes)/ - [F,L]
+</IfModule>

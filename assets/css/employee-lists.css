@@ -1,0 +1,641 @@
+/* Keep all your existing styles here */
+.table-container {
+    background: white;
+    border-radius: 0.375rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    overflow: hidden;
+}
+.table th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+}
+.action-buttons {
+    white-space: nowrap;
+    text-align: center;
+}
+.action-buttons .btn {
+    margin: 0 2px;
+    display: inline-block;
+}
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+/* Modal shell + form skin live in the shared block at the end of this file. */
+.password-toggle {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.branches-container {
+    display: none;
+    margin-top: 1rem;
+}
+.branch-checkbox-group {
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+}
+.branch-checkbox-item {
+    margin-bottom: 0.5rem;
+}
+.branch-checkbox-item .form-check-input {
+    margin-right: 0.5rem;
+}
+.admin-branch-field {
+    background-color: #e9ecef;
+    opacity: 1;
+}
+.required-field::after {
+    content: " *";
+    color: red;
+}
+.profile-image-small {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.account-badge {
+    font-size: 0.75rem;
+}
+.status-active {
+    color: #28a745;
+}
+.status-inactive {
+    color: #dc3545;
+}
+.status-suspended {
+    color: #ffc107;
+}
+.nav-tabs .nav-link.active {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+}
+.profile-image-preview {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.password-input-group {
+    position: relative;
+}
+/* Collector List Specific Styles */
+.profile-image-cell {
+    width: 60px;
+    padding: 5px !important;
+    text-align: center;
+}
+.profile-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border: 2px solid #dee2e6;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.collector-image {
+    text-align: center;
+    margin-top: 10px;
+}
+.profile-img:hover {
+    transform: scale(1.1);
+    border-color: #0d6efd;
+}
+.collector-name {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+.collector-address {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+.collector-contact {
+    font-size: 0.85rem;
+}
+.collector-area {
+    font-size: 0.85rem;
+}
+.collector-status {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+.collector-salary {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #28a745;
+}
+.salary-effective-date {
+    font-size: 0.7rem;
+    color: #6c757d;
+    display: block;
+}
+.table td {
+    vertical-align: middle;
+}
+.btn-info {
+    color: white;
+}
+.btn-salary {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+}
+.btn-salary:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+    color: white;
+}
+.btn-salary-history {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: white;
+}
+.btn-salary-history:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+    color: white;
+}
+.customer-list-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+.customer-list-item:last-child {
+    border-bottom: none;
+}
+/* Deduction Styles */
+.btn-deduction {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+    color: white;
+}
+.btn-deduction:hover {
+    background-color: #5a32a3;
+    border-color: #5a32a3;
+    color: white;
+}
+.btn-deduction-history {
+    background-color: #fd7e14;
+    border-color: #fd7e14;
+    color: white;
+}
+.btn-deduction-history:hover {
+    background-color: #dc6b0f;
+    border-color: #dc6b0f;
+    color: white;
+}
+.deduction-badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    display: inline-block;
+}
+.deduction-sss {
+    background-color: #ffc107;
+    color: #000;
+}
+.deduction-pagibig {
+    background-color: #0dcaf0;
+    color: #000;
+}
+.deduction-philhealth {
+    background-color: #198754;
+    color: #fff;
+}
+.deduction-loan {
+    background-color: #dc3545;
+    color: #fff;
+}
+.deduction-cashadvance {
+    background-color: #fd7e14;
+    color: #fff;
+}
+.deduction-sss-loan {
+    background-color: #20c997;
+    color: #fff;
+}
+.deduction-pagibig-loan {
+    background-color: #6f42c1;
+    color: #fff;
+}
+/* Allowance Styles */
+.btn-allowance {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+}
+.btn-allowance:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+    color: white;
+}
+.allowance-badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    display: inline-block;
+}
+.allowance-rice {
+    background-color: #ffc107;
+    color: #000;
+}
+.allowance-cola {
+    background-color: #0dcaf0;
+    color: #000;
+}
+.allowance-motor {
+    background-color: #198754;
+    color: #fff;
+}
+/* Modal for full image view */
+.image-modal .modal-dialog {
+    max-width: 90%;
+    max-height: 90vh;
+}
+.image-modal .modal-content {
+    background-color: transparent;
+    border: none;
+}
+.image-modal .modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+.image-modal .modal-body img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+}
+.image-modal .btn-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    opacity: 1;
+    z-index: 1060;
+}
+
+/* Center the content in the profile column */
+td:first-child {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Image View Modal Styles */
+#fullSizeImage {
+    max-height: 80vh;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.no-image-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    color: #6c757d;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.no-image-icon:hover {
+    transform: scale(1.05);
+}
+
+/* Enhanced Modal Styles */
+.modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #0d6efd;
+}
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+.required-field::after {
+    content: " *";
+    color: #dc3545;
+}
+.form-control:focus, .form-select:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Filter container styles */
+.filter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.filter-label {
+    margin-bottom: 0;
+    font-weight: bold;
+}
+.filter-select {
+    width: auto;
+    display: inline-block;
+}
+
+/* No results message styling */
+.no-results-container {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+.no-results-icon {
+    font-size: 3rem;
+    color: #6c757d;
+    margin-bottom: 15px;
+}
+
+/* Restricted user styles */
+.restricted-note {
+    font-size: 0.875rem;
+    color: #6c757d;
+    font-style: italic;
+    margin-left: 10px;
+    background-color: #e9ecef;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1100;
+}
+
+/* Unified filter styles */
+.unified-filter-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 0.375rem;
+}
+
+/* Card header styles for filter positioning */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.card-header-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Action buttons inline styling */
+.action-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+    flex-wrap: nowrap;
+}
+
+/* Hidden filter styles */
+.hidden-filter {
+    display: none !important;
+}
+
+/* Accounts List Styles */
+.accounts-table {
+    font-size: 0.9rem;
+}
+.table-actions {
+    white-space: nowrap;
+}
+.badge-admin {
+    background-color: #dc3545;
+}
+.badge-area-manager {
+    background-color: #fd7e14;
+}
+.badge-branch-manager {
+    background-color: #0d6efd;
+}
+.badge-proxy-collector-cashier {
+    background-color: #198754;
+}
+.badge-proxy-collector {
+    background-color: #6f42c1;
+}
+.action-buttons .btn {
+    margin-right: 0.25rem;
+}
+.modal-xl {
+    max-width: 900px;
+}
+
+/* View Loans Button Style */
+.btn-view-loans {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+    color: white;
+}
+.btn-view-loans:hover {
+    background-color: #5a36a8;
+    border-color: #5a36a8;
+    color: white;
+}
+
+/* DataTables Custom Styles */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0.375rem 0.75rem;
+    margin-left: 2px;
+    border: 1px solid #dee2e6;
+    background-color: white;
+    color: #0d6efd;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: white !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+    color: #0a58ca;
+}
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter {
+    margin-bottom: 1rem;
+}
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    padding: 0.375rem 0.75rem;
+}
+
+/* Readonly field styling */
+.readonly-field {
+    background-color: #e9ecef;
+    opacity: 1;
+    cursor: not-allowed;
+}
+
+/* Salary History Table Styles */
+.salary-history-table {
+    font-size: 0.9rem;
+}
+.salary-history-table th {
+    background-color: #f8f9fa;
+}
+.salary-amount {
+    font-weight: 600;
+    color: #28a745;
+}
+.salary-increase {
+    color: #28a745;
+    font-weight: 500;
+}
+.salary-decrease {
+    color: #dc3545;
+    font-weight: 500;
+}
+
+/* Deduction History Table Styles */
+.deduction-history-table {
+    font-size: 0.9rem;
+}
+.deduction-history-table th {
+    background-color: #f8f9fa;
+}
+.deduction-amount {
+    font-weight: 600;
+}
+.deduction-loan-color {
+    color: #dc3545;
+}
+.deduction-cashadvance-color {
+    color: #fd7e14;
+}
+.deduction-sss-color {
+    color: #ffc107;
+}
+.deduction-pagibig-color {
+    color: #0dcaf0;
+}
+.deduction-philhealth-color {
+    color: #198754;
+}
+.deduction-sss-loan-color {
+    color: #20c997;
+}
+.deduction-pagibig-loan-color {
+    color: #6f42c1;
+}
+.frequency-badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+.frequency-monthly {
+    background-color: #ffc107;
+    color: #000;
+}
+.frequency-onetime {
+    background-color: #0dcaf0;
+    color: #000;
+}
+.frequency-semi-monthly {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+/* Deduction Summary Styles */
+.deduction-summary {
+    background-color: #f8f9fa;
+    border-radius: 0.375rem;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+.deduction-summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #dee2e6;
+}
+.deduction-summary-item:last-child {
+    border-bottom: none;
+}
+.deduction-total {
+    font-weight: 600;
+    color: #28a745;
+}
+
+/* Dropdown Menu Styles */
+.btn-group .dropdown-menu {
+    min-width: 200px;
+    padding: 0.5rem 0;
+}
+.btn-group .dropdown-item {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+.btn-group .dropdown-item i {
+    width: 20px;
+    margin-right: 8px;
+}
+.btn-group .dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+.btn-group .btn-sm {
+    padding: 0.25rem 0.5rem;
+}
+
+/* Deductions cell styling */
+.deductions-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+.no-deductions {
+    color: #6c757d;
+    font-style: italic;
+    font-size: 0.85rem;
+}
+
+/* Status badge styles */
+.badge.bg-danger {
+    background-color: #dc3545 !important;
+}
+
+.allowance-incentive {
+    background-color: #ff9800;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}

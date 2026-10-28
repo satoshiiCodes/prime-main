@@ -1,0 +1,782 @@
+/* ==========================================================================
+   Prime City - Penalty report styles
+   Page-level styles for penalty_report.php. Global SB Admin styles stay in
+   css/styles.css; layout chrome lives in includes/.
+   Follows docs/ui-conventions.md.
+   ========================================================================== */
+
+/* ==========================================================================
+   KPI cards
+   ========================================================================== */
+
+.report-card {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+    border: 1px solid #eaf2fd;
+    border-radius: 16px;
+    background: #ffffff !important;
+    box-shadow: 0 10px 28px rgba(10, 61, 156, 0.06);
+    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.report-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: #0a5fe6;
+}
+
+.report-card:hover {
+    transform: translateY(-2px);
+    border-color: #dcebfb;
+    box-shadow: 0 14px 34px rgba(10, 61, 156, 0.1);
+}
+
+.report-card .card-body {
+    padding: 1.1rem 1.25rem 1.15rem;
+}
+
+.report-card .d-flex.align-items-center > div:first-child {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    margin-right: 0.85rem !important;
+    padding: 0 !important;
+    border-radius: 12px;
+    background: #eef6ff !important;
+    flex: 0 0 auto;
+}
+
+.report-card .summary-icon {
+    margin: 0;
+    color: #0a5fe6 !important;
+    font-size: 0.95rem;
+}
+
+.report-card svg.summary-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.report-card h6 {
+    margin: 0 0 0.3rem;
+    color: #8aa8c8;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.35;
+}
+
+.report-card p.fs-4 {
+    margin: 0;
+    color: #0d3b7a;
+    font-size: 1.4rem !important;
+    font-weight: 700;
+    line-height: 1.15;
+    font-variant-numeric: tabular-nums;
+}
+
+/* accents */
+.report-card--penalties::before   { background: #0a5fe6; }
+.report-card--added::before       { background: #c0392b; }
+.report-card--waived::before      { background: #3ba602; }
+.report-card--remaining::before   { background: #f0b429; }
+.report-card--customers::before   { background: #0099fa; }
+.report-card--loans::before       { background: #072a5e; }
+
+.report-card--added .d-flex.align-items-center > div:first-child       { background: #fdeceb !important; }
+.report-card--added .summary-icon                                      { color: #c0392b !important; }
+.report-card--waived .d-flex.align-items-center > div:first-child      { background: #e8f7e1 !important; }
+.report-card--waived .summary-icon                                     { color: #177407 !important; }
+.report-card--remaining .d-flex.align-items-center > div:first-child   { background: #fff8e6 !important; }
+.report-card--remaining .summary-icon                                  { color: #8a5b00 !important; }
+.report-card--customers .d-flex.align-items-center > div:first-child   { background: #eef6ff !important; }
+.report-card--loans .d-flex.align-items-center > div:first-child       { background: #eaf0f8 !important; }
+.report-card--loans .summary-icon                                      { color: #072a5e !important; }
+
+/* ==========================================================================
+   Branch filter chip
+   ========================================================================== */
+
+.dash-card .filter-section {
+    display: inline-flex;
+    max-width: 100%;
+    align-items: center;
+    margin: 0 0 1rem;
+    padding: 0.45rem 0.6rem 0.45rem 0.95rem;
+    border: 1px solid #e8f1fc;
+    border-radius: 13px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f7fbff 100%);
+}
+
+.dash-card .filter-section .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 0;
+}
+
+.dash-card .filter-section .filter-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0;
+    color: #7b93b3;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.dash-card .filter-section .filter-label i {
+    color: #0a5fe6;
+    font-size: 0.66rem;
+}
+
+.dash-card .filter-section .branch-filter-dropdown {
+    min-width: 210px;
+}
+
+.dash-card .filter-section .filter-row {
+    width: 100%;
+}
+
+.dash-card .filter-section .form-select {
+    width: auto;
+    min-width: 190px;
+    min-height: 2.5rem;
+    padding: 0.35rem 2.1rem 0.35rem 0.8rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #0d3b7a;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.dash-card .filter-section .form-select:focus {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.13);
+}
+
+.dash-card .hidden-branch-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0 0 1rem;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid #eaf2fd;
+    border-radius: 11px;
+    background: #f7fbff;
+    color: #33578a;
+    font-size: 0.82rem;
+}
+
+/* ==========================================================================
+   Filter row: period / dates / area / loan / type + actions
+   ========================================================================== */
+
+.dash-card .log-filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.85rem 1rem;
+    margin: 0;
+}
+
+.dash-card .log-filter .filter-field {
+    flex: 1 1 175px;
+    min-width: 0;
+}
+
+.dash-card .log-filter .filter-field .filter-label {
+    display: block;
+    margin: 0 0 0.35rem;
+    color: #7b93b3;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.dash-card .log-filter .form-control,
+.dash-card .log-filter .form-select {
+    min-height: 2.9rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 11px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+.dash-card .log-filter .form-control::placeholder {
+    color: #a9c1dc;
+}
+
+.dash-card .log-filter .form-control:hover,
+.dash-card .log-filter .form-select:hover {
+    border-color: #b9d6f6;
+}
+
+.dash-card .log-filter .form-control:focus,
+.dash-card .log-filter .form-select:focus {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+/* the visible date control only */
+.dash-card .date-filter {
+    display: none;
+}
+
+.dash-card .date-filter.active {
+    display: block;
+}
+
+/* date range summary */
+.dash-card .date-range-display {
+    display: flex;
+    width: -moz-fit-content;
+    width: fit-content;
+    max-width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    margin: 1rem auto 0;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid #eaf2fd;
+    border-radius: 11px;
+    background: #f7fbff;
+    color: #33578a;
+    font-size: 0.82rem;
+}
+
+.dash-card .date-range-display i {
+    color: #0a5fe6;
+    font-size: 0.74rem;
+}
+
+.dash-card .date-range-display strong {
+    color: #0d3b7a;
+    font-weight: 700;
+}
+
+.dash-card .date-range-display .badge {
+    padding: 0.3em 0.65em;
+    border: 1px solid #cfe4ff;
+    border-radius: 999px;
+    background: #eef6ff !important;
+    color: #0a5fe6 !important;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+/* actions */
+.dash-card .filter-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin: 1.15rem 0 0;
+}
+
+.dash-card .filter-actions .btn {
+    border-radius: 11px;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.86rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: none;
+    transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease, background-color 0.14s ease;
+}
+
+.dash-card .filter-actions .btn-primary {
+    border: 0;
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    color: #ffffff;
+    box-shadow: 0 10px 22px rgba(10, 95, 230, 0.24);
+}
+
+.dash-card .filter-actions .btn-primary:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 12px 26px rgba(10, 95, 230, 0.3);
+    transform: translateY(-1px);
+}
+
+.dash-card .filter-actions .btn-secondary {
+    border: 1px solid #d6e6f8;
+    background: #ffffff;
+    color: #33578a;
+    text-decoration: none;
+}
+
+.dash-card .filter-actions .btn-secondary:hover {
+    border-color: #b9d6f6;
+    background: #f4f9ff;
+    color: #0a5fe6;
+}
+
+/* record counter in the card head */
+.dash .dash-card__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-left: auto;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid #e6f0fb;
+    border-radius: 999px;
+    background: #f7fbff;
+    color: #33578a;
+    font-size: 0.74rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.dash .dash-card__badge i {
+    color: #0a5fe6;
+    font-size: 0.68rem;
+}
+
+/* ==========================================================================
+   Penalty table
+   ========================================================================== */
+
+.dash-card .table-responsive {
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+}
+
+.dash-card .report-table {
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.78rem;
+}
+
+.dash-card .report-table thead th {
+    padding: 0.65rem 0.7rem;
+    border: 0;
+    border-bottom: 1px solid #eaf2fd;
+    background: #f7fbff;
+    color: #8aa8c8;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.dash-card .report-table tbody td {
+    padding: 0.6rem 0.7rem;
+    border: 0;
+    border-bottom: 1px solid #f1f6fd;
+    color: #33578a;
+    vertical-align: middle;
+}
+
+.dash-card .report-table tbody tr:nth-child(even) td {
+    background: #fcfdff;
+}
+
+.dash-card .report-table tbody tr:hover td {
+    background: #f9fcff;
+}
+
+/* row accents become a thin inset bar instead of a hard border */
+.dash-card .report-table tbody tr td:first-child {
+    box-shadow: inset 3px 0 0 transparent;
+}
+
+.dash-card .report-table tbody tr.penalty-added td:first-child   { box-shadow: inset 3px 0 0 #c0392b; }
+.dash-card .report-table tbody tr.penalty-waived td:first-child  { box-shadow: inset 3px 0 0 #3ba602; }
+.dash-card .report-table tbody tr.penalty-partial td:first-child { box-shadow: inset 3px 0 0 #f0b429; }
+
+.dash-card .report-table .customer-name {
+    color: #0d3b7a;
+    font-weight: 600;
+}
+
+.dash-card .report-table .loan-info {
+    color: #8aa8c8;
+    font-size: 0.72rem;
+}
+
+.dash-card .report-table a {
+    color: #0a5fe6;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.dash-card .report-table a:hover {
+    text-decoration: underline;
+}
+
+.dash-card .report-table .notes-column {
+    max-width: 220px;
+    color: #8aa8c8;
+    font-size: 0.74rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dash-card .report-table .waiver-info {
+    margin-top: 0.3rem;
+    padding: 0.35rem 0.55rem;
+    border-left: 2px solid #3ba602;
+    border-radius: 6px;
+    background: #f6fdf3;
+    color: #177407;
+    font-size: 0.7rem;
+    white-space: normal;
+}
+
+/* amount breakdown */
+.amount-breakdown {
+    min-width: 170px;
+    color: #7b93b3;
+    font-size: 0.74rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.amount-breakdown .d-flex {
+    gap: 0.5rem;
+}
+
+.amount-breakdown .fw-bold {
+    color: #0d3b7a;
+}
+
+.amount-breakdown .text-danger.fw-bold {
+    color: #c0392b !important;
+}
+
+.amount-breakdown .text-success.fw-bold {
+    color: #177407 !important;
+}
+
+.amount-breakdown .progress {
+    height: 5px;
+    margin-top: 0.3rem;
+    border-radius: 999px;
+    background: #eef4fc;
+    overflow: hidden;
+}
+
+.amount-breakdown .progress-bar {
+    background: linear-gradient(90deg, #3ba602, #7bd03f);
+}
+
+/* status pills */
+.dash-card .status-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 84px;
+    padding: 0.3em 0.7em;
+    border: 1px solid #e6f0fb;
+    border-radius: 999px;
+    background: #f7fbff;
+    color: #33578a;
+    font-size: 0.72rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.dash-card .status-pill--added {
+    border-color: #f7c9c4;
+    background: #fdeceb;
+    color: #c0392b;
+}
+
+.dash-card .status-pill--waived,
+.dash-card .status-pill--fully-waived {
+    border-color: #c4e9b4;
+    background: #e8f7e1;
+    color: #177407;
+}
+
+.dash-card .status-pill--partial-waiver {
+    border-color: #ffe1a8;
+    background: #fff8e6;
+    color: #8a5b00;
+}
+
+/* ==========================================================================
+   Empty state
+   ========================================================================== */
+
+.report-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.report-empty__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 0.35rem;
+    border-radius: 16px;
+    background: #fff8e6;
+    color: #f0b429;
+    font-size: 1.35rem;
+}
+
+.report-empty h4 {
+    margin: 0;
+    color: #0d3b7a;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.report-empty p {
+    margin: 0;
+    color: #8aa8c8;
+    font-size: 0.84rem;
+}
+
+.report-empty .btn-empty {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.35rem;
+    padding: 0.6rem 1.15rem;
+    border: 0;
+    border-radius: 11px;
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    color: #ffffff;
+    font-size: 0.84rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 10px 22px rgba(10, 95, 230, 0.24);
+}
+
+.report-empty .btn-empty:hover {
+    filter: brightness(1.05);
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   Simple-datatables chrome
+   ========================================================================== */
+
+.dash-card .datatable-top {
+    display: none !important;
+}
+
+.dash-card .datatable-container {
+    border: 0;
+}
+
+.dash-card .datatable-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin: 0.9rem 0 0;
+    padding: 0.9rem 0 0;
+    border-top: 1px solid #f1f6fd;
+}
+
+.dash-card .datatable-info {
+    margin-right: auto;
+    color: #7b93b3;
+    font-size: 0.78rem;
+}
+
+.dash-card .datatable-pagination {
+    flex: 0 0 auto;
+    margin: 0 0 0 auto;
+    width: auto;
+}
+
+.dash-card .datatable-pagination ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.dash-card .datatable-pagination-list-item-link {
+    display: grid;
+    place-items: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    border: 1px solid #e6f0fb;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #33578a !important;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dash-card .datatable-pagination-list-item-link:hover {
+    border-color: #c2daf5;
+    background: #f4f9ff;
+    color: #0a5fe6 !important;
+}
+
+.dash-card .datatable-pagination-list-item.datatable-active .datatable-pagination-list-item-link {
+    border-color: transparent;
+    background: linear-gradient(135deg, #0a5fe6, #1b7bf2);
+    color: #ffffff !important;
+}
+
+/* ==========================================================================
+   Mobile
+   ========================================================================== */
+
+/* the KPI tiles wrap onto several rows - keep a gap between them */
+.dash .row.mb-4 {
+    row-gap: 1.5rem;
+}
+
+@media (max-width: 1199.98px) {
+    .dash .row.mb-4 > .col-md-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .dash .dash-card__head {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        row-gap: 0.75rem;
+    }
+
+    .dash .dash-card__head > div:not(.dash-head__actions) {
+        flex: 1 1 0%;
+        min-width: 0;
+    }
+
+    .dash .dash-card__title {
+        overflow-wrap: anywhere;
+    }
+
+    .report-card p.fs-4 {
+        font-size: 1.24rem !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* the page scrolls, cards don't */
+    .dash .card-body {
+        overflow: visible;
+        max-height: none;
+    }
+
+    .dash-card .filter-section {
+        display: flex;
+        width: 100%;
+        align-self: stretch;
+    }
+
+    .dash-card .filter-section .filter-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.45rem;
+        width: 100%;
+    }
+
+    .dash-card .filter-section .branch-filter-dropdown {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .dash-card .filter-section .form-select {
+        width: 100%;
+    }
+
+    .dash-card .log-filter {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .dash-card .log-filter .filter-field {
+        flex: 1 1 100%;
+    }
+
+    .dash-card .filter-actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        margin: 0.75rem 0 0;
+    }
+
+    .dash-card .filter-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .dash-card .date-range-display {
+        display: flex;
+        width: 100%;
+        margin: 1rem 0 0;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* table footer centred */
+    .dash-card .datatable-bottom {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .dash-card .datatable-info {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+
+    .dash-card .datatable-pagination {
+        width: 100%;
+        margin: 0.35rem 0 0;
+    }
+
+    .dash-card .datatable-pagination ul {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .dash .row.mb-4 > .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .dash .dash-card__badge {
+        margin: 0.35rem 0 0;
+    }
+}

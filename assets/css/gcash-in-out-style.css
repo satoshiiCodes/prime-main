@@ -1,0 +1,688 @@
+/* ==========================================================================
+   Prime City - GCash in/out styles
+   Page-level styles for gcash_in_out.php. Global SB Admin styles stay in
+   css/styles.css; layout chrome lives in includes/.
+   ========================================================================== */
+
+.form-section {
+                background-color: #f8f9fa;
+                border-radius: 5px;
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            .form-header {
+                border-bottom: 1px solid #dee2e6;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+            }
+            .cash-in {
+                color: #28a745;
+            }
+            .cash-out {
+                color: #dc3545;
+            }
+            .beginning-balance {
+                color: #17a2b8;
+            }
+            .fund-transfer {
+                color: #6f42c1;
+            }
+            .balance {
+                font-weight: bold;
+                color: #007bff;
+            }
+            .fee {
+                color: #6c757d;
+                font-style: italic;
+            }
+            .modal-content {
+                border-radius: 10px;
+            }
+            .modal-header {
+                background-color: #f8f9fa;
+                border-bottom: 1px solid #dee2e6;
+            }
+            .dataTables_length,
+            .dataTables_filter {
+                margin-bottom: 15px;
+            }
+            .summary-card {
+                border-radius: 5px;
+                padding: 15px;
+                margin-bottom: 20px;
+                color: white;
+            }
+            .summary-card.credit {
+                background-color: #28a745;
+            }
+            .summary-card.debit {
+                background-color: #dc3545;
+            }
+            .summary-card.balance {
+                background-color: #17a2b8;
+            }
+            .summary-card h5 {
+                font-size: 1rem;
+                margin-bottom: 5px;
+            }
+            .summary-card h3 {
+                font-size: 1.75rem;
+                margin-top: 0;
+            }
+            .customer-select-section, .fee-input-section, .bank-select-section, .bank-account-name-section, .branch-select-section {
+                display: none;
+            }
+            .edit-bank-section, .edit-bank-account-section, .edit-customer-section, .edit-fee-section, .edit-branch-section {
+                display: none;
+            }
+            .customer-search-container {
+                position: relative;
+            }
+            .customer-search-input {
+                margin-bottom: 10px;
+            }
+            .customer-dropdown-container {
+                position: relative;
+            }
+            .customer-dropdown {
+                max-height: 200px;
+                overflow-y: auto;
+                position: absolute;
+                width: 100%;
+                background: white;
+                z-index: 1000;
+                border: 1px solid #ced4da;
+                border-radius: 0.375rem;
+                display: none;
+            }
+            .customer-option {
+                padding: 8px 12px;
+                cursor: pointer;
+                border-bottom: 1px solid #f1f1f1;
+            }
+            .customer-option:hover {
+                background-color: #f8f9fa;
+            }
+            .unified-filter-section {
+                background-color: #f8f9fa;
+                padding: 15px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            .filter-row {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+            .filter-label {
+                font-weight: bold;
+                margin-bottom: 0;
+            }
+            .branch-filter-dropdown {
+                min-width: 200px;
+            }
+            .restricted-branch-notice {
+                background-color: #fff3cd;
+                border: 1px solid #ffeaa7;
+                color: #856404;
+                padding: 10px;
+                border-radius: 5px;
+                margin-top: 10px;
+                font-size: 0.9rem;
+            }
+            .hidden-filter {
+                display: none !important;
+            }
+            /* Add styles for restricted form fields */
+            .restricted-field {
+                background-color: #e9ecef;
+                cursor: not-allowed;
+            }
+
+/* --------------------------------------------------------------------------
+   Dash UI: two KPI tiles across (dash-stats defaults to four columns).
+   -------------------------------------------------------------------------- */
+
+.dash .dash-stats.dash-stats--two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 767.98px) {
+    .dash .dash-stats.dash-stats--two {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* The branch filter panel sits on the dash canvas, so it reads as a card. */
+.dash .unified-filter-section {
+    padding: 1.1rem 1.35rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(10, 61, 156, 0.05), 0 10px 24px rgba(10, 61, 156, 0.07);
+}
+
+.dash .unified-filter-section .filter-label {
+    color: #5b7699;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Branch filter + Record New GCash Transaction (screen)
+   ========================================================================== */
+
+/* ---- branch filter panel --------------------------------------------- */
+
+.dash .unified-filter-section {
+    margin: 0 0 1.1rem;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid #eaf2fd;
+    border-radius: 14px;
+    background: linear-gradient(180deg, #fbfdff 0%, #ffffff 70%);
+    box-shadow: none;
+}
+
+.dash .unified-filter-section .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.dash .unified-filter-section .filter-label {
+    margin: 0;
+    color: #8aa8c8;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.dash .unified-filter-section .branch-filter-dropdown {
+    min-width: 250px;
+}
+
+.dash .unified-filter-section .form-select {
+    min-height: 2.7rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 11px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+.dash .unified-filter-section .form-select:hover {
+    border-color: #b9d6f6;
+}
+
+.dash .unified-filter-section .form-select:focus {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.13);
+}
+
+.dash .restricted-branch-notice {
+    margin: 0.6rem 0 0;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid #d6e6f8;
+    border-left: 3px solid #0a5fe6;
+    border-radius: 10px;
+    background: #f4f9ff;
+    color: #33578a;
+    font-size: 0.78rem;
+    line-height: 1.45;
+}
+
+/* ---- the form -------------------------------------------------------- */
+
+#gcashForm .form-section {
+    margin: 0;
+    padding: 1.35rem 0 0;
+    border-top: 1px solid #eef4fc;
+    background: transparent;
+    border-radius: 0;
+}
+
+#gcashForm .form-section:first-of-type {
+    padding-top: 0;
+    border-top: 0;
+}
+
+#gcashForm .section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0 0 1.1rem;
+    padding: 0;
+    border: 0;
+    color: #0d3b7a;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+#gcashForm .section-title::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #3ba602;
+    flex: 0 0 auto;
+}
+
+#gcashForm .row {
+    --bs-gutter-x: 1.1rem;
+    --bs-gutter-y: 0.9rem;
+    margin-bottom: 0 !important;
+}
+
+/* breathing room between the field rows */
+#gcashForm .row + .row {
+    margin-top: 0.45rem;
+}
+
+#gcashForm .form-floating > .form-control,
+#gcashForm .form-floating > .form-select,
+#gcashForm .form-control,
+#gcashForm .form-select {
+    min-height: 3.1rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 12px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+#gcashForm .form-control:hover,
+#gcashForm .form-select:hover {
+    border-color: #b9d6f6;
+}
+
+#gcashForm .form-control:focus,
+#gcashForm .form-select:focus {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+#gcashForm .form-floating > label {
+    padding: 0.8rem 0.95rem;
+    color: #6d86a6;
+    font-size: 0.9rem;
+}
+
+#gcashForm .form-floating > .form-control:focus ~ label,
+#gcashForm .form-floating > .form-control:not(:placeholder-shown) ~ label,
+#gcashForm .form-floating > .form-select ~ label {
+    color: #8aa8c8;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* only genuinely locked fields are tinted - a filled date is not one of them */
+#gcashForm .restricted-field {
+    background-color: #eef4fc;
+    border-color: #e0ecfa;
+    color: #43678f;
+    cursor: not-allowed;
+}
+
+#gcashForm textarea.form-control {
+    min-height: 6.5rem;
+    padding: 2rem 0.95rem 0.8rem;
+    line-height: 1.5;
+}
+
+#gcashForm .form-floating > textarea.form-control {
+    height: 6.5rem !important;
+}
+
+/* customer picker */
+#gcashForm .customer-search-container {
+    position: relative;
+}
+
+#gcashForm .customer-dropdown {
+    max-height: 240px;
+    border: 1px solid #d6e6f8;
+    border-radius: 12px;
+    box-shadow: 0 18px 40px rgba(4, 16, 32, 0.16);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #c9ddf4 transparent;
+}
+
+#gcashForm .customer-option {
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid #f1f6fd;
+    color: #0d3b7a;
+    font-size: 0.86rem;
+    font-weight: 500;
+}
+
+#gcashForm .customer-option:hover {
+    background: #eef6ff;
+}
+
+#gcashForm #selected_customer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 0.6rem !important;
+    padding: 0.55rem 0.85rem !important;
+    border: 1px solid #cdeeb2 !important;
+    border-radius: 11px !important;
+    background: #f4fbec;
+    color: #177407;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+#gcashForm #clear_customer {
+    padding: 0;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* the chosen customer lives inside the search input */
+#gcashForm .customer-search-container,
+#editForm .customer-search-container {
+    position: relative;
+}
+
+.customer-search-container .customer-clear-btn {
+    position: absolute;
+    top: 50%;
+    right: 0.6rem;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    background: #eef4fc;
+    color: #43678f;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    z-index: 3;
+}
+
+.customer-search-container .customer-clear-btn:hover {
+    background: #fdeceb;
+    color: #c0392b;
+}
+
+.customer-search-container .customer-clear-btn[hidden] {
+    display: none;
+}
+
+#gcashForm .customer-search-input.has-customer,
+#editForm .customer-search-input.has-customer {
+    padding-right: 2.6rem;
+    border-color: #cdeeb2;
+    background-color: #f7fdf1;
+    color: #177407;
+    font-weight: 600;
+    cursor: default;
+}
+
+#gcashForm .customer-search-input.has-customer ~ label,
+#editForm .customer-search-input.has-customer ~ label {
+    color: #177407;
+}
+
+/* submit row */
+#gcashForm .dash-form__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1.35rem 0 0;
+    padding-top: 1.35rem;
+    border-top: 1px solid #eef4fc;
+}
+
+#gcashForm .dash-form__actions .d-grid {
+    display: block;
+    width: auto;
+}
+
+#gcashForm .btn-block {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: auto;
+    padding: 0.72rem 1.6rem;
+    border: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 10px 22px rgba(10, 95, 230, 0.24);
+    transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease;
+}
+
+#gcashForm .btn-block:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 12px 26px rgba(10, 95, 230, 0.30);
+    transform: translateY(-1px);
+}
+
+#gcashForm .btn-block:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 14px rgba(10, 95, 230, 0.24);
+}
+
+/* flatpickr popup matches the controls */
+.flatpickr-calendar {
+    border-radius: 12px;
+    border: 1px solid #d6e6f8;
+    box-shadow: 0 18px 40px rgba(4, 16, 32, 0.18);
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.selected:hover {
+    background: #0a5fe6;
+    border-color: #0a5fe6;
+}
+
+/* ==========================================================================
+   Edit Transaction modal
+   ========================================================================== */
+
+#editModal .modal-content {
+    border: 0;
+    border-radius: 18px;
+    box-shadow: 0 24px 60px rgba(4, 16, 32, 0.22);
+    overflow: hidden;
+}
+
+#editModal .modal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.05rem 1.3rem;
+    border: 0;
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    color: #ffffff;
+}
+
+#editModal .modal-title {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+#editModal .btn-close {
+    margin-left: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+}
+
+#editModal .btn-close:hover {
+    opacity: 1;
+}
+
+#editModal .modal-body {
+    padding: 1.3rem;
+    background: #ffffff;
+}
+
+#editModal .row {
+    --bs-gutter-x: 1.1rem;
+    --bs-gutter-y: 0.9rem;
+    margin-bottom: 0 !important;
+}
+
+#editModal .row + .row {
+    margin-top: 0.45rem;
+}
+
+#editModal .form-floating > .form-control,
+#editModal .form-floating > .form-select,
+#editModal .form-control,
+#editModal .form-select {
+    min-height: 3.1rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 12px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+#editModal .form-control:focus,
+#editModal .form-select:focus {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+#editModal .form-floating > label {
+    padding: 0.8rem 0.95rem;
+    color: #6d86a6;
+    font-size: 0.9rem;
+}
+
+#editModal .form-floating > .form-control:focus ~ label,
+#editModal .form-floating > .form-control:not(:placeholder-shown) ~ label,
+#editModal .form-floating > .form-select ~ label {
+    color: #8aa8c8;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+#editModal .form-control[readonly],
+#editModal .restricted-field {
+    background-color: #eef4fc;
+    border-color: #e0ecfa;
+    color: #43678f;
+}
+
+#editModal textarea.form-control {
+    min-height: 6rem;
+    /* room for the floating label above the text */
+    padding: 2.15rem 0.95rem 0.85rem;
+    line-height: 1.5;
+}
+
+#editModal .form-floating > textarea.form-control {
+    height: 6.5rem !important;
+}
+
+/* separation between the last field row and the Notes block */
+#editModal .modal-body > .mb-3 {
+    margin-top: 1.1rem;
+    margin-bottom: 0;
+}
+
+#editModal .modal-body > .mb-3 .form-floating > label {
+    top: 0;
+}
+
+#editModal .modal-footer {
+    padding: 0.9rem 1.3rem;
+    border-top: 1px solid #eef4fc;
+    background: #fbfdff;
+}
+
+#editModal .modal-footer .btn {
+    border-radius: 11px;
+    padding: 0.58rem 1.15rem;
+    font-size: 0.86rem;
+    font-weight: 600;
+}
+
+#editModal .modal-footer .btn-secondary {
+    border: 1px solid #d6e6f8;
+    background: #ffffff;
+    color: #33578a;
+}
+
+#editModal .modal-footer .btn-primary {
+    border: 0;
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    box-shadow: 0 10px 22px rgba(10, 95, 230, 0.24);
+}
+
+/* ==========================================================================
+   Table footers - keep the pager on the right
+   ========================================================================== */
+
+.dash .datatable-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.dash .datatable-bottom .datatable-info {
+    margin-right: auto;
+}
+
+.dash .datatable-bottom .datatable-pagination {
+    flex: 0 0 auto;
+    margin: 0 0 0 auto;
+    width: auto;
+}
+
+.dash .datatable-bottom .datatable-pagination ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@media (max-width: 575.98px) {
+    .dash .datatable-bottom {
+        justify-content: flex-start;
+    }
+
+    .dash .datatable-bottom .datatable-pagination {
+        margin-left: 0;
+    }
+}

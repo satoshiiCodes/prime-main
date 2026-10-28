@@ -1,0 +1,464 @@
+/* ==========================================================================
+   Prime City - Dashboards
+   Page-level styles shared by dashboard.php, collector_dashboard.php and
+   customer_dashboard.php. The frame (.dash, .dash-head, .dash-card, .stat)
+   lives in dash.css / dash-ui.css; this file only adds the dashboard pieces.
+
+   1. Branch filter chip
+   2. Charts
+   3. Quick access cards
+   4. Customer dashboard lists
+   5. Empty states
+   6. Motion
+   7. Responsive
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Branch filter chip (page head)
+   -------------------------------------------------------------------------- */
+.dash .dash-head .dash-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin: 0 0 0 auto;
+    padding: 0.55rem 0.75rem 0.6rem;
+    border: 1px solid #e8f1fc;
+    border-radius: 13px;
+    background: linear-gradient(180deg, #fbfdff, #f7fbff);
+    box-shadow: 0 1px 2px rgba(13, 59, 122, 0.04);
+}
+
+.dash .dash-head .dash-filter label {
+    margin: 0;
+    color: #8aa8c8;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+}
+
+.dash .dash-head .dash-filter .form-select {
+    min-height: 2.5rem;
+    padding: 0.35rem 2.2rem 0.35rem 0.7rem;
+    border: 1px solid #e3edf9;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #0d3b7a;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.dash .dash-head .dash-filter .form-select:focus {
+    border-color: #0a5fe6;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.13);
+    outline: none;
+}
+
+.hidden-filter {
+    display: none;
+}
+
+/* --------------------------------------------------------------------------
+   2. Charts
+   -------------------------------------------------------------------------- */
+.dash .dash-charts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 0.25rem;
+}
+
+.dash .dash-charts .dash-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+}
+
+.dash .chart-container {
+    position: relative;
+    width: 100%;
+    height: 330px;
+    min-height: 260px;
+}
+
+.dash .chart-container canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.dash .dash-card__loading.chart-loading {
+    display: none;
+    align-items: center;
+    gap: 0.35rem;
+    margin-left: auto;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background: #eef6ff;
+    color: #0a5fe6;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+.dash .dash-card__loading.chart-loading.is-loading {
+    display: inline-flex;
+}
+
+/* --------------------------------------------------------------------------
+   3. Quick access cards
+   -------------------------------------------------------------------------- */
+.dash .dash-quick {
+    margin-bottom: 1.5rem;
+}
+
+.dash .dash-quick .card-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.dash .quick-access-card {
+    border: 1px solid #eef4fc;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(13, 59, 122, 0.04);
+    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.dash .quick-access-card .card-body {
+    padding: 1.15rem 1.25rem;
+}
+
+.dash .quick-access-card .dash-card__title {
+    margin: 0 0 0.15rem;
+    font-size: 1rem;
+}
+
+.dash .quick-access-arrow {
+    margin-left: auto;
+    color: #9db4d0;
+    font-size: 0.95rem;
+    transition: transform 0.16s ease, color 0.16s ease;
+}
+
+.dash .dash-quick .card-link:hover .quick-access-card,
+.dash .dash-quick .card-link:focus-visible .quick-access-card {
+    border-color: #cfe4ff;
+    box-shadow: 0 14px 28px -18px rgba(13, 59, 122, 0.5);
+    transform: translateY(-2px);
+}
+
+.dash .dash-quick .card-link:hover .quick-access-arrow,
+.dash .dash-quick .card-link:focus-visible .quick-access-arrow {
+    color: #0a5fe6;
+    transform: translateX(3px);
+}
+
+/* --------------------------------------------------------------------------
+   4. Customer dashboard lists
+   -------------------------------------------------------------------------- */
+.dash-section > .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding: 1.15rem 1.25rem 1.3rem;
+}
+
+/* -- active loans -- */
+.loan-card-modern {
+    padding: 1.05rem 1.15rem;
+    border: 1px solid #eef4fc;
+    border-radius: 14px;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+    transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.loan-card-modern:hover {
+    border-color: #d9e9fc;
+    box-shadow: 0 12px 26px -20px rgba(13, 59, 122, 0.55);
+}
+
+.loan-header-modern {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.85rem;
+}
+
+.loan-amount-modern {
+    color: #0d3b7a;
+    font-size: 1.22rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+}
+
+.loan-status {
+    flex: 0 0 auto;
+    padding: 0.24rem 0.62rem;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: #eef4fc;
+    color: #33578a;
+}
+
+.loan-status.status-active,
+.loan-status.status-approved,
+.loan-status.status-fully-paid,
+.loan-status.status-paid,
+.loan-status.status-completed {
+    background: #e8f7e1;
+    color: #177407;
+}
+
+.loan-status.status-pending,
+.loan-status.status-partial,
+.loan-status.status-ongoing {
+    background: #fff8e6;
+    color: #8a5b00;
+}
+
+.loan-status.status-overdue,
+.loan-status.status-denied,
+.loan-status.status-rejected,
+.loan-status.status-cancelled,
+.loan-status.status-defaulted {
+    background: #fdeceb;
+    color: #c0392b;
+}
+
+.loan-status.status-closed,
+.loan-status.status-unknown {
+    background: #eef4fc;
+    color: #33578a;
+}
+
+.loan-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.85rem 1rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid #f1f6fd;
+}
+
+.detail-item-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+}
+
+.detail-label {
+    color: #8aa8c8;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.detail-value {
+    color: #0d3b7a;
+    font-size: 0.88rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+}
+
+/* -- recent payments -- */
+.payment-item-modern {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.72rem 0.9rem;
+    border: 1px solid #eef4fc;
+    border-radius: 12px;
+    background: #fbfdff;
+    transition: border-color 0.16s ease, background 0.16s ease;
+}
+
+.payment-item-modern:hover {
+    border-color: #d9e9fc;
+    background: #f7fbff;
+}
+
+.payment-date-modern {
+    display: inline-flex;
+    align-items: center;
+    color: #33578a;
+    font-size: 0.84rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.payment-date-modern .fas,
+.payment-date-modern .fa-solid {
+    color: #9db4d0;
+    font-size: 0.8rem;
+}
+
+.payment-method-badge {
+    flex: 0 0 auto;
+    padding: 0.2rem 0.55rem;
+    border: 1px solid #cfe4ff;
+    border-radius: 999px;
+    background: #eef6ff;
+    color: #0a5fe6;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.payment-amount-modern {
+    margin-left: auto;
+    color: #177407;
+    font-size: 0.95rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+/* greet line under the page title */
+.dash .user-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.1rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. Empty states
+   -------------------------------------------------------------------------- */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 2rem 1rem 1.7rem;
+    text-align: center;
+}
+
+.empty-state-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.1rem;
+    height: 3.1rem;
+    margin-bottom: 0.35rem;
+    border-radius: 999px;
+    background: #eef6ff;
+    color: #0a5fe6;
+    font-size: 1.2rem;
+}
+
+.empty-state-title {
+    margin: 0;
+    color: #0d3b7a;
+    font-size: 0.98rem;
+    font-weight: 700;
+}
+
+.empty-state-text {
+    margin: 0 0 0.75rem;
+    max-width: 24rem;
+    color: #7b93b3;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   6. Motion
+   -------------------------------------------------------------------------- */
+@keyframes dashboardFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: dashboardFadeInUp 0.5s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-fade-in-up {
+        animation: none;
+    }
+
+    .dash .quick-access-card,
+    .dash .quick-access-arrow,
+    .loan-card-modern,
+    .payment-item-modern {
+        transition: none;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   7. Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 1199.98px) {
+    .dash .chart-container {
+        height: 300px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .dash .dash-charts {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.25rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .dash .dash-head .dash-filter {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .dash .dash-head .dash-filter .form-select {
+        width: 100%;
+    }
+
+    .dash .chart-container {
+        height: 260px;
+        min-height: 220px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .dash .chart-container {
+        height: 230px;
+    }
+
+    .loan-header-modern {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+    }
+
+    .loan-details-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .payment-item-modern {
+        flex-wrap: wrap;
+        row-gap: 0.4rem;
+    }
+
+    .payment-amount-modern {
+        width: 100%;
+        margin-left: 0;
+    }
+}

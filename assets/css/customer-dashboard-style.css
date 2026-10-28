@@ -1,0 +1,248 @@
+/* ==========================================================================
+   Prime City - Customer dashboard page styles.
+
+   The page frame (dash head, stat tiles, cards, card heads) comes from
+   assets/css/dash.css and assets/css/dash-ui.css; only the page-specific
+   list, payment and empty-state pieces live here.
+   ========================================================================== */
+
+/* Section wrapper spacing inside the dash column. */
+.dash-section {
+    margin-bottom: var(--dash-gap, 1.25rem);
+}
+
+/* The page now uses the shared chrome (includes/topbar.php + includes/sidebar.php),
+   which is the fixed sb-nav-fixed layout: it clears the top bar through
+   --pc-nav-h in assets/css/theme-logo.css, so no extra body padding is needed. */
+
+/* --------------------------------------------------------------------------
+   Loan cards
+   -------------------------------------------------------------------------- */
+
+.loan-card-modern {
+    padding: 1.1rem 1.2rem;
+    border: 1px solid #eaf2fd;
+    border-radius: 14px;
+    background: #fbfdff;
+    transition: border-color 0.16s ease, background-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.loan-card-modern + .loan-card-modern {
+    margin-top: 0.75rem;
+}
+
+.loan-card-modern:hover {
+    border-color: #bcd8f8;
+    background: #ffffff;
+    box-shadow: 0 6px 16px rgba(10, 61, 156, 0.07);
+}
+
+.loan-header-modern {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.9rem;
+}
+
+.loan-amount-modern {
+    color: #0d3b7a;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.loan-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.status-active {
+    background: #e8f8dd;
+    color: #2f8f0a;
+}
+
+.status-completed {
+    background: #eef4fb;
+    color: #43678f;
+}
+
+.status-defaulted {
+    background: #fdecec;
+    color: #c02525;
+}
+
+.status-pending {
+    background: #fff5e0;
+    color: #a86b00;
+}
+
+.loan-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem 1rem;
+}
+
+.detail-item-modern {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+}
+
+.detail-label {
+    color: #7b93b3;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.detail-value {
+    color: #0d3b7a;
+    font-size: 0.9rem;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+/* --------------------------------------------------------------------------
+   Recent payments
+   -------------------------------------------------------------------------- */
+
+.payment-item-modern {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid #eaf2fd;
+    border-radius: 12px;
+    background: #fbfdff;
+    transition: border-color 0.16s ease, background-color 0.16s ease;
+}
+
+.payment-item-modern + .payment-item-modern {
+    margin-top: 0.5rem;
+}
+
+.payment-item-modern:hover {
+    border-color: #bcd8f8;
+    background: #ffffff;
+}
+
+.payment-date-modern {
+    min-width: 9.5rem;
+    color: #43678f;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.payment-method-badge {
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: #eaf3ff;
+    color: #0a5fe6;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.payment-amount-modern {
+    margin-left: auto;
+    color: #2f8f0a;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   Empty states
+   -------------------------------------------------------------------------- */
+
+.empty-state {
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.empty-state-icon {
+    margin-bottom: 0.75rem;
+    color: #c7dcf5;
+    font-size: 2.6rem;
+}
+
+.empty-state-title {
+    margin-bottom: 0.35rem;
+    color: #0d3b7a;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.empty-state-text {
+    margin-bottom: 1rem;
+    color: #7b93b3;
+    font-size: 0.9rem;
+}
+
+/* --------------------------------------------------------------------------
+   Support contact rows (brand tints instead of the default Bootstrap hues)
+   -------------------------------------------------------------------------- */
+
+.dash .card-body .rounded-circle.bg-primary {
+    background-color: #0a5fe6 !important;
+}
+
+.dash .card-body .rounded-circle.bg-success {
+    background-color: #2f8f0a !important;
+}
+
+.dash .card-body .rounded-circle.bg-warning {
+    background-color: #f0a300 !important;
+}
+
+/* --------------------------------------------------------------------------
+   Entrance animation kept from the original page (the page script drives the
+   timing, this is the fallback for the first frame).
+   -------------------------------------------------------------------------- */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-fade-in-up,
+    .loan-card-modern,
+    .payment-item-modern {
+        animation: none;
+        transition: none;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .payment-date-modern {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .payment-amount-modern {
+        margin-left: 0;
+    }
+}

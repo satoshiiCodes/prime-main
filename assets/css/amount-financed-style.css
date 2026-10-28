@@ -1,0 +1,571 @@
+/* ==========================================================================
+   Prime City - Amount financed report styles
+   Page-level styles for amount_financed.php. Global SB Admin styles stay in
+   css/styles.css; layout chrome lives in includes/.
+   Follows docs/ui-conventions.md.
+   ========================================================================== */
+
+/* ==========================================================================
+   Filter row
+   ========================================================================== */
+
+.dash-card .log-filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.85rem 1rem;
+    margin: 0;
+}
+
+.dash-card .log-filter .filter-group {
+    flex: 1 1 190px;
+    min-width: 0;
+    margin: 0;
+}
+
+.dash-card .log-filter .filter-label {
+    display: block;
+    margin: 0 0 0.35rem;
+    color: #7b93b3;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.dash-card .log-filter .form-control,
+.dash-card .log-filter .form-select {
+    width: 100%;
+    min-height: 2.9rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 11px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+.dash-card .log-filter .form-control:hover,
+.dash-card .log-filter .form-select:hover {
+    border-color: #b9d6f6;
+}
+
+.dash-card .log-filter .form-control:focus,
+.dash-card .log-filter .form-select:focus {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+/* only the active period control is visible */
+.dash-card .period-input-group {
+    display: none;
+}
+
+.dash-card .period-input-group.active {
+    display: block;
+}
+
+.dash-card .period-note {
+    margin: 0.3rem 0 0;
+    color: #8aa8c8;
+    font-size: 0.74rem;
+    white-space: nowrap;
+}
+
+/* actions */
+.dash-card .filter-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin: 1.15rem 0 0;
+}
+
+.dash-card .filter-actions .btn {
+    border-radius: 11px;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.86rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: none;
+    transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease, background-color 0.14s ease;
+}
+
+.dash-card .filter-actions .btn-primary {
+    border: 0;
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    color: #ffffff;
+    box-shadow: 0 10px 22px rgba(10, 95, 230, 0.24);
+}
+
+.dash-card .filter-actions .btn-primary:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 12px 26px rgba(10, 95, 230, 0.3);
+    transform: translateY(-1px);
+}
+
+.dash-card .filter-actions .btn-secondary {
+    border: 1px solid #d6e6f8;
+    background: #ffffff;
+    color: #33578a;
+    text-decoration: none;
+}
+
+.dash-card .filter-actions .btn-secondary:hover {
+    border-color: #b9d6f6;
+    background: #f4f9ff;
+    color: #0a5fe6;
+}
+
+/* ==========================================================================
+   Total financed tile
+   ========================================================================== */
+
+.report-card {
+    position: relative;
+    overflow: hidden;
+    margin: 0 0 1.25rem;
+    border: 1px solid #eaf2fd;
+    border-radius: 16px;
+    background: #ffffff !important;
+    box-shadow: 0 10px 28px rgba(10, 61, 156, 0.06);
+    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.report-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: #0a5fe6;
+}
+
+.report-card:hover {
+    transform: translateY(-2px);
+    border-color: #dcebfb;
+    box-shadow: 0 14px 34px rgba(10, 61, 156, 0.1);
+}
+
+.report-card .card-body {
+    padding: 1.15rem 1.3rem 1.2rem;
+}
+
+.report-card .text-uppercase {
+    color: #8aa8c8 !important;
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+}
+
+.report-card h2 {
+    margin: 0.35rem 0 0;
+    color: #0d3b7a;
+    font-size: 1.7rem;
+    font-weight: 700;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+}
+
+.report-card .fa-3x,
+.report-card .card-body > .d-flex > .fa-3x {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+    background: #eef6ff;
+    color: #0a5fe6;
+    font-size: 1rem;
+    flex: 0 0 auto;
+}
+
+.report-card .fa-3x > svg,
+.report-card .fa-3x svg {
+    width: 1em;
+    height: 1em;
+    max-width: 20px;
+    max-height: 20px;
+}
+
+.report-card--total::before   { background: #0a5fe6; }
+.report-card--loans::before   { background: #0099fa; }
+.report-card--average::before { background: #3ba602; }
+
+.report-card .card-meta {
+    margin: 0.3rem 0 0;
+    color: #8aa8c8;
+    font-size: 0.76rem;
+}
+
+.report-card h6.card-title {
+    margin: 0;
+    color: #8aa8c8;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Period notice
+   ========================================================================== */
+
+.dash .notice-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    margin: 0 0 1.25rem;
+    padding: 0.8rem 1.05rem;
+    border: 1px solid #e3eefc;
+    border-left: 3px solid #0a5fe6;
+    border-radius: 12px;
+    background: #f6faff;
+    color: #33578a;
+    font-size: 0.84rem;
+}
+
+.dash .notice-info i {
+    color: #0a5fe6;
+}
+
+.dash .notice-info strong {
+    color: #0d3b7a;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   Financing table
+   ========================================================================== */
+
+.dash-card .table-responsive {
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+}
+
+.dash-card .report-table {
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.78rem;
+}
+
+.dash-card .report-table thead th {
+    padding: 0.65rem 0.7rem;
+    border: 0;
+    border-bottom: 1px solid #eaf2fd;
+    background: #f7fbff;
+    color: #8aa8c8;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.dash-card .report-table tbody td {
+    padding: 0.6rem 0.7rem;
+    border: 0;
+    border-bottom: 1px solid #f1f6fd;
+    color: #33578a;
+    vertical-align: middle;
+}
+
+.dash-card .report-table tbody tr:nth-child(even) td {
+    background: #fcfdff;
+}
+
+.dash-card .report-table tbody tr:hover td {
+    background: #f9fcff;
+}
+
+.dash-card .report-table tbody tr:nth-child(even):hover td {
+    background: #f4f9ff;
+}
+
+.dash-card .report-table .cell-strong {
+    color: #0d3b7a;
+    font-weight: 600;
+}
+
+.dash-card .report-table .cell-meta {
+    color: #8aa8c8;
+    font-size: 0.72rem;
+}
+
+.dash-card .report-table .amount {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.dash-card .report-table .amount--financed {
+    color: #0a5fe6;
+}
+
+.dash-card .report-table .amount--balance {
+    color: #0d3b7a;
+    font-weight: 700;
+}
+
+.dash-card .report-table .branch-pill,
+.dash-card .report-table .term-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3em 0.7em;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.dash-card .report-table .branch-pill {
+    border: 1px solid #cfe4ff;
+    background: #eef6ff;
+    color: #0a5fe6;
+}
+
+.dash-card .report-table .term-pill {
+    border: 1px solid #e6f0fb;
+    background: #f7fbff;
+    color: #33578a;
+}
+
+/* totals row */
+.dash-card .report-table tfoot td {
+    padding: 0.7rem;
+    border-top: 1px solid #eaf2fd;
+    border-bottom: 0;
+    background: #f2f8ff !important;
+    color: #0d3b7a;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+/* record counter in the card head */
+.dash .dash-card__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-left: auto;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid #e6f0fb;
+    border-radius: 999px;
+    background: #f7fbff;
+    color: #33578a;
+    font-size: 0.74rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.dash .dash-card__badge i {
+    color: #0a5fe6;
+    font-size: 0.68rem;
+}
+
+/* ==========================================================================
+   Empty state
+   ========================================================================== */
+
+.report-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.report-empty__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 0.35rem;
+    border-radius: 16px;
+    background: #f2f7fe;
+    color: #a9c1dc;
+    font-size: 1.35rem;
+}
+
+.report-empty h4 {
+    margin: 0;
+    color: #0d3b7a;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.report-empty p {
+    margin: 0;
+    color: #8aa8c8;
+    font-size: 0.84rem;
+}
+
+/* ==========================================================================
+   Simple-datatables chrome
+   ========================================================================== */
+
+.dash-card .datatable-top {
+    display: none !important;
+}
+
+.dash-card .datatable-container {
+    border: 0;
+}
+
+.dash-card .datatable-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin: 0.9rem 0 0;
+    padding: 0.9rem 0 0;
+    border-top: 1px solid #f1f6fd;
+}
+
+.dash-card .datatable-info {
+    margin-right: auto;
+    color: #7b93b3;
+    font-size: 0.78rem;
+}
+
+.dash-card .datatable-pagination {
+    flex: 0 0 auto;
+    margin: 0 0 0 auto;
+    width: auto;
+}
+
+.dash-card .datatable-pagination ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.dash-card .datatable-pagination-list-item-link {
+    display: grid;
+    place-items: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    border: 1px solid #e6f0fb;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #33578a !important;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dash-card .datatable-pagination-list-item-link:hover {
+    border-color: #c2daf5;
+    background: #f4f9ff;
+    color: #0a5fe6 !important;
+}
+
+.dash-card .datatable-pagination-list-item.datatable-active .datatable-pagination-list-item-link {
+    border-color: transparent;
+    background: linear-gradient(135deg, #0a5fe6, #1b7bf2);
+    color: #ffffff !important;
+}
+
+/* ==========================================================================
+   Mobile
+   ========================================================================== */
+
+@media (max-width: 991.98px) {
+    .dash .dash-card__head {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        row-gap: 0.75rem;
+    }
+
+    .dash .dash-card__head > div:not(.dash-head__actions) {
+        flex: 1 1 0%;
+        min-width: 0;
+    }
+
+    .dash .dash-card__title {
+        overflow-wrap: anywhere;
+    }
+
+    .report-card h2 {
+        font-size: 1.42rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* the page scrolls, cards don't */
+    .dash .card-body {
+        overflow: visible;
+        max-height: none;
+    }
+
+    .dash-card .log-filter {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .dash-card .log-filter .filter-group {
+        flex: 1 1 100%;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .dash-card .filter-actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        margin: 0.75rem 0 0;
+    }
+
+    .dash-card .filter-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .dash-card .period-note {
+        white-space: normal;
+    }
+
+    /* table footer centred */
+    .dash-card .datatable-bottom {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .dash-card .datatable-info {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+
+    .dash-card .datatable-pagination {
+        width: 100%;
+        margin: 0.35rem 0 0;
+    }
+
+    .dash-card .datatable-pagination ul {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .dash .dash-card__badge {
+        margin: 0.35rem 0 0;
+    }
+}

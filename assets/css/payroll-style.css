@@ -1,0 +1,554 @@
+/* ==========================================================================
+   Prime City - Payroll styles
+   Page-level styles for payroll.php. Global SB Admin styles stay in
+   css/styles.css; layout chrome lives in includes/.
+   ========================================================================== */
+
+body.sb-nav-fixed {
+            padding-top: 0;
+        }
+        .user-name {
+            color: white;
+        }
+        .user-account-type {
+            color: limegreen;
+        }
+        .filter-form {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .filter-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .filter-label {
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+        .branch-filter-dropdown {
+            min-width: 200px;
+        }
+        .hidden-filter {
+            display: none;
+        }
+        .summary-card {
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .status-badge {
+            font-size: 0.85em;
+            padding: 0.35em 0.65em;
+        }
+        .table-responsive {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        #layoutSidenav {
+            display: flex;
+        }
+        #layoutSidenav_nav {
+            position: fixed;
+            top: 56px;
+            left: 0;
+            height: calc(100% - 56px);
+            width: 225px;
+            z-index: 1000;
+        }
+        .fixed-top {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1030;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .breadcrumb {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .mt-4 {
+            margin-top: 1rem !important;
+        }
+        .btn-pdf {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: white;
+        }
+        .btn-pdf:hover {
+            background-color: #bb2d3b;
+            border-color: #b02a37;
+            color: white;
+        }
+        .btn-payslip {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+        .btn-payslip:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+            color: white;
+        }
+
+/* --------------------------------------------------------------------------
+   Dash UI: the filter form now sits inside a dash card body, so it no longer
+   needs its own padded grey panel. The attendance card head carries action
+   buttons, so allow it to wrap on narrow screens.
+   -------------------------------------------------------------------------- */
+
+.dash .filter-form {
+    padding: 0;
+    margin-bottom: 0;
+    background: transparent;
+}
+
+.dash .filter-form .filter-label {
+    color: #5b7699;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.dash .dash-card__head {
+    flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   Filter Records - modern filter card
+   ========================================================================== */
+
+.dash .filter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+}
+
+/* ---- branch filter chip ----------------------------------------------- */
+
+.dash .filter-form .filter-section {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 0;
+    padding: 0.45rem 0.6rem 0.45rem 0.95rem;
+    border: 1px solid #e8f1fc;
+    border-radius: 13px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f7fbff 100%);
+    align-self: flex-start;
+}
+
+.dash .filter-form .filter-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 0;
+}
+
+.dash .filter-form .filter-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0;
+    color: #7b93b3;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.dash .filter-form .branch-filter-dropdown {
+    min-width: 220px;
+    margin: 0;
+}
+
+.dash .filter-form .branch-filter-dropdown .form-select {
+    min-height: 2.5rem;
+    padding: 0.35rem 2.1rem 0.35rem 0.8rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #0d3b7a;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.dash .filter-form .branch-filter-dropdown .form-select:hover {
+    border-color: #b9d6f6;
+}
+
+.dash .filter-form .branch-filter-dropdown .form-select:focus {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.13);
+}
+
+/* ---- date range row --------------------------------------------------- */
+
+.dash .filter-form .filter-dates {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.85rem 1rem;
+}
+
+.dash .filter-form .filter-field {
+    flex: 1 1 220px;
+    min-width: 0;
+}
+
+.dash .filter-form .filter-field .filter-label {
+    display: block;
+    margin: 0 0 0.35rem;
+}
+
+.dash .filter-form .filter-control {
+    min-height: 2.9rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 11px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+.dash .filter-form .filter-control:hover {
+    border-color: #b9d6f6;
+}
+
+.dash .filter-form .filter-control:focus {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+/* ---- actions ---------------------------------------------------------- */
+
+.dash .filter-form .filter-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+.dash .filter-form .filter-actions .btn {
+    border-radius: 11px;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.86rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: none;
+    transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease, background-color 0.14s ease;
+}
+
+.dash .filter-form .filter-actions .btn-primary {
+    border: 0;
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    color: #ffffff;
+    box-shadow: 0 10px 22px rgba(10, 95, 230, 0.24);
+}
+
+.dash .filter-form .filter-actions .btn-primary:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 12px 26px rgba(10, 95, 230, 0.3);
+    transform: translateY(-1px);
+}
+
+.dash .filter-form .filter-actions .btn-secondary {
+    border: 1px solid #d6e6f8;
+    background: #ffffff;
+    color: #33578a;
+}
+
+.dash .filter-form .filter-actions .btn-secondary:hover {
+    border-color: #b9d6f6;
+    background: #f4f9ff;
+    color: #0a5fe6;
+}
+
+/* restricted users get the hidden branch field only - keep the row tidy */
+.dash .filter-form > input[type="hidden"] {
+    display: none;
+}
+
+@media (max-width: 767.98px) {
+    .dash .filter-form .filter-section {
+        width: 100%;
+        align-self: stretch;
+    }
+
+    .dash .filter-form .filter-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.4rem;
+        width: 100%;
+    }
+
+    .dash .filter-form .branch-filter-dropdown {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .dash .filter-form .branch-filter-dropdown .form-select {
+        width: 100%;
+    }
+
+    .dash .filter-form .filter-field {
+        flex: 1 1 100%;
+    }
+
+    .dash .filter-form .filter-actions {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .dash .filter-form .filter-actions .btn {
+        flex: 1 1 auto;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .dash .dash-card__head {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        row-gap: 0.75rem;
+    }
+
+    .dash .dash-card__head > div:not(.filter-buttons) {
+        flex: 1 1 0%;
+        min-width: 0;
+    }
+
+    .dash .dash-card__title {
+        overflow-wrap: anywhere;
+    }
+}
+
+/* ==========================================================================
+   Attendance table pager - right aligned, centred on mobile
+   ========================================================================== */
+
+.dash .datatable-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin: 0.9rem 0 0;
+    padding: 0.9rem 0 0;
+    border-top: 1px solid #f1f6fd;
+}
+
+.dash .datatable-info {
+    margin-right: auto;
+    color: #7b93b3;
+    font-size: 0.78rem;
+}
+
+.dash .datatable-pagination {
+    flex: 0 0 auto;
+    margin: 0 0 0 auto;
+    width: auto;
+}
+
+.dash .datatable-pagination ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.dash .datatable-pagination .datatable-pagination-list-item-link {
+    display: grid;
+    place-items: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    border: 1px solid #e6f0fb;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #33578a !important;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dash .datatable-pagination .datatable-pagination-list-item-link:hover {
+    border-color: #c2daf5;
+    background: #f4f9ff;
+    color: #0a5fe6 !important;
+}
+
+.dash .datatable-pagination .datatable-pagination-list-item.datatable-active .datatable-pagination-list-item-link {
+    border-color: transparent;
+    background: linear-gradient(135deg, #0a5fe6, #1b7bf2);
+    color: #ffffff !important;
+}
+
+@media (max-width: 767.98px) {
+    .dash .datatable-bottom {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .dash .datatable-info {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+
+    .dash .datatable-pagination {
+        width: 100%;
+        margin: 0.35rem 0 0;
+    }
+
+    .dash .datatable-pagination ul {
+        justify-content: center;
+    }
+}
+
+/* ==========================================================================
+   Mobile - no inner scrolling, tidy card heads
+   ========================================================================== */
+
+@media (max-width: 991.98px) {
+    .dash .dash-card__head {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        row-gap: 0.75rem;
+    }
+
+    .dash .dash-card__head > div:not(.dash-head__actions) {
+        flex: 1 1 0%;
+        min-width: 0;
+    }
+
+    .dash .dash-card__title {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.4rem;
+        overflow-wrap: anywhere;
+    }
+
+    .dash .dash-card__title .badge {
+        font-size: 0.62rem;
+        font-weight: 600;
+        padding: 0.3em 0.6em;
+        margin: 0 !important;
+    }
+
+    .dash .dash-card__head .dash-head__actions {
+        flex: 1 1 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 0 !important;
+    }
+
+    .dash .dash-card__head .dash-head__actions .btn {
+        flex: 1 1 0;
+        justify-content: center;
+        text-align: center;
+        white-space: nowrap;
+        font-size: 0.78rem;
+        padding: 0.5rem 0.65rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* the card body must not scroll - the page scrolls instead */
+    .dash .card-body {
+        overflow: visible;
+        max-height: none;
+    }
+
+    .dash .card-body .table-responsive {
+        max-height: none !important;
+        overflow-x: auto;
+        overflow-y: visible;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .dash .dash-card__head .dash-head__actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .dash .dash-card__head .dash-head__actions .btn {
+        flex: 1 1 auto;
+        width: 100%;
+        white-space: normal;
+    }
+}
+
+/* ==========================================================================
+   Attendance Records - status badges
+   ========================================================================== */
+
+.dash-card #attendanceTable .status-badge,
+.dash-card .status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 74px;
+    padding: 0.32em 0.75em;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1.25;
+    white-space: nowrap;
+}
+
+.dash-card .status-badge.badge-present {
+    background: #e8f7e1 !important;
+    border-color: #c4e9b4;
+    color: #177407 !important;
+}
+
+.dash-card .status-badge.badge-halfday {
+    background: #fff4e5 !important;
+    border-color: #ffd9a8;
+    color: #a76100 !important;
+}
+
+.dash-card .status-badge.badge-absent {
+    background: #fdeceb !important;
+    border-color: #f7c9c4;
+    color: #c0392b !important;
+}
+
+.dash-card .status-badge.badge-late {
+    background: #fff8e6 !important;
+    border-color: #ffe1a8;
+    color: #8a5b00 !important;
+}
+
+/* fallback for any other status text */
+.dash-card .status-badge:empty {
+    display: none;
+}

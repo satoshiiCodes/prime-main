@@ -1,0 +1,703 @@
+/* ==========================================================================
+   Prime City - Collector reports styles
+   Page-level styles for collector_reports.php. Global SB Admin styles stay
+   in css/styles.css; layout chrome lives in includes/.
+   Follows docs/ui-conventions.md.
+   ========================================================================== */
+
+/* ==========================================================================
+   Branch filter chip / hidden branch note
+   ========================================================================== */
+
+.dash-card .filter-section {
+    display: inline-flex;
+    max-width: 100%;
+    align-items: center;
+    margin: 0 0 1rem;
+    padding: 0.45rem 0.6rem 0.45rem 0.95rem;
+    border: 1px solid #e8f1fc;
+    border-radius: 13px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f7fbff 100%);
+}
+
+.dash-card .filter-section .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 0;
+}
+
+.dash-card .filter-section .filter-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0;
+    color: #7b93b3;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.dash-card .filter-section .filter-label i {
+    color: #0a5fe6;
+    font-size: 0.66rem;
+}
+
+.dash-card .filter-section .branch-filter-dropdown {
+    min-width: 210px;
+}
+
+.dash-card .filter-section .form-select {
+    min-height: 2.5rem;
+    padding: 0.35rem 2.1rem 0.35rem 0.8rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #0d3b7a;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.dash-card .filter-section .form-select:focus {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.13);
+}
+
+.dash-card .hidden-branch-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0 0 1rem;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid #eaf2fd;
+    border-radius: 11px;
+    background: #f7fbff;
+    color: #33578a;
+    font-size: 0.82rem;
+}
+
+.dash-card .hidden-branch-info strong {
+    color: #8aa8c8;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Filter row: collector / report type / date + action
+   ========================================================================== */
+
+.dash-card .log-filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.85rem 1rem;
+    margin: 0 !important;
+}
+
+.dash-card .log-filter .filter-field {
+    flex: 1 1 180px;
+    min-width: 0;
+}
+
+.dash-card .log-filter .filter-field[style*="display:none"],
+.dash-card .log-filter #date_field[style*="display:none"] {
+    display: none !important;
+}
+
+.dash-card .log-filter .filter-field .filter-label {
+    display: block;
+    margin: 0 0 0.35rem;
+    color: #7b93b3;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.dash-card .log-filter .form-control,
+.dash-card .log-filter .form-select {
+    min-height: 2.9rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 11px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+.dash-card .log-filter .form-control:hover,
+.dash-card .log-filter .form-select:hover {
+    border-color: #b9d6f6;
+}
+
+.dash-card .log-filter .form-control:focus,
+.dash-card .log-filter .form-select:focus {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+.dash-card .log-filter .filter-actions {
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+.dash-card .log-filter .filter-actions .btn {
+    border: 0;
+    border-radius: 11px;
+    padding: 0.7rem 1.4rem;
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    color: #ffffff;
+    font-size: 0.86rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 10px 22px rgba(10, 95, 230, 0.24);
+    transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease;
+}
+
+.dash-card .log-filter .filter-actions .btn:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 12px 26px rgba(10, 95, 230, 0.3);
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Summary + KPI cards
+   ========================================================================== */
+
+.report-card {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+    border: 1px solid #eaf2fd;
+    border-radius: 16px;
+    background: #ffffff !important;
+    box-shadow: 0 10px 28px rgba(10, 61, 156, 0.06);
+    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.report-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: #0a5fe6;
+}
+
+.report-card:hover {
+    transform: translateY(-2px);
+    border-color: #dcebfb;
+    box-shadow: 0 14px 34px rgba(10, 61, 156, 0.1);
+}
+
+.report-card .card-body {
+    padding: 1.1rem 1.25rem 1.15rem;
+}
+
+.report-card .card-title {
+    margin: 0 0 0.5rem;
+    color: #8aa8c8;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.35;
+}
+
+.report-card h2 {
+    margin: 0 0 0.25rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.15;
+    font-variant-numeric: tabular-nums;
+}
+
+.report-card h4 {
+    margin: 0 0 0.25rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+}
+
+.report-card p.text-muted {
+    margin: 0;
+    color: #8aa8c8 !important;
+    font-size: 0.76rem;
+}
+
+/* value colours follow the metric */
+.report-card--collected h2    { color: #177407; }
+.report-card--financed h2     { color: #0a5fe6; }
+.report-card--transactions h2 { color: #0d3b7a; }
+
+.report-card--savings h4   { color: #177407; }
+.report-card--withdrawal h4 { color: #c0392b; }
+.report-card--cash h4       { color: #8a5b00; }
+
+/* accents */
+.report-card--collected::before    { background: #3ba602; }
+.report-card--financed::before     { background: #0a5fe6; }
+.report-card--transactions::before { background: #072a5e; }
+.report-card--savings::before      { background: #20a37a; }
+.report-card--withdrawal::before   { background: #c0392b; }
+.report-card--cash::before         { background: #f0b429; }
+
+/* the report summary is a detail list, not a KPI */
+.report-card.report-summary::before {
+    background: #0099fa;
+}
+
+.report-card.report-summary .card-title {
+    margin-bottom: 0.75rem;
+}
+
+.report-card.report-summary .row > div p {
+    margin: 0 0 0.45rem;
+    color: #33578a;
+    font-size: 0.82rem;
+    line-height: 1.4;
+}
+
+.report-card.report-summary .row > div:first-child p {
+    color: #8aa8c8;
+    font-weight: 600;
+}
+
+.report-card.report-summary .row > div:last-child p {
+    color: #0d3b7a;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   Detail table
+   ========================================================================== */
+
+.dash-card .table-responsive {
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+}
+
+.dash-card .report-table {
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.78rem;
+}
+
+.dash-card .report-table thead th {
+    padding: 0.65rem 0.7rem;
+    border: 0;
+    border-bottom: 1px solid #eaf2fd;
+    background: #f7fbff;
+    color: #8aa8c8;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.dash-card .report-table tbody td {
+    padding: 0.55rem 0.7rem;
+    border: 0;
+    border-bottom: 1px solid #f1f6fd;
+    color: #33578a;
+    vertical-align: middle;
+    font-variant-numeric: tabular-nums;
+}
+
+.dash-card .report-table tbody tr:nth-child(even) td {
+    background: #fcfdff;
+}
+
+.dash-card .report-table tbody tr:hover td {
+    background: #f9fcff;
+}
+
+.dash-card .report-table tbody tr:nth-child(even):hover td {
+    background: #f4f9ff;
+}
+
+.dash-card .report-table tfoot td {
+    padding: 0.7rem;
+    border-top: 1px solid #eaf2fd;
+    border-bottom: 0;
+    background: #f2f8ff !important;
+    color: #0d3b7a;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   Notices
+   ========================================================================== */
+
+.dash-card .duplicate-warning,
+.dash .debug-alert {
+    margin: 0 0 1rem;
+    padding: 0.85rem 1.05rem;
+    border: 1px solid #ffe1a8;
+    border-left: 3px solid #f0b429;
+    border-radius: 12px;
+    background: #fff8e6;
+    color: #8a5b00;
+    font-size: 0.82rem;
+}
+
+.dash-card .notice-info,
+.dash .notice-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 1rem;
+    padding: 0.85rem 1.05rem;
+    border: 1px solid #e3eefc;
+    border-left: 3px solid #0a5fe6;
+    border-radius: 12px;
+    background: #f6faff;
+    color: #33578a;
+    font-size: 0.84rem;
+}
+
+.dash .notice-info i {
+    color: #0a5fe6;
+}
+
+/* ==========================================================================
+   Simple-datatables chrome
+   ========================================================================== */
+
+.dash-card .datatable-top {
+    display: none !important;
+}
+
+.dash-card .datatable-container {
+    border: 0;
+}
+
+.dash-card .datatable-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin: 0.9rem 0 0;
+    padding: 0.9rem 0 0;
+    border-top: 1px solid #f1f6fd;
+}
+
+.dash-card .datatable-info {
+    margin-right: auto;
+    color: #7b93b3;
+    font-size: 0.78rem;
+}
+
+.dash-card .datatable-pagination {
+    flex: 0 0 auto;
+    margin: 0 0 0 auto;
+    width: auto;
+}
+
+.dash-card .datatable-pagination ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.dash-card .datatable-pagination-list-item-link {
+    display: grid;
+    place-items: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    border: 1px solid #e6f0fb;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #33578a !important;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dash-card .datatable-pagination-list-item-link:hover {
+    border-color: #c2daf5;
+    background: #f4f9ff;
+    color: #0a5fe6 !important;
+}
+
+.dash-card .datatable-pagination-list-item.datatable-active .datatable-pagination-list-item-link {
+    border-color: transparent;
+    background: linear-gradient(135deg, #0a5fe6, #1b7bf2);
+    color: #ffffff !important;
+}
+
+/* ==========================================================================
+   Mobile
+   ========================================================================== */
+
+@media (max-width: 991.98px) {
+    .dash .dash-card__head {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        row-gap: 0.75rem;
+    }
+
+    .dash .dash-card__head > div:not(.dash-head__actions) {
+        flex: 1 1 0%;
+        min-width: 0;
+    }
+
+    .dash .dash-card__title {
+        overflow-wrap: anywhere;
+    }
+
+    .report-card h2 {
+        font-size: 1.32rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* the page scrolls, cards don't */
+    .dash .card-body {
+        overflow: visible;
+        max-height: none;
+    }
+
+    .dash-card .filter-section {
+        display: flex;
+        width: 100%;
+        align-self: stretch;
+    }
+
+    .dash-card .filter-section .filter-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.45rem;
+        width: 100%;
+    }
+
+    .dash-card .filter-section .branch-filter-dropdown {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .dash-card .filter-section .form-select {
+        width: 100%;
+    }
+
+    .dash-card .log-filter {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .dash-card .log-filter .filter-field {
+        flex: 1 1 100%;
+    }
+
+    .dash-card .log-filter .filter-actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .dash-card .log-filter .filter-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* table footer centred */
+    .dash-card .datatable-bottom {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .dash-card .datatable-info {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+
+    .dash-card .datatable-pagination {
+        width: 100%;
+        margin: 0.35rem 0 0;
+    }
+
+    .dash-card .datatable-pagination ul {
+        justify-content: center;
+    }
+}
+
+/* ==========================================================================
+   KPI grid balance
+   ========================================================================== */
+
+@media (max-width: 1199.98px) {
+    .dash .row.mb-4 > .col-md-4,
+    .dash .row.mb-4 > .col-md-3,
+    .dash .row.mb-4 > .col-md-2 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .dash .row.mb-4 > .col-md-4,
+    .dash .row.mb-4 > .col-md-3,
+    .dash .row.mb-4 > .col-md-2 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* ==========================================================================
+   Collector dropdown - Select2 (searchable, three lines)
+   ========================================================================== */
+
+.dash-card .select2-container--default .select2-selection--single {
+    height: 2.9rem !important;
+    padding: 0 2.4rem 0 0.95rem !important;
+    border: 1px solid #d6e6f8 !important;
+    border-radius: 11px !important;
+    background: #fbfdff !important;
+    display: flex;
+    align-items: center;
+}
+
+.dash-card .select2-container--default .select2-selection--single .select2-selection__rendered {
+    padding: 0 !important;
+    color: #0d3b7a !important;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.3 !important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.dash-card .select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: #a9c1dc !important;
+}
+
+.dash-card .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 100% !important;
+    right: 0.7rem !important;
+    top: 0 !important;
+}
+
+.dash-card .select2-container--default.select2-container--focus .select2-selection--single,
+.dash-card .select2-container--default.select2-container--open .select2-selection--single {
+    border-color: #0a5fe6 !important;
+    background: #ffffff !important;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14) !important;
+}
+
+body > .select2-container .select2-dropdown {
+    z-index: 1061;
+    margin-top: 0.35rem;
+    border: 1px solid #dbe8f8 !important;
+    border-radius: 14px !important;
+    box-shadow: 0 18px 40px rgba(4, 16, 32, 0.16) !important;
+    overflow: hidden;
+}
+
+body > .select2-container .select2-search--dropdown {
+    padding: 0.65rem 0.65rem 0.45rem !important;
+}
+
+body > .select2-container .select2-search--dropdown .select2-search__field {
+    height: 2.5rem !important;
+    padding: 0.4rem 0.85rem 0.4rem 2.3rem !important;
+    border: 1px solid #d6e6f8 !important;
+    border-radius: 10px !important;
+    background: #fbfdff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%238aa8c8'%3E%3Cpath d='M416 208c0 45.9-14.9 88.3-40 122.7l126.6 126.7c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z'/%3E%3C/svg%3E") no-repeat 0.8rem center / 0.85rem !important;
+    font-size: 0.86rem !important;
+    outline: none !important;
+}
+
+body > .select2-container .select2-search--dropdown .select2-search__field:focus {
+    border-color: #0a5fe6 !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.12) !important;
+}
+
+body > .select2-container .select2-results__options {
+    padding: 0.25rem 0.4rem 0.45rem !important;
+    max-height: 320px !important;
+}
+
+body > .select2-container .select2-results__option {
+    padding: 0.55rem 0.65rem !important;
+    border-radius: 10px !important;
+    font-size: 0.86rem;
+}
+
+body > .select2-container .select2-results__option--highlighted[aria-selected] {
+    background: #eef6ff !important;
+    color: inherit !important;
+}
+
+body > .select2-container .select2-results__option[aria-selected="true"] {
+    background: #f7fbff !important;
+}
+
+/* the selected value keeps one line */
+.dash-card .select2-selection--single .pc-opt {
+    display: block;
+}
+
+.dash-card .select2-selection--single .pc-opt__meta {
+    display: none;
+}
+
+/* three-line option rows */
+.pc-opt {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.15rem 0;
+    line-height: 1.35;
+}
+
+.pc-opt__name {
+    color: #0d3b7a;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.pc-opt__meta {
+    color: #8aa8c8;
+    font-size: 0.74rem;
+    font-weight: 500;
+}
+
+.select2-results__option--highlighted[aria-selected] .pc-opt__name {
+    color: #0a5fe6;
+}
+
+.select2-results__option--highlighted[aria-selected] .pc-opt__meta {
+    color: #6d86a6;
+}

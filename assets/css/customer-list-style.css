@@ -1,0 +1,859 @@
+/* ==========================================================================
+   Prime City - Customer list styles
+   Page-level styles for customer_list.php. Global SB Admin styles stay in
+   css/styles.css; layout chrome lives in includes/topbar.php and
+   includes/sidebar.php.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Table actions
+   -------------------------------------------------------------------------- */
+.action-buttons {
+    white-space: nowrap;
+    width: 1%;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    margin: 1px;
+}
+
+.action-buttons .btn {
+    display: inline-block;
+    margin: 1px;
+}
+
+.action-buttons-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   Toasts and modals
+   -------------------------------------------------------------------------- */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1100;
+}
+
+.modal-body {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.required-field::after {
+    content: " *";
+    color: red;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; height: auto; }
+    to { opacity: 0; height: 0; padding: 0; margin: 0; border: none; }
+}
+
+/* --------------------------------------------------------------------------
+   Profile images
+   -------------------------------------------------------------------------- */
+.profile-image-container {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.profile-image-preview {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+.file-upload-label {
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+    color: #0d6efd;
+    text-decoration: underline;
+}
+
+.file-upload-label:hover {
+    color: #0a58ca;
+}
+
+.no-image-placeholder {
+    width: 150px;
+    height: 150px;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #ddd;
+    margin: 0 auto;
+}
+
+.customer-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.customer-image:hover {
+    transform: scale(1.05);
+    border-color: #0d6efd;
+}
+
+.no-image-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    color: #6c757d;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.no-image-icon:hover {
+    transform: scale(1.05);
+}
+
+/* Center the content in the profile column */
+td:first-child {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Image view modal */
+#fullSizeImage {
+    max-height: 80vh;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   Payment history
+   -------------------------------------------------------------------------- */
+.payment-item {
+    border-left: 4px solid #0d6efd;
+    margin-bottom: 15px;
+}
+
+.payment-item.paid {
+    border-left-color: #198754;
+}
+
+.payment-item.overdue {
+    border-left-color: #dc3545;
+}
+
+.payment-item.pending {
+    border-left-color: #ffc107;
+}
+
+.payment-details {
+    font-size: 0.9rem;
+}
+
+.payment-amount {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* --------------------------------------------------------------------------
+   Requirements
+   -------------------------------------------------------------------------- */
+.requirements-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.requirement-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.requirement-item:last-child {
+    border-bottom: none;
+}
+
+.requirement-name {
+    flex: 1;
+    margin-right: 15px;
+    word-break: break-word;
+}
+
+.download-requirement-btn {
+    white-space: nowrap;
+}
+
+.requirement-file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    margin-bottom: 8px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+.requirement-file-name {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.requirement-actions {
+    white-space: nowrap;
+}
+
+.new-requirements-container {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+/* --------------------------------------------------------------------------
+   Status badge
+   -------------------------------------------------------------------------- */
+.status-badge {
+    font-size: 0.75rem;
+    padding: 0.35em 0.65em;
+}
+
+/* --------------------------------------------------------------------------
+   Filters and search
+   -------------------------------------------------------------------------- */
+.filter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    float: left;
+}
+
+.filter-label {
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.filter-select {
+    width: auto;
+    display: inline-block;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    float: right;
+}
+
+.search-input {
+    width: 230px;
+}
+
+.search-clear-btn {
+    margin-left: 5px;
+}
+
+/* Secondary action (Cancel / Close): neutral, not a warning colour. */
+.btn-outline-secondary {
+    color: #33578a;
+    background-color: #eef4fc;
+    border-color: #eef4fc;
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus {
+    color: #0d3b7a;
+    background-color: #e2edfa;
+    border-color: #d6e6f8;
+}
+
+/* --------------------------------------------------------------------------
+   Empty state
+   -------------------------------------------------------------------------- */
+.no-results-container {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.no-results-icon {
+    font-size: 3rem;
+    color: #6c757d;
+    margin-bottom: 15px;
+}
+
+/* --------------------------------------------------------------------------
+   Password fields
+   -------------------------------------------------------------------------- */
+.password-toggle {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: none;
+    border: none;
+    color: #6c757d;
+    padding: 5px;
+}
+
+.password-input-group {
+    position: relative;
+}
+
+.password-input-group .form-control {
+    padding-right: 40px;
+}
+
+.password-section-disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Misc
+   -------------------------------------------------------------------------- */
+.btn-new-loan {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+    color: white;
+}
+
+.btn-new-loan:hover {
+    background-color: #5a2d91;
+    border-color: #5a2d91;
+    color: white;
+}
+
+.table-loading {
+    text-align: center;
+    padding: 20px;
+}
+
+.collector-restricted {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.customer-area {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-top: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Dashboard-style card: table chrome, avatars, toolbar alignment
+   The frame itself (.dash, .dash-head, .stat, .dash-card, .dash-toolbar)
+   lives in assets/css/dash.css and is shared with dashboard.php.
+   -------------------------------------------------------------------------- */
+
+/* Tighter lead-in between the toolbar and the table. */
+.dash-card__body {
+    padding-top: 0.85rem;
+}
+
+/* No per-page bar: rows per page is fixed, pagination stays at the bottom. */
+.dash-card__body .datatable-top {
+    display: none !important;
+}
+
+/* simple-datatables chrome */
+.dash-card__body .datatable-top,
+.dash-card__body .datatable-bottom {
+    padding: 0.5rem 0;
+}
+
+.dash-card__body .datatable-dropdown label,
+.dash-card__body .datatable-info {
+    color: #5b7699;
+    font-size: 0.82rem;
+}
+
+.dash-card__body .datatable-selector,
+.dash-card__body .datatable-input {
+    border: 1px solid #d6e6f8;
+    border-radius: 8px;
+    color: #0d3b7a;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.5rem;
+}
+
+.dash-card__body .datatable-selector:focus,
+.dash-card__body .datatable-input:focus {
+    border-color: #0a5fe6;
+    box-shadow: 0 0 0 3px rgba(10, 95, 230, 0.14);
+    outline: none;
+}
+
+.dash-card__body .datatable-container {
+    border: 1px solid #eaf2fd;
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+.dash-card__body .datatable-table {
+    width: 100%;
+    margin: 0;
+    font-size: 0.875rem;
+}
+
+.dash-card__body .datatable-table > thead > tr > th {
+    background: #fbfdff;
+    border-bottom: 1px solid #e3eefb;
+    color: #5b7699;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 0.7rem 0.75rem;
+}
+
+.dash-card__body .datatable-table > tbody > tr > td {
+    border-color: #eef4fc;
+    padding: 0.65rem 0.75rem;
+    vertical-align: middle;
+    color: #33578a;
+}
+
+.dash-card__body .datatable-table > tbody > tr:hover > td {
+    background: #f6faff;
+}
+
+.dash-card__body .datatable-table > tbody > tr > td:first-child {
+    color: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   Pager: "Showing x to y of z" on the left, numbered pages on the right
+   Markup comes from simple-datatables:
+     .datatable-bottom > .datatable-info + nav.datatable-pagination > ul > li > a
+   -------------------------------------------------------------------------- */
+
+.dash-card__body .datatable-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1rem 0 0.15rem;
+    border-top: 1px solid #eaf2fd;
+    margin-top: 0.75rem;
+}
+
+.dash-card__body .datatable-info {
+    color: #7b93b3;
+    font-size: 0.82rem;
+}
+
+.dash-card__body .datatable-pagination {
+    margin-left: auto;
+}
+
+.dash-card__body .datatable-pagination-list {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.dash-card__body .datatable-pagination-list-item {
+    list-style: none;
+    margin: 0;
+}
+
+.dash-card__body .datatable-pagination-list-item-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.25rem;
+    height: 2.25rem;
+    padding: 0 0.6rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #43678f;
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.dash-card__body .datatable-pagination-list-item-link:hover,
+.dash-card__body .datatable-pagination-list-item-link:focus-visible {
+    background: #f2f8ff;
+    border-color: #c2daf5;
+    color: #0a5fe6;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(10, 95, 230, 0.12);
+}
+
+/* Current page */
+.dash-card__body .datatable-pagination-list-item.datatable-active .datatable-pagination-list-item-link {
+    background: linear-gradient(135deg, #0a5fe6 0%, #0099fa 100%);
+    border-color: transparent;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(10, 95, 230, 0.28);
+}
+
+/* Hidden items collapse (disabled arrows); the "?" gap stays visible. */
+.dash-card__body .datatable-pagination-list-item.datatable-hidden {
+    display: none;
+}
+
+.dash-card__body .datatable-pagination-list-item.datatable-disabled .datatable-pagination-list-item-link {
+    min-width: 1.5rem;
+    padding: 0 0.25rem;
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+    color: #8aa8c8;
+    cursor: default;
+    pointer-events: none;
+}
+
+@media (max-width: 575.98px) {
+    .dash-card__body .datatable-bottom {
+        justify-content: center;
+        gap: 0.65rem;
+    }
+
+    .dash-card__body .datatable-pagination {
+        margin-left: 0;
+    }
+
+    .dash-card__body .datatable-pagination-list-item-link {
+        min-width: 2rem;
+        height: 2rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Avatar: placeholder icon underneath, photo on top when it loads
+   -------------------------------------------------------------------------- */
+
+.customer-avatar {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f1f7ff;
+}
+
+.customer-avatar .no-image-icon {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: #f1f7ff;
+    color: #8aa8c8;
+}
+
+.customer-avatar .customer-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.customer-avatar .customer-image:hover {
+    transform: none;
+    box-shadow: inset 0 0 0 2px #0a5fe6;
+}
+
+/* Status pill reads better at table density. */
+.dash-card__body .status-badge {
+    border-radius: 999px;
+    padding: 0.35em 0.75em;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* Action buttons sit in a tidy row. */
+.dash-card__body .action-buttons-container {
+    display: flex;
+    gap: 0.3rem;
+    flex-wrap: nowrap;
+}
+
+.dash-card__body .action-buttons-container .btn {
+    border-radius: 8px;
+    padding: 0.32rem 0.55rem;
+    line-height: 1;
+}
+
+/* ==========================================================================
+   Edit Customer modal
+   Card-style dialog with a gradient header, sectioned scrollable body and a
+   sticky action bar. Field styling matches the registration form.
+   ========================================================================== */
+
+.pc-modal .modal-dialog {
+    max-width: 62rem;
+}
+
+.pc-modal .modal-content.pc-modal__content {
+    border: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 70px rgba(10, 61, 156, 0.26), 0 4px 14px rgba(10, 61, 156, 0.1);
+}
+
+/* ---- header ------------------------------------------------------------ */
+
+.pc-modal__head {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1.1rem 1.35rem;
+    background: linear-gradient(135deg, var(--pc-blue-700, #0c3f8f) 0%, var(--pc-blue-600, #0a5fe6) 100%);
+    color: #ffffff;
+}
+
+.pc-modal__icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.18);
+    font-size: 0.95rem;
+}
+
+.pc-modal__heading {
+    min-width: 0;
+}
+
+.pc-modal__head .modal-title {
+    margin: 0;
+    font-size: 1.02rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.pc-modal__sub {
+    margin: 0.15rem 0 0;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.pc-modal__close {
+    flex: 0 0 auto;
+    margin-left: auto;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.pc-modal__close:hover,
+.pc-modal__close:focus {
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    outline: none;
+}
+
+/* ---- body -------------------------------------------------------------- */
+
+/* Sections come from customer-registration-style.css (.form-section /
+   .section-title), the same blocks the registration modal renders. */
+.pc-modal__body {
+    padding: 0;
+    background: #fbfdff;
+}
+
+.pc-modal .section-title .section-note {
+    margin-left: auto;
+    color: #8aa8c8;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.pc-modal .modal-body {
+    scrollbar-width: thin;
+    scrollbar-color: #c2daf5 transparent;
+}
+
+.pc-modal .modal-body::-webkit-scrollbar {
+    width: 10px;
+}
+
+.pc-modal .modal-body::-webkit-scrollbar-thumb {
+    border: 3px solid transparent;
+    border-radius: 10px;
+    background-clip: content-box;
+    background-color: #c2daf5;
+}
+
+/* Requirements already on file. */
+#currentRequirementsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 0.5rem;
+}
+
+.requirement-file-item,
+.requirement-item {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid #eaf2fd;
+    border-radius: 10px;
+    background: #ffffff;
+    font-size: 0.82rem;
+    color: #33578a;
+}
+/* ---- footer ------------------------------------------------------------ */
+
+.pc-modal__foot {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6rem;
+    padding: 0.95rem 1.35rem;
+    border-top: 1px solid #eaf2fd;
+    background: #ffffff;
+}
+
+.pc-modal__foot .btn {
+    border-radius: 12px;
+    padding: 0.6rem 1.3rem;
+    font-weight: 600;
+}
+
+/* Scroll behaviour inside the scrollable dialog */
+.pc-modal .modal-body {
+    scrollbar-width: thin;
+    scrollbar-color: #c2daf5 transparent;
+}
+
+.pc-modal .modal-body::-webkit-scrollbar {
+    width: 10px;
+}
+
+.pc-modal .modal-body::-webkit-scrollbar-thumb {
+    border: 3px solid transparent;
+    border-radius: 10px;
+    background-clip: content-box;
+    background-color: #c2daf5;
+}
+
+@media (max-width: 767.98px) {
+    .pc-modal .modal-dialog {
+        margin: 0.75rem;
+    }
+
+    .pc-modal__foot {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .pc-modal__foot .btn {
+        width: 100%;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Table chrome aligned with the shared dash table (employee_lists.php)
+   The base stylesheet gives .datatable-table vertical cell borders; the dash
+   tables use hairlines only, a tinted header band and rounded header ends.
+   -------------------------------------------------------------------------- */
+
+.dash-card__body .datatable-container {
+    border: 0;
+    border-radius: 0;
+    overflow-x: auto;
+}
+
+.dash-card__body .datatable-table {
+    font-size: 0.84rem;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.dash-card__body .datatable-table > thead > tr > th {
+    background: #f4f9ff;
+    border: 0;
+    border-bottom: 1px solid #e6f0fb;
+    color: #6d86a6;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 0.6rem 0.65rem;
+}
+
+.dash-card__body .datatable-table > thead > tr > th:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.dash-card__body .datatable-table > thead > tr > th:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.dash-card__body .datatable-table > tbody > tr > td {
+    border: 0;
+    border-bottom: 1px solid #eff5fd;
+    padding: 0.65rem 0.65rem;
+    font-size: 0.84rem;
+    background: #ffffff;
+    vertical-align: middle;
+}
+
+.dash-card__body .datatable-table > tbody > tr:last-child > td {
+    border-bottom: 0;
+}
+
+.dash-card__body .datatable-table > tbody > tr:hover > td {
+    background: #f8fbff;
+}

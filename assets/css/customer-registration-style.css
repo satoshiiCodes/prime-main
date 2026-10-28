@@ -1,0 +1,476 @@
+/* ==========================================================================
+   Prime City - Customer registration styles
+
+   The page frame (header, card, icon head) is assets/css/dash.css, shared with
+   customer_list.php. This file only styles what lives inside the card: the form
+   sections, the fields, the upload widgets and the action bar.
+
+   Palette: logo blues #0a5fe6 / #0099fa, greens #3ba602 / #8fea08,
+   navy ink #0d3b7a. No black.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Form shell
+   -------------------------------------------------------------------------- */
+
+.dash-form__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 1.15rem 1.35rem;
+    border-top: 1px solid #eaf2fd;
+    background: #fbfdff;
+}
+
+.dash-form__actions .btn {
+    border-radius: 12px;
+    padding: 0.65rem 1.35rem;
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Sections
+   -------------------------------------------------------------------------- */
+
+.form-section {
+    padding: 1.4rem 1.35rem 0.6rem;
+    border-top: 1px solid #eaf2fd;
+}
+
+.form-section:first-of-type {
+    border-top: 0;
+    padding-top: 1.35rem;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0 0 1.1rem;
+    padding: 0;
+    border: 0;
+    color: #0d3b7a;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.section-title::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #3ba602;
+    flex: 0 0 auto;
+}
+
+.address-title,
+.address-section .address-title {
+    margin: 0.25rem 0 0.75rem;
+    color: #33578a;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Fields
+   -------------------------------------------------------------------------- */
+
+.dash-form .form-floating {
+    margin-bottom: 0;
+}
+
+.dash-form .form-control,
+.dash-form .form-select {
+    border: 1px solid #d6e6f8;
+    border-radius: 12px;
+    color: #0d3b7a;
+    font-size: 0.95rem;
+}
+
+.dash-form .form-control {
+    min-height: 3.1rem;
+    background: #fbfdff;
+}
+
+.dash-form .form-select {
+    background-color: #fbfdff;
+}
+
+.dash-form .form-control:hover,
+.dash-form .form-select:hover {
+    border-color: #c2daf5;
+}
+
+.dash-form .form-control:focus,
+.dash-form .form-select:focus {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+.dash-form .form-floating > label {
+    color: #6d86a6;
+    font-size: 0.92rem;
+}
+
+.dash-form .form-text,
+.dash-form small {
+    color: #7b93b3;
+}
+
+.dash-form .form-check-input:checked {
+    background-color: #0a5fe6;
+    border-color: #0a5fe6;
+}
+
+.dash-form .form-check-input:focus {
+    box-shadow: 0 0 0 3px rgba(10, 95, 230, 0.16);
+    border-color: #0a5fe6;
+}
+
+.required-field::after {
+    content: " *";
+    color: #b5342c;
+}
+
+.disabled-field {
+    background-color: #eef4fc !important;
+    opacity: 1;
+}
+
+/* Read-only fields read as information, not input. */
+.dash-form .form-control[readonly] {
+    background-color: #eef4fc;
+    color: #43678f;
+}
+
+/* --------------------------------------------------------------------------
+   Password reveal
+   -------------------------------------------------------------------------- */
+
+.password-container {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 0.9rem;
+    transform: translateY(-50%);
+    color: #8aa8c8;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.16s ease;
+}
+
+.password-toggle:hover {
+    color: #0a5fe6;
+}
+
+/* --------------------------------------------------------------------------
+   Upload zones (profile photo, requirements)
+   -------------------------------------------------------------------------- */
+
+.dash-form .upload__label {
+    display: block;
+    margin-bottom: 0.55rem;
+    color: #33578a;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.dash-form .upload {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    min-height: 9.6rem;
+    padding: 1.3rem 1rem;
+    border: 1.5px dashed #c2daf5;
+    border-radius: 16px;
+    background: #f8fbff;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+}
+
+.dash-form .upload:hover {
+    border-color: #8fbdf2;
+    background: #f4f9ff;
+}
+
+.dash-form .upload:focus-within {
+    border-color: #0a5fe6;
+    background: #f2f8ff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.12);
+}
+
+.dash-form .upload.is-dragover {
+    border-color: #3ba602;
+    background: #f4fcee;
+    box-shadow: 0 0 0 4px rgba(59, 166, 2, 0.16);
+}
+
+/* The real input stays reachable for the label, the keyboard and JS. */
+.dash-form .upload__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.dash-form .upload__icon {
+    display: grid;
+    place-items: center;
+    width: 2.7rem;
+    height: 2.7rem;
+    margin-bottom: 0.15rem;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #e8f2ff, #d6e9ff);
+    color: #0a5fe6;
+    font-size: 1.05rem;
+}
+
+.dash-form .upload__title {
+    color: #0d3b7a;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.dash-form .upload__hint {
+    color: #7b93b3;
+    font-size: 0.78rem;
+}
+
+/* Profile photo: a centred block directly under the section title. */
+.dash-form .profile-upload {
+    max-width: 22rem;
+    margin: 0 auto 1.4rem;
+    text-align: center;
+}
+
+.dash-form .profile-upload .upload {
+    min-height: 10.5rem;
+}
+
+.dash-form .profile-upload .upload__meta {
+    justify-content: center;
+    gap: 0.65rem;
+}
+
+.dash-form .profile-upload .upload__clear {
+    margin-left: 0;
+}
+
+.dash-form .profile-upload .upload__name {
+    flex: 0 1 auto;
+}
+
+/* Chosen state: the zone turns solid green and the preview takes over. */
+.dash-form .upload.has-file {
+    border-style: solid;
+    border-color: #b7e59a;
+    background: #f8fdf4;
+}
+
+.dash-form .upload.has-file .upload__icon {
+    background: linear-gradient(135deg, #ebf9df, #d5f3bd);
+    color: #2f8a06;
+}
+
+.dash-form .upload.has-file.is-photo .upload__icon,
+.dash-form .upload.has-file.is-photo .upload__title,
+.dash-form .upload.has-file.is-photo .upload__hint {
+    display: none;
+}
+
+/* Profile photo preview: a round avatar inside the zone. */
+.dash-form .upload.has-file .preview-image {
+    display: block;
+}
+
+.dash-form .preview-image {
+    display: none;
+    width: 6.2rem;
+    height: 6.2rem;
+    margin: 0.15rem auto 0.2rem;
+    border: 3px solid #b7e59a;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #ffffff;
+}
+
+.dash-form .upload__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 1.4rem;
+    margin-top: 0.5rem;
+}
+
+.dash-form .upload__name {
+    min-width: 0;
+    overflow: hidden;
+    color: #7b93b3;
+    font-size: 0.79rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dash-form .upload.has-file + .upload__meta .upload__name,
+.dash-form .upload__meta .upload__name.is-set {
+    color: #2f6ab5;
+}
+
+.dash-form .upload__clear {
+    flex: 0 0 auto;
+    margin-left: auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #b5342c;
+    font-size: 0.79rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.dash-form .upload__clear[hidden] {
+    display: none;
+}
+
+.dash-form .upload__clear:hover {
+    text-decoration: underline;
+}
+
+/* Selected requirement chips */
+
+.dash-form .file-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 0.65rem;
+}
+
+.dash-form .file-item {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid #eaf2fd;
+    border-radius: 11px;
+    background: #f8fbff;
+    color: #33578a;
+    font-size: 0.82rem;
+}
+
+.dash-form .file-item__icon {
+    flex: 0 0 auto;
+    color: #0a5fe6;
+    font-size: 0.9rem;
+}
+
+.dash-form .file-item__name {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dash-form .file-item__size {
+    flex: 0 0 auto;
+    color: #8aa8c8;
+    font-size: 0.74rem;
+}
+
+.dash-form .remove-file {
+    flex: 0 0 auto;
+    color: #b5342c;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.dash-form .remove-file:hover {
+    color: #8f2620;
+}
+
+@media (max-width: 767.98px) {
+    .dash-form .upload {
+        min-height: 8.4rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Inline feedback
+   -------------------------------------------------------------------------- */
+
+.contact-number-error {
+    display: none;
+    margin-top: 0.3rem;
+    color: #b5342c;
+    font-size: 0.82rem;
+}
+
+/* Live username availability hint (injected by customer-registration.js) */
+#usernameAvailability {
+    display: block;
+    margin-top: 0.25rem;
+}
+
+/* Date helper text */
+.date-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #6c757d;
+}
+
+.date-input {
+    padding-left: 85px;
+}
+
+/* keep the old helper class harmless now that sections are padded */
+.registration-card {
+    max-width: none;
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 767.98px) {
+    .form-section {
+        padding: 1.15rem 1rem 0.4rem;
+    }
+
+    .dash-form__actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        padding: 1rem;
+    }
+
+    .dash-form__actions .btn {
+        width: 100%;
+    }
+}
+
+/* Floated labels sit inside the field: no body-background mask. */
+.dash-form .form-floating > label::after {
+    background-color: transparent !important;
+}

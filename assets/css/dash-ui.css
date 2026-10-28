@@ -1,0 +1,1134 @@
+/* ==========================================================================
+   Prime City - shared dash UI
+
+   Page-level pieces that make an ordinary Bootstrap page look like the
+   customer_list / employee_lists dash pages: cards, tables, data-table
+   chrome (search + pager), tab pills, toolbars, empty states and the
+   modal skin.
+
+   Load after dash.css and before the page stylesheet.
+   ========================================================================== */
+/* ==========================================================================
+   Dash alignment - matches customer_list.php
+   ========================================================================== */
+
+/* ---- KPI tiles: three across on wide screens ---------------------------- */
+
+@media (min-width: 1200px) {
+    .dash .dash-stats.dash-stats--three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* ---- tabs as a segmented control ---------------------------------------- */
+
+.dash-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+    max-width: 100%;
+    gap: 0.25rem;
+    margin: 0 auto 1.1rem;
+    padding: 0.25rem;
+    border: 1px solid #e6f0fb;
+    border-radius: 12px;
+    background: #f4f9ff;
+}
+
+.dash-tabs .nav-item {
+    margin: 0;
+}
+
+.dash-tabs .nav-link {
+    padding: 0.45rem 0.9rem;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    color: #33578a;
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.dash-tabs .nav-link:hover {
+    background: #e6f1ff;
+    color: #0a5fe6;
+}
+
+.dash-tabs .nav-link.active {
+    background: linear-gradient(135deg, #0a5fe6, #1b7bf2);
+    color: #ffffff;
+    box-shadow: 0 6px 14px rgba(10, 95, 230, 0.22);
+}
+
+/* ---- cards --------------------------------------------------------- */
+
+.dash .card {
+    margin-bottom: var(--dash-gap, 1.25rem);
+    border: 1px solid #e8f1fc;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(10, 61, 156, 0.06);
+    overflow: hidden;
+}
+
+.dash .card:last-child {
+    margin-bottom: 0;
+}
+
+.dash .card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.35rem;
+    border: 0;
+    border-bottom: 1px solid #eff5fd;
+    background: #ffffff;
+}
+
+.dash .card-header-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    color: #0d3b7a;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.dash .card-header-content > i {
+    display: grid;
+    place-items: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 12px;
+    background: #e8f2ff;
+    color: #0a5fe6;
+    font-size: 0.85rem;
+}
+
+.dash .card-header .btn {
+    margin-left: auto;
+    border-radius: 11px;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+/* Same padding as .dash-card__body in dash.css (customer_list.php). */
+.dash .card-body,
+.dash .dash-card__body {
+    padding: 1.25rem 1.35rem 1.4rem;
+}
+
+/* ---- table area ----------------------------------------------------
+   .table-responsive plays the role of the customer datatable container:
+   rounded frame, soft border and a horizontal scrollbar when needed.
+   -------------------------------------------------------------------- */
+
+.dash .dash-card__body .table-responsive {
+    padding: 0.35rem 0.35rem 0.15rem;
+    border: 1px solid #eaf2fd;
+    border-radius: 12px;
+    background: #ffffff;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #c2daf5 #eef4fc;
+}
+
+.dash .dash-card__body .table-responsive::-webkit-scrollbar {
+    height: 10px;
+}
+
+.dash .dash-card__body .table-responsive::-webkit-scrollbar-track {
+    border-radius: 999px;
+    background: #eef4fc;
+}
+
+.dash .dash-card__body .table-responsive::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: #c2daf5;
+}
+
+/* the simple-datatables wrapper sits inside that frame */
+.dash .dash-card__body .datatable-container {
+    border: 0;
+    overflow-x: auto;
+}
+
+/* Long row menus: scroll instead of running off the screen */
+.dash .dash-table .dropdown-menu {
+    max-height: 70vh;
+    overflow-y: auto;
+    border: 1px solid #eaf2fd;
+    border-radius: 12px;
+    box-shadow: 0 18px 40px rgba(10, 61, 156, 0.16);
+}
+
+/* An open row dropdown must escape the framed table / card. */
+.dash .pc-dropdown-open {
+    overflow: visible !important;
+}
+
+/* ---- tables -------------------------------------------------------- */
+
+.dash .dash-table {
+    margin-bottom: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: #33578a;
+    font-size: 0.84rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.dash .dash-table thead th {
+    padding: 0.6rem 0.65rem;
+    border: 0;
+    border-bottom: 1px solid #e6f0fb;
+    background: #f4f9ff;
+    color: #6d86a6;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.dash .dash-table thead th:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.dash .dash-table thead th:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.dash .dash-table tbody td {
+    padding: 0.65rem 0.65rem;
+    border: 0;
+    border-bottom: 1px solid #eff5fd;
+    background: #ffffff;
+    vertical-align: middle;
+}
+
+.dash .dash-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.dash .dash-table tbody tr:hover td {
+    background: #f8fbff;
+}
+
+.dash .dash-table tbody tr:nth-of-type(odd) td {
+    background: #ffffff;
+}
+
+/* Label left, sort arrows pinned to the right edge of the column.
+   The arrows are ::before/::after on the sorter anchor (see styles.css), so
+   the anchor has to stay full width with room reserved on the right. */
+.dash .dash-table thead th .datatable-sorter {
+    display: block;
+    width: 100%;
+    padding: 0 1rem 0 0;
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+}
+
+.dash .dash-table thead th .datatable-sorter::before,
+.dash .dash-table thead th .datatable-sorter::after {
+    right: 2px;
+    opacity: 0.35;
+}
+
+.dash .dash-table thead th.asc .datatable-sorter::after,
+.dash .dash-table thead th.desc .datatable-sorter::before {
+    opacity: 1;
+}
+
+/* First column (usually the person) reads as the key column */
+.dash .dash-table tbody td:first-child {
+    color: #0d3b7a;
+}
+
+/* Actions column: one compact dropdown button, right aligned.
+   simple-datatables re-creates the <td> elements without their classes, so the
+   styles hang off .action-buttons-container and the last column instead. */
+.dash .dash-table tbody td:last-child {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.dash .dash-table .action-buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.3rem;
+    flex-wrap: nowrap;
+}
+
+.dash .dash-table .action-buttons-container .dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    height: 1.95rem;
+    padding: 0 0.7rem;
+    border: 0;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #0a5fe6, #1b7bf2);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    box-shadow: none;
+}
+
+.dash .dash-table .action-buttons-container .dropdown-toggle::after {
+    margin-left: 0.15rem;
+}
+
+.dash .dash-table .action-buttons-container .dropdown-toggle:hover,
+.dash .dash-table .action-buttons-container .dropdown-toggle:focus {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, #0a55cc, #176fe0);
+    box-shadow: 0 6px 14px rgba(10, 61, 156, 0.18);
+}
+
+/* Badges inside tables */
+.dash .dash-table .badge,
+.dash .dash-table .account-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.66rem;
+    font-weight: 700;
+}
+
+/* Profile thumbnails */
+.dash .dash-table .profile-img,
+.dash .dash-table .collector-image {
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* ---- data table chrome (simple-datatables) -------------------------- */
+
+.dash .datatable-top,
+.dash .datatable-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0 0 0.65rem;
+    margin: 0;
+}
+
+.dash .datatable-bottom {
+    padding: 0.9rem 0 0;
+}
+
+.dash .datatable-dropdown {
+    display: none;
+}
+
+.dash .datatable-search {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+/* Branch filter sharing the toolbar row with the search field */
+.dash .datatable-top .unified-filter-container.is-inline {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.dash .datatable-top .unified-filter-container.is-inline .filter-group {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.dash .datatable-top .unified-filter-container.is-inline .filter-label {
+    white-space: nowrap;
+}
+
+.dash .datatable-top .unified-filter-container.is-inline .filter-select {
+    min-width: 11rem;
+    height: 2.6rem;
+}
+
+.dash .datatable-input {
+    min-width: 15rem;
+    height: 2.6rem;
+    padding: 0 1.5rem 0 0.9rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 11px;
+    background: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.85rem;
+}
+
+.dash .datatable-input::placeholder {
+    color: #9db3cc;
+}
+
+.dash .datatable-input:focus {
+    border-color: #0a5fe6;
+    background: #ffffff;
+    outline: 0;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+/* Clear (X) button injected next to the search input */
+.dash .datatable-search {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.dash .datatable-clear {
+    position: absolute;
+    right: 0.45rem;
+    display: inline-grid;
+    place-items: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: #9db3cc;
+    font-size: 0.8rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.dash .datatable-clear:hover {
+    background: #eef4fc;
+    color: #33578a;
+}
+
+.dash .datatable-info {
+    color: #7b93b3;
+    font-size: 0.78rem;
+}
+
+/* Pager */
+.dash .datatable-pagination {
+    margin: 0;
+}
+
+.dash .datatable-pagination ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.dash .datatable-pagination-list-item-link {
+    display: grid;
+    place-items: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    border: 1px solid #e6f0fb;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #33578a;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.dash .datatable-pagination-list-item-link:hover {
+    border-color: #c2daf5;
+    background: #f4f9ff;
+    color: #0a5fe6;
+}
+
+.dash .datatable-pagination-list-item.datatable-active .datatable-pagination-list-item-link {
+    border-color: transparent;
+    background: linear-gradient(135deg, #0a5fe6, #1b7bf2);
+    color: #ffffff;
+}
+
+/* ---- branch filter strip -------------------------------------------- */
+
+.dash .unified-filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.75rem;
+    margin: 0 0 1.1rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid #e8f1fc;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(10, 61, 156, 0.05);
+}
+
+.dash .filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0;
+}
+
+.dash .filter-label {
+    margin: 0;
+    color: #7b93b3;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.dash .filter-select {
+    min-width: 12rem;
+    height: 2.6rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 11px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.dash .filter-select:focus {
+    border-color: #0a5fe6;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+/* ---- empty states --------------------------------------------------- */
+
+.dash .no-results-container {
+    padding: 2.25rem 1rem;
+    border: 1px dashed #d6e6f8;
+    border-radius: 14px;
+    background: #fbfdff;
+    text-align: center;
+}
+
+.dash .no-results-icon {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    margin: 0 auto 0.75rem;
+    border-radius: 14px;
+    background: #e8f2ff;
+    color: #0a5fe6;
+    font-size: 1.1rem;
+}
+
+.dash .no-results-container h4 {
+    margin: 0 0 0.35rem;
+    color: #0d3b7a;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.dash .no-results-container p {
+    margin: 0 0 0.25rem;
+    color: #8aa8c8;
+    font-size: 0.84rem;
+}
+
+/* Scrollable dialogs whose form wraps the body + footer: the form becomes
+   the flex column so the body can shrink and scroll inside the dialog. */
+.modal-dialog-scrollable .modal-content > form {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.modal-dialog-scrollable .modal-content > form > .modal-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.modal-dialog-scrollable .modal-content > form > .modal-footer {
+    flex: 0 0 auto;
+}
+
+/* No native reveal/clear icons on the modal password fields. */
+.modal input[type="password"]::-ms-reveal,
+.modal input[type="password"]::-ms-clear {
+    display: none;
+}
+
+/* ==========================================================================
+   Modals - same skin as the customer modals
+   ========================================================================== */
+
+.modal .modal-content {
+    border: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 70px rgba(10, 61, 156, 0.26), 0 4px 14px rgba(10, 61, 156, 0.1);
+}
+
+.modal .modal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.1rem 1.35rem;
+    border: 0;
+    background: linear-gradient(135deg, #072a5e 0%, #0a5fe6 55%, #1b7bf2 100%) !important;
+    color: #ffffff;
+}
+
+.modal .modal-title {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.02rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+.modal .modal-header .btn-close {
+    flex: 0 0 auto;
+    position: relative;
+    margin-left: auto;
+    padding: 0.45rem;
+    border-radius: 10px;
+    background-color: transparent;
+    background-image: none;
+    opacity: 0.85;
+    filter: none;
+}
+
+.modal .modal-header .btn-close::before {
+    content: "\00d7";
+    display: block;
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: 1;
+    text-align: center;
+}
+
+.modal .modal-header .btn-close:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+    opacity: 1;
+}
+
+.modal .modal-body {
+    padding: 1.15rem 1.35rem;
+    background: #fbfdff;
+    color: #33578a;
+    scrollbar-width: thin;
+    scrollbar-color: #c2daf5 transparent;
+}
+
+.modal .modal-footer {
+    gap: 0.5rem;
+    padding: 0.9rem 1.35rem;
+    border-top: 1px solid #eff5fd;
+    background: #ffffff;
+}
+
+.modal .modal-footer .btn {
+    border-radius: 12px;
+    padding: 0.5rem 1.05rem;
+    font-size: 0.84rem;
+    font-weight: 600;
+    box-shadow: none;
+}
+
+.modal .modal-footer .btn-secondary {
+    background: #eef4fc;
+    border-color: #eef4fc;
+    color: #33578a;
+}
+
+.modal .modal-footer .btn-secondary:hover {
+    background: #e2edfa;
+    border-color: #d6e6f8;
+}
+
+.modal .modal-footer .btn-primary {
+    background: linear-gradient(135deg, #0a5fe6, #1b7bf2);
+    border-color: transparent;
+}
+
+.modal .modal-footer .btn-success {
+    background: #eef9e4;
+    border-color: #d5f3bd;
+    color: #2f8a06;
+}
+
+.modal .modal-footer .btn-warning {
+    background: #fdf1e1;
+    border-color: #f6dfc0;
+    color: #a9661a;
+}
+
+.modal .modal-footer .btn-danger {
+    background: linear-gradient(135deg, #b5342c, #d1463b);
+    border-color: transparent;
+    color: #ffffff;
+}
+
+/* ---- forms -------------------------------------------------------- */
+
+.modal .form-label {
+    margin-bottom: 0.3rem;
+    color: #7b93b3;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.modal .form-control,
+.modal .form-select {
+    min-height: 2.7rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 11px;
+    background-color: #ffffff;
+    color: #0d3b7a;
+    font-size: 0.88rem;
+    font-weight: 500;
+}
+
+.modal .form-control:focus,
+.modal .form-select:focus {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+.modal textarea.form-control {
+    min-height: 4.6rem;
+    padding: 0.7rem 0.9rem;
+}
+
+.modal .form-text {
+    color: #8aa8c8;
+    font-size: 0.76rem;
+}
+
+.modal .input-group-text {
+    border: 1px solid #d6e6f8;
+    border-right: 0;
+    border-radius: 11px 0 0 11px;
+    background: #f4f9ff;
+    color: #33578a;
+    font-weight: 700;
+}
+
+.modal .input-group .form-control {
+    border-radius: 0 11px 11px 0;
+}
+
+/* Section titles inside the long edit forms */
+.modal .section-title {
+    margin: 1.35rem 0 0.75rem;
+    padding-left: 0.7rem;
+    border-left: 3px solid #3ba602;
+    color: #0d3b7a;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+.modal .section-title:first-child {
+    margin-top: 0;
+}
+
+/* ---- headings and tables inside modals ----------------------------- */
+
+.modal h6.fw-bold {
+    margin: 0.9rem 0 0.55rem;
+    color: #33578a;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.modal .table {
+    margin-bottom: 0;
+    color: #33578a;
+    font-size: 0.82rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.modal .table thead th {
+    padding: 0.5rem 0.55rem;
+    border: 0;
+    border-bottom: 1px solid #e6f0fb;
+    background: #f4f9ff;
+    color: #6d86a6;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.modal .table tbody td {
+    padding: 0.5rem 0.55rem;
+    border: 0;
+    border-bottom: 1px solid #eff5fd;
+    vertical-align: middle;
+}
+
+.modal .table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.modal .table tbody tr:hover td {
+    background: #f8fbff;
+}
+
+.modal .table-responsive {
+    padding-bottom: 0.35rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #c2daf5 #eef4fc;
+}
+
+.modal .table-responsive::-webkit-scrollbar {
+    height: 10px;
+}
+
+.modal .table-responsive::-webkit-scrollbar-track {
+    border-radius: 999px;
+    background: #eef4fc;
+}
+
+.modal .table-responsive::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: #c2daf5;
+}
+
+/* ---- misc --------------------------------------------------------- */
+
+.modal .badge {
+    padding: 0.3rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.66rem;
+    font-weight: 700;
+}
+
+.modal .alert {
+    border: 1px solid #eaf2fd;
+    border-radius: 12px;
+    font-size: 0.82rem;
+}
+
+/* ==========================================================================
+   Detail view (read-only record inside a modal)
+   ========================================================================== */
+
+.pc-view {
+    display: block;
+}
+
+.pc-view__hero {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.2rem;
+    border: 1px solid #e6f0fb;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #f7fbff 0%, #eef6ff 100%);
+}
+
+.pc-view__avatar {
+    position: relative;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 5.4rem;
+    height: 5.4rem;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #e8f2ff;
+    box-shadow: inset 0 0 0 1px rgba(10, 95, 230, 0.08);
+}
+
+.pc-view__avatar img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.pc-view__avatar i,
+.pc-view__avatar > svg {
+    width: 1.7rem;
+    height: 1.7rem;
+    color: #9db8d8;
+    font-size: 1.7rem;
+}
+
+.pc-view__dot {
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+    width: 14px;
+    height: 14px;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    background: #98a2b3;
+}
+
+.pc-view__dot--success { background: #3ba602; }
+.pc-view__dot--warning { background: #f0a800; }
+.pc-view__dot--danger { background: #d92d20; }
+
+.pc-view__identity {
+    min-width: 0;
+}
+
+.pc-view__name {
+    margin: 0;
+    color: #0d3b7a;
+    font-size: 1.18rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.pc-view__meta {
+    margin: 0.2rem 0 0;
+    color: #6d86a6;
+    font-size: 0.83rem;
+}
+
+.pc-view__pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.6rem;
+}
+
+.pc-view__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.25em 0.7em;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 1px solid #dbe9f8;
+    color: #33578a;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.pc-view__pill--success { background: #f1fbe9; border-color: #cdeeb2; color: #177407; }
+.pc-view__pill--warning { background: #fff8e6; border-color: #ffe1a8; color: #8a5b00; }
+.pc-view__pill--danger  { background: #fdeceb; border-color: #f7c9c4; color: #a4231a; }
+.pc-view__pill--brand   { background: #eef6ff; border-color: #cfe4ff; color: #0a5fe6; }
+
+.pc-view__pill i,
+.pc-view__pill svg {
+    width: 0.62rem;
+    height: 0.62rem;
+    font-size: 0.62rem;
+    color: inherit;
+}
+
+.pc-view__pill--dot i,
+.pc-view__pill--dot svg {
+    width: 0.42rem;
+    height: 0.42rem;
+    font-size: 0.42rem;
+}
+
+.pc-view__section {
+    margin-top: 1.35rem;
+}
+
+.pc-view__title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 0.9rem;
+    color: #33578a;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.pc-view__icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 8px;
+    background: #eef6ff;
+    color: #0a5fe6;
+}
+
+.pc-view__icon i,
+.pc-view__icon svg {
+    width: 0.72rem;
+    height: 0.72rem;
+    font-size: 0.72rem;
+    color: inherit;
+}
+
+.pc-view__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem 1.4rem;
+    margin: 0;
+}
+
+.pc-view__item {
+    min-width: 0;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px dashed #eef4fc;
+}
+
+.pc-view__item--wide {
+    grid-column: 1 / -1;
+}
+
+.pc-view__item dt {
+    margin: 0 0 0.15rem;
+    color: #8aa8c8;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.pc-view__item dd {
+    margin: 0;
+    color: #0d3b7a;
+    font-size: 0.92rem;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+
+.pc-view__item dd.is-muted {
+    color: #9db3cc;
+    font-weight: 400;
+}
+
+@media (max-width: 575.98px) {
+    .pc-view__grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .pc-view__hero {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+}
+
+/* ==========================================================================
+   Loan record identity block (.collector-header / .proxy-header)
+   ========================================================================== */
+
+.dash .collector-header,
+.dash .proxy-header {
+    margin-bottom: 1.25rem;
+    padding: 1.1rem 1.2rem;
+    border: 1px solid #e6f0fb;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #f7fbff 0%, #eef6ff 100%);
+    box-shadow: 0 10px 30px rgba(10, 61, 156, 0.06);
+}
+
+.dash .collector-header h3,
+.dash .proxy-header h3 {
+    margin: 0 0 0.55rem;
+    color: #0d3b7a;
+    font-size: 1.18rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.dash .collector-header p,
+.dash .proxy-header p {
+    margin: 0 0 0.45rem;
+    color: #0d3b7a;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.dash .collector-header p strong,
+.dash .proxy-header p strong {
+    display: block;
+    margin-bottom: 0.1rem;
+    color: #8aa8c8;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.dash .collector-profile-img,
+.dash .proxy-profile-img {
+    display: grid;
+    place-items: center;
+    width: 5.4rem;
+    height: 5.4rem;
+    margin: 0 auto;
+    border-radius: 20px;
+    background: #e8f2ff;
+    color: #9db8d8;
+    font-size: 1.6rem;
+    object-fit: cover;
+    box-shadow: inset 0 0 0 1px rgba(10, 95, 230, 0.08);
+}
+
+.dash .collector-header .badge,
+.dash .proxy-header .badge {
+    border-radius: 999px;
+    padding: 0.3em 0.75em;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+/* Loan record pages: the same hero, sized for a page header. */
+.dash .pc-view__hero--record {
+    margin-bottom: 1.25rem;
+    padding: 1.15rem 1.3rem;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(10, 61, 156, 0.06);
+}
+
+.dash .pc-view__hero--record .pc-view__avatar {
+    width: 5rem;
+    height: 5rem;
+}
+
+.dash .pc-view__hero--record .pc-view__name {
+    font-size: 1.22rem;
+}
+
+.dash .pc-view__hero--record .pc-view__meta {
+    color: #3f5f8a;
+    font-size: 0.86rem;
+}

@@ -1,0 +1,145 @@
+/* ==========================================================================
+   Prime City - Collector registration styles
+   Page-level styles for collector_registration.php. Global SB Admin styles
+   stay in css/styles.css; layout chrome lives in includes/.
+   ========================================================================== */
+
+.registration-card {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            .form-section {
+                margin-bottom: 1.5rem;
+            }
+            .section-title {
+                border-bottom: 1px solid #dee2e6;
+                padding-bottom: 0.5rem;
+                margin-bottom: 1rem;
+                color: #0d6efd;
+            }
+            .profile-image-preview {
+                width: 150px;
+                height: 150px;
+                object-fit: cover;
+                display: block;
+                margin: 0 auto;
+                margin-bottom: 10px;
+                margin-top: 10px;
+            }
+            .required-field::after {
+                content: " *";
+                color: red;
+            }
+            .form-floating {
+                margin-bottom: 1rem;
+            }
+            .branch-info {
+                background-color: #e9ecef;
+                padding: 10px;
+                border-radius: 5px;
+                margin-bottom: 15px;
+                font-size: 0.9rem;
+            }
+            .disabled-field { 
+                background-color: #e9ecef; 
+                opacity: 1; 
+            }
+            .account-type-section {
+                background-color: #f8f9fa;
+                padding: 15px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            .card-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .back-button {
+                margin-left: 10px;
+            }
+            .readonly-select {
+                pointer-events: none;
+                opacity: 1;
+            }
+            .employee-number-field {
+                text-transform: uppercase;
+                font-family: monospace;
+            }
+            .input-hint {
+                font-size: 0.875rem;
+                color: #6c757d;
+                margin-top: 0.25rem;
+            }
+
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 3;
+}
+.password-input-group {
+    position: relative;
+}
+
+/* ==========================================================================
+   Dash form alignment - the shared design in customer-registration-style.css
+   owns the field and section look, so the legacy page rules step aside.
+   ========================================================================== */
+
+.form-section {
+    margin-bottom: 0;
+    padding: 1.35rem 0 0;
+    border-top: 1px solid #eef4fc;
+}
+
+.form-section:first-of-type {
+    padding-top: 0;
+    border-top: 0;
+}
+
+.account-type-section {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+/* the shared sheet draws the dotted marker; drop the legacy underline */
+.section-title {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Readonly date fields: one uniform surface (Chrome paints the segments). */
+#registration_date,
+.dash-form input[type="date"][readonly] {
+    background-color: #eef4fc;
+}
+
+#registration_date::-webkit-datetime-edit,
+.dash-form input[type="date"][readonly]::-webkit-datetime-edit,
+#registration_date::-webkit-datetime-edit-fields-wrapper,
+.dash-form input[type="date"][readonly]::-webkit-datetime-edit-fields-wrapper {
+    background: transparent;
+}
+
+/* Readonly date: no inner segments painted over the readonly surface. */
+#registration_date::-webkit-datetime-edit,
+#registration_date::-webkit-datetime-edit-fields-wrapper,
+#registration_date::-webkit-datetime-edit-text,
+#registration_date::-webkit-datetime-edit-month-field,
+#registration_date::-webkit-datetime-edit-day-field,
+#registration_date::-webkit-datetime-edit-year-field {
+    background-color: transparent !important;
+    color: #43678f;
+}
+
+#registration_date::-webkit-calendar-picker-indicator {
+    display: none;
+}

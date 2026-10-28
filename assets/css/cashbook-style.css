@@ -1,0 +1,513 @@
+/* ==========================================================================
+   Prime City - Cashbook styles
+   Page-level styles for cashbook.php. Global SB Admin styles stay in
+   css/styles.css; layout chrome lives in includes/.
+   Follows docs/ui-conventions.md.
+   ========================================================================== */
+
+/* ==========================================================================
+   Filter panel
+   ========================================================================== */
+
+.dash .filter-section {
+    margin: 0 0 1.15rem;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.dash .filter-section .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.85rem 1rem;
+    margin: 0;
+}
+
+.dash .filter-section .filter-field {
+    flex: 1 1 190px;
+    min-width: 0;
+}
+
+.dash .filter-section .filter-label {
+    display: block;
+    margin: 0 0 0.35rem;
+    color: #7b93b3;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.dash .filter-section .form-control,
+.dash .filter-section .form-select {
+    min-height: 2.9rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 11px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+.dash .filter-section .form-control:hover,
+.dash .filter-section .form-select:hover {
+    border-color: #b9d6f6;
+}
+
+.dash .filter-section .form-control:focus,
+.dash .filter-section .form-select:focus {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+.dash .filter-section .filter-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+.dash .filter-section .filter-actions .btn {
+    border-radius: 11px;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.86rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: none;
+    transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease, background-color 0.14s ease;
+}
+
+.dash .filter-section .filter-actions .btn-primary {
+    border: 0;
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    color: #ffffff;
+    box-shadow: 0 10px 22px rgba(10, 95, 230, 0.24);
+}
+
+.dash .filter-section .filter-actions .btn-primary:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 12px 26px rgba(10, 95, 230, 0.3);
+    transform: translateY(-1px);
+}
+
+.dash .filter-section .filter-actions .btn-secondary {
+    border: 1px solid #d6e6f8;
+    background: #ffffff;
+    color: #33578a;
+    text-decoration: none;
+}
+
+.dash .filter-section .filter-actions .btn-secondary:hover {
+    border-color: #b9d6f6;
+    background: #f4f9ff;
+    color: #0a5fe6;
+}
+
+/* record counter in the card head */
+.dash .dash-card__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-left: 0.4rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid #e6f0fb;
+    border-radius: 999px;
+    background: #f7fbff;
+    color: #33578a;
+    font-size: 0.72rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.dash .dash-card__badge i {
+    color: #0a5fe6;
+    font-size: 0.66rem;
+}
+
+/* ==========================================================================
+   Cashbook table
+   ========================================================================== */
+
+.dash-card .table-responsive {
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+}
+
+.dash-card .cashbook-table {
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.8rem;
+}
+
+.dash-card .cashbook-table thead th {
+    padding: 0.7rem 0.75rem;
+    border: 0;
+    border-bottom: 1px solid #eaf2fd;
+    background: #f7fbff;
+    color: #8aa8c8;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.dash-card .cashbook-table tbody td {
+    padding: 0.62rem 0.75rem;
+    border: 0;
+    border-bottom: 1px solid #f1f6fd;
+    color: #33578a;
+    vertical-align: middle;
+}
+
+.dash-card .cashbook-table tbody tr:nth-child(even) td {
+    background: #fcfdff;
+}
+
+.dash-card .cashbook-table tbody tr:hover td {
+    background: #f9fcff;
+}
+
+.dash-card .cashbook-table tbody tr:nth-child(even):hover td {
+    background: #f4f9ff;
+}
+
+.dash-card .cashbook-table .cell-strong {
+    color: #0d3b7a;
+    font-weight: 600;
+}
+
+.dash-card .cashbook-table .cell-meta {
+    color: #8aa8c8;
+    font-size: 0.74rem;
+    white-space: nowrap;
+}
+
+.dash-card .cashbook-table .branch-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3em 0.7em;
+    border: 1px solid #cfe4ff;
+    border-radius: 999px;
+    background: #eef6ff;
+    color: #0a5fe6;
+    font-size: 0.72rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.dash-card .cashbook-table .type-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3em 0.7em;
+    border: 1px solid #e6f0fb;
+    border-radius: 999px;
+    background: #f7fbff;
+    color: #33578a;
+    font-size: 0.72rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.dash-card .cashbook-table .cell-notes {
+    display: inline-block;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+    color: #8aa8c8;
+    font-size: 0.76rem;
+}
+
+/* amounts */
+.dash-card .cashbook-table .amount {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.dash-card .cashbook-table .amount--debit {
+    color: #c0392b;
+}
+
+.dash-card .cashbook-table .amount--credit {
+    color: #177407;
+}
+
+.dash-card .cashbook-table .amount--balance {
+    color: #0d3b7a;
+    font-weight: 700;
+}
+
+/* empty state inside the table */
+.cashbook-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 2.6rem 1rem;
+    text-align: center;
+}
+
+.cashbook-empty__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 0.35rem;
+    border-radius: 15px;
+    background: #f2f7fe;
+    color: #a9c1dc;
+    font-size: 1.3rem;
+}
+
+.cashbook-empty strong {
+    color: #0d3b7a;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.cashbook-empty span:last-child {
+    color: #8aa8c8;
+    font-size: 0.82rem;
+}
+
+/* ==========================================================================
+   Footer: meta left, pager right
+   ========================================================================== */
+
+.dash-card .pagination-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin: 0.9rem 0 0;
+    padding: 0.9rem 0 0;
+    border-top: 1px solid #f1f6fd;
+}
+
+.dash-card .table-footer__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 0.9rem;
+    margin-right: auto;
+}
+
+.dash-card .records-info {
+    color: #7b93b3;
+    font-size: 0.78rem;
+}
+
+.dash-card .per-page-selector {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #8aa8c8;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.dash-card .per-page-selector select {
+    min-height: 2.1rem;
+    padding: 0.25rem 1.7rem 0.25rem 0.6rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 9px;
+    background-color: #ffffff;
+    color: #0d3b7a;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: none;
+}
+
+.dash-card .per-page-selector select:focus {
+    outline: 0;
+    border-color: #0a5fe6;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.13);
+}
+
+.dash-card .pagination-container .pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    margin: 0 0 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+.dash-card .pagination-container .pagination li {
+    margin: 0;
+}
+
+.dash-card .pagination-container .pagination li a,
+.dash-card .pagination-container .pagination li span {
+    display: grid;
+    place-items: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.5rem;
+    border: 1px solid #e6f0fb;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #33578a;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.dash-card .pagination-container .pagination li:not(.active):not(.disabled) a:hover {
+    border-color: #c2daf5;
+    background: #f4f9ff;
+    color: #0a5fe6;
+}
+
+.dash-card .pagination-container .pagination li.active a {
+    border-color: transparent;
+    background: linear-gradient(135deg, #0a5fe6, #1b7bf2);
+    color: #ffffff;
+}
+
+.dash-card .pagination-container .pagination li.disabled a,
+.dash-card .pagination-container .pagination li.disabled span {
+    border-color: #e6f0fb;
+    background: #ffffff;
+    color: #c6d6e8;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   Loading overlay + debug
+   ========================================================================== */
+
+.loading-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    background: rgba(6, 19, 31, 0.35);
+    backdrop-filter: blur(2px);
+}
+
+.loading-spinner {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.3rem;
+    border-radius: 14px;
+    background: #ffffff;
+    color: #0d3b7a;
+    font-size: 0.88rem;
+    font-weight: 600;
+    box-shadow: 0 18px 40px rgba(4, 16, 32, 0.22);
+}
+
+.loading-spinner i {
+    color: #0a5fe6;
+}
+
+.debug-info {
+    margin: 0 0 1rem;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid #ffe1a8;
+    border-left: 3px solid #f0b429;
+    border-radius: 12px;
+    background: #fff8e6;
+    color: #8a5b00;
+    font-size: 0.82rem;
+}
+
+/* ==========================================================================
+   Mobile
+   ========================================================================== */
+
+@media (max-width: 991.98px) {
+    .dash .dash-card__head {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        row-gap: 0.75rem;
+    }
+
+    .dash .dash-card__head > div:not(.dash-head__actions):not(.filter-buttons) {
+        flex: 1 1 0%;
+        min-width: 0;
+    }
+
+    .dash .dash-card__title {
+        overflow-wrap: anywhere;
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* card bodies must not scroll internally */
+    .dash .card-body {
+        overflow: visible;
+        max-height: none;
+    }
+
+    .dash .filter-section .filter-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .dash .filter-section .filter-field {
+        flex: 1 1 100%;
+    }
+
+    .dash .filter-section .filter-actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .dash .filter-section .filter-actions .btn {
+        width: 100%;
+    }
+
+    /* footer centred */
+    .dash-card .pagination-container {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .dash-card .table-footer__meta {
+        width: 100%;
+        margin: 0;
+        justify-content: center;
+    }
+
+    .dash-card .records-info {
+        width: 100%;
+        text-align: center;
+    }
+
+    .dash-card .pagination-container .pagination {
+        width: 100%;
+        margin: 0.35rem 0 0;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .dash .dash-card__badge {
+        margin: 0.35rem 0 0;
+    }
+}

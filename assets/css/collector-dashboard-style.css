@@ -1,0 +1,66 @@
+/* ==========================================================================
+   Prime City - Collector dashboard page styles.
+
+   The dash chrome (header, cards, card heads) comes from assets/css/dash.css
+   and assets/css/dash-ui.css; only the pieces this page adds live here.
+   ========================================================================== */
+
+/* Quick access tiles: two dash cards that double as links. */
+.dash-quick {
+    margin-bottom: var(--dash-gap, 1.25rem);
+}
+
+.card-link {
+    display: block;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+
+.card-link:hover,
+.card-link:focus-visible {
+    color: inherit;
+    text-decoration: none;
+}
+
+.quick-access-card {
+    height: 100%;
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.quick-access-card:hover,
+.card-link:focus-visible .quick-access-card {
+    transform: translateY(-3px);
+    border-color: #bcd8f8;
+    box-shadow: 0 4px 10px rgba(10, 61, 156, 0.08), 0 16px 32px rgba(10, 61, 156, 0.12);
+}
+
+.quick-access-card .stat__icon {
+    width: 2.9rem;
+    height: 2.9rem;
+    font-size: 1.15rem;
+}
+
+.quick-access-arrow {
+    margin-left: auto;
+    color: #8aa8c8;
+    transition: color 0.18s ease, transform 0.18s ease;
+}
+
+.quick-access-card:hover .quick-access-arrow {
+    color: #0a5fe6;
+    transform: translateX(3px);
+}
+
+/* Chart canvas needs an explicit height to draw into. */
+.chart-container {
+    position: relative;
+    height: 400px;
+}
+
+@media (max-width: 767.98px) {
+    .chart-container {
+        height: 300px;
+    }
+}

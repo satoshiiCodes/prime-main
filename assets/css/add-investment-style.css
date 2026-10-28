@@ -1,0 +1,744 @@
+/* ==========================================================================
+   Prime City - Investments styles
+   Page-level styles for add_investment.php. Global SB Admin styles stay in
+   css/styles.css; layout chrome lives in includes/.
+   ========================================================================== */
+
+.form-section {
+                background-color: #f8f9fa;
+                border-radius: 5px;
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            .form-header {
+                border-bottom: 1px solid #dee2e6;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+            }
+            .investment-table {
+                margin-top: 30px;
+            }
+            .table-responsive {
+                overflow-x: auto;
+            }
+            .table th {
+                background-color: #f8f9fa;
+                font-weight: 600;
+            }
+            .table-striped tbody tr:nth-of-type(odd) {
+                background-color: rgba(0, 0, 0, 0.02);
+            }
+            .table-hover tbody tr:hover {
+                background-color: rgba(0, 0, 0, 0.075);
+            }
+            .date-time-column {
+                width: 180px;
+            }
+            .branch-column {
+                width: 150px;
+            }
+            .action-column {
+                width: 120px;
+            }
+            .btn-action {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.75rem;
+                margin-right: 0.25rem;
+            }
+            .modal-content {
+                border-radius: 0.5rem;
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            }
+            .modal-header {
+                background-color: #f8f9fa;
+                border-bottom: 1px solid #dee2e6;
+                padding: 1rem 1.5rem;
+            }
+            .modal-title {
+                font-weight: 600;
+                color: #343a40;
+            }
+            .modal-body {
+                padding: 1.5rem;
+            }
+            .modal-footer {
+                border-top: 1px solid #dee2e6;
+                padding: 1rem 1.5rem;
+            }
+            .view-detail {
+                margin-bottom: 1rem;
+            }
+            .view-label {
+                font-weight: 600;
+                color: #495057;
+                margin-bottom: 0.25rem;
+            }
+            .view-value {
+                color: #212529;
+                padding-left: 1rem;
+            }
+            .btn-close:focus {
+                box-shadow: none;
+            }
+            .swal2-popup {
+                border-radius: 0.5rem;
+            }
+            .flatpickr-calendar {
+                z-index: 1060 !important;
+            }
+            .filter-buttons {
+                margin-bottom: 5px;
+            }
+            .filter-buttons .btn-group .btn {
+                margin-right: 5px;
+            }
+            .filter-section {
+                background-color: #f8f9fa;
+                padding: 15px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            .filter-row {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+            .filter-label {
+                font-weight: bold;
+                margin-bottom: 0;
+            }
+            .branch-filter-dropdown {
+                min-width: 200px;
+            }
+            .hidden-filter {
+                display: none !important;
+            }
+
+/* ==========================================================================
+   Add New Investment - dash form skin
+   ========================================================================== */
+
+#investmentForm .form-section {
+    margin: 0;
+    padding: 1.35rem 0 0;
+    border-top: 1px solid #eef4fc;
+    background: transparent;
+    border-radius: 0;
+}
+
+#investmentForm .form-section:first-of-type {
+    padding-top: 0;
+    border-top: 0;
+}
+
+#investmentForm .section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0 0 1.1rem;
+    padding: 0;
+    border: 0;
+    color: #0d3b7a;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+#investmentForm .section-title::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #3ba602;
+    flex: 0 0 auto;
+}
+
+/* the four fields spread evenly and wrap on narrow screens */
+#investmentForm .row {
+    --bs-gutter-x: 1.25rem;
+    --bs-gutter-y: 1rem;
+    margin-bottom: 0 !important;
+}
+
+#investmentForm .form-floating > .form-control,
+#investmentForm .form-floating > .form-select,
+#investmentForm .form-control,
+#investmentForm .form-select {
+    min-height: 3.1rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 12px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+#investmentForm .form-control:hover,
+#investmentForm .form-select:hover {
+    border-color: #b9d6f6;
+}
+
+#investmentForm .form-control:focus,
+#investmentForm .form-select:focus {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.14);
+}
+
+#investmentForm .form-floating > label {
+    padding: 0.8rem 0.95rem;
+    color: #6d86a6;
+    font-size: 0.9rem;
+}
+
+#investmentForm .form-floating > .form-control:focus ~ label,
+#investmentForm .form-floating > .form-control:not(:placeholder-shown) ~ label,
+#investmentForm .form-floating > .form-select ~ label {
+    color: #8aa8c8;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+#investmentForm .form-select:disabled,
+#investmentForm .form-control:disabled {
+    background-color: #eef4fc;
+    border-color: #e0ecfa;
+    color: #43678f;
+    cursor: not-allowed;
+}
+
+#investmentForm textarea.form-control {
+    min-height: 6.5rem;
+    padding: 2rem 0.95rem 0.8rem;
+    line-height: 1.5;
+}
+
+#investmentForm .form-floating > textarea.form-control {
+    height: 6.5rem !important;
+}
+
+/* submit row */
+#investmentForm .dash-form__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1.35rem 0 0;
+    padding-top: 1.35rem;
+    border-top: 1px solid #eef4fc;
+}
+
+#investmentForm .dash-form__actions .d-grid {
+    display: block;
+    width: auto;
+}
+
+#investmentForm .btn-block {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: auto;
+    padding: 0.72rem 1.6rem;
+    border: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 10px 22px rgba(10, 95, 230, 0.24);
+    transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease;
+}
+
+#investmentForm .btn-block:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 12px 26px rgba(10, 95, 230, 0.30);
+    transform: translateY(-1px);
+}
+
+#investmentForm .btn-block:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 14px rgba(10, 95, 230, 0.24);
+}
+
+/* flatpickr popup matches the form controls */
+.flatpickr-calendar {
+    border-radius: 12px;
+    box-shadow: 0 18px 40px rgba(4, 16, 32, 0.18);
+    border: 1px solid #d6e6f8;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.selected:hover {
+    background: #0a5fe6;
+    border-color: #0a5fe6;
+}
+
+.flatpickr-day:hover {
+    background: #eef6ff;
+    border-color: #eef6ff;
+}
+
+/* ==========================================================================
+   Investment History - search (left) + branch filter (right) on one row
+   ========================================================================== */
+
+.investment-table .history-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1rem;
+    margin: 0 0 1rem;
+}
+
+/* ---- search (left) --------------------------------------------------- */
+
+.investment-table .history-toolbar__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1 1 260px;
+    min-width: 0;
+}
+
+.investment-table .history-toolbar__icon {
+    position: absolute;
+    left: 0.95rem;
+    color: #8aa8c8;
+    font-size: 0.78rem;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.investment-table .history-toolbar__input {
+    width: 100%;
+    min-height: 2.7rem;
+    padding: 0.5rem 0.9rem 0.5rem 2.4rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 11px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+.investment-table .history-toolbar__input::placeholder {
+    color: #8aa8c8;
+}
+
+.investment-table .history-toolbar__input:hover {
+    border-color: #b9d6f6;
+}
+
+.investment-table .history-toolbar__input:focus {
+    outline: 0;
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.13);
+}
+
+/* the table's own toolbar duplicates the search box - hide it */
+.investment-table .datatable-top,
+.investment-table .dataTable-top {
+    display: none !important;
+}
+
+/* ---- branch filter (right) ------------------------------------------- */
+
+.investment-table .history-toolbar .filter-section {
+    order: 2;
+    flex: 0 0 auto;
+    margin: 0 0 0 auto;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+}
+
+.investment-table .history-toolbar .filter-row {
+    gap: 0.6rem;
+}
+
+.investment-table .history-toolbar .filter-label {
+    color: #8aa8c8;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.investment-table .history-toolbar .branch-filter-dropdown {
+    min-width: 200px;
+}
+
+.investment-table .history-toolbar .branch-filter-dropdown .form-select {
+    min-height: 2.7rem;
+    border: 1px solid #d6e6f8;
+    border-radius: 11px;
+    background-color: #fbfdff;
+    color: #0d3b7a;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.investment-table .history-toolbar .branch-filter-dropdown .form-select:focus {
+    border-color: #0a5fe6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(10, 95, 230, 0.13);
+}
+
+@media (max-width: 767.98px) {
+    .investment-table .history-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .investment-table .history-toolbar .filter-section {
+        margin-left: 0;
+    }
+}
+
+/* ==========================================================================
+   Investment History - header period filter (All / Daily / Weekly / Monthly)
+   ========================================================================== */
+
+.investment-table .filter-buttons {
+    margin: 0 0 0 auto;
+}
+
+.investment-table .filter-buttons .btn-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.22rem;
+    border: 1px solid #eaf2fd;
+    border-radius: 12px;
+    background: #f7fbff;
+    box-shadow: none;
+}
+
+.investment-table .filter-buttons .btn-group .btn {
+    margin: 0;
+    padding: 0.42rem 0.95rem;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    color: #33578a;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    box-shadow: none;
+    transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.investment-table .filter-buttons .btn-group .btn:hover {
+    background: #e6f0ff;
+    color: #0a5fe6;
+}
+
+.investment-table .filter-buttons .btn-group .btn:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 3px rgba(10, 95, 230, 0.22);
+}
+
+.investment-table .filter-buttons .btn-group .btn-outline-primary {
+    border: 0;
+    background: transparent;
+    color: #33578a;
+}
+
+.investment-table .filter-buttons .btn-group .btn-primary {
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    color: #ffffff;
+    box-shadow: 0 6px 14px rgba(10, 95, 230, 0.28);
+}
+
+.investment-table .filter-buttons .btn-group .btn-primary:hover {
+    background: linear-gradient(135deg, #0a5fe6 0%, #2b86f8 100%);
+    color: #ffffff;
+}
+
+@media (max-width: 575.98px) {
+    .investment-table .filter-buttons {
+        margin: 0.5rem 0 0;
+    }
+
+    .investment-table .filter-buttons .btn-group .btn {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.74rem;
+    }
+}
+
+/* ==========================================================================
+   Investment Details modal
+   ========================================================================== */
+
+#viewModal .modal-content {
+    border: 0;
+    border-radius: 18px;
+    box-shadow: 0 24px 60px rgba(4, 16, 32, 0.22);
+    overflow: hidden;
+}
+
+#viewModal .modal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.1rem 1.3rem;
+    border: 0;
+    background: linear-gradient(135deg, #0a5fe6 0%, #1b7bf2 100%);
+    color: #ffffff;
+}
+
+#viewModal .inv-modal__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    font-size: 0.95rem;
+    flex: 0 0 auto;
+}
+
+#viewModal .inv-modal__heading {
+    min-width: 0;
+}
+
+#viewModal .modal-title {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+#viewModal .inv-modal__hint {
+    margin: 0.1rem 0 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.76rem;
+    font-weight: 500;
+}
+
+#viewModal .btn-close {
+    margin-left: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+}
+
+#viewModal .btn-close:hover {
+    opacity: 1;
+}
+
+#viewModal .modal-body {
+    padding: 1.3rem;
+    background: #ffffff;
+}
+
+#viewModal .inv-view {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+#viewModal .inv-view__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+    padding: 0.8rem 0.9rem;
+    border: 1px solid #eaf2fd;
+    border-radius: 13px;
+    background: linear-gradient(180deg, #fbfdff 0%, #ffffff 100%);
+}
+
+#viewModal .inv-view__item--wide {
+    grid-column: 1 / -1;
+}
+
+#viewModal .inv-view__label {
+    color: #8aa8c8;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+#viewModal .inv-view__value {
+    color: #0d3b7a;
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+#viewModal .inv-view__value--amount {
+    color: #177407;
+    font-size: 1.05rem;
+    font-variant-numeric: tabular-nums;
+}
+
+#viewModal .inv-view__value--notes {
+    color: #33578a;
+    font-weight: 500;
+    white-space: pre-wrap;
+}
+
+#viewModal .modal-footer {
+    padding: 0.9rem 1.3rem;
+    border-top: 1px solid #eef4fc;
+    background: #fbfdff;
+}
+
+#viewModal .inv-modal__close {
+    border: 1px solid #d6e6f8;
+    border-radius: 11px;
+    background: #ffffff;
+    color: #33578a;
+    font-size: 0.86rem;
+    font-weight: 600;
+    padding: 0.55rem 1.15rem;
+}
+
+#viewModal .inv-modal__close:hover {
+    border-color: #b9d6f6;
+    background: #f7fbff;
+    color: #0d3b7a;
+}
+
+@media (max-width: 575.98px) {
+    #viewModal .inv-view {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* ==========================================================================
+   Investment History - narrow screens
+   ========================================================================== */
+
+@media (max-width: 991.98px) {
+    /* period filter drops below the title instead of squeezing it */
+    .dash .investment-table .dash-card__head {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        row-gap: 0.75rem;
+    }
+
+    .dash .investment-table .dash-card__head > div:not(.filter-buttons) {
+        flex: 1 1 0%;
+        min-width: 0;
+    }
+
+    .dash .investment-table .dash-card__title {
+        overflow-wrap: anywhere;
+    }
+
+    .dash .investment-table .dash-card__head .filter-buttons {
+        flex: 1 1 100%;
+        width: 100%;
+        margin: 0;
+    }
+
+    .dash .investment-table .filter-buttons .btn-group {
+        display: flex;
+        width: 100%;
+    }
+
+    .dash .investment-table .filter-buttons .btn-group .btn {
+        flex: 1 1 auto;
+        text-align: center;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* search and branch filter stack, each full width */
+    .dash .investment-table .history-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .dash .investment-table .history-toolbar__search {
+        flex: 0 0 auto;
+        width: 100%;
+        min-width: 0;
+        height: auto;
+    }
+
+    .dash .investment-table .history-toolbar__input {
+        min-height: 2.6rem;
+    }
+
+    .dash .investment-table .history-toolbar .filter-section {
+        flex: 0 0 auto;
+        width: 100%;
+        min-width: 0;
+        margin: 0;
+    }
+
+    .dash .investment-table .history-toolbar .filter-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.4rem;
+        width: 100%;
+    }
+
+    .dash .investment-table .history-toolbar .filter-label {
+        white-space: normal;
+    }
+
+    .dash .investment-table .history-toolbar .branch-filter-dropdown {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .dash .investment-table .history-toolbar .branch-filter-dropdown .form-select {
+        width: 100%;
+    }
+
+    .dash .investment-table .table-responsive {
+        max-width: 100%;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* footer: centred info + pager */
+    .dash .investment-table .datatable-bottom {
+        justify-content: center;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .dash .investment-table .datatable-info {
+        width: 100%;
+        text-align: center;
+    }
+
+    .dash .investment-table .datatable-pagination {
+        width: 100%;
+        margin: 0.35rem 0 0;
+    }
+
+    .dash .investment-table .datatable-pagination ul {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 420px) {
+    .dash .investment-table .dash-card__head {
+        padding: 0.9rem 1rem;
+    }
+
+    .dash .investment-table .history-toolbar__input {
+        font-size: 0.85rem;
+    }
+}
